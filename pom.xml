@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.chm.fj</groupId>
+  <artifactId>fj-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>fj-parent</name>
+  <description>fj-parent</description>
+  <modules>
+  	<module>fj-entyity</module>
+  	<module>fj-commonutil</module>
+  	<module>fj-dao</module>
+  	<module>fj-service</module>
+  	<module>fj-uc</module>
+  	<module>fj-entity</module>
+  </modules>
+</project>
