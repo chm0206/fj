@@ -10,12 +10,23 @@
 	<groupId>com.chm.fj</groupId>
 	<properties>
 		<shiro.version>1.2.3</shiro.version>
+		<mybatis.version>3.2.1</mybatis.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-beanutils</groupId>
