@@ -7,11 +7,10 @@
   <name>fj-parent</name>
   <description>fj-parent</description>
   <modules>
-  	<module>fj-entyity</module>
   	<module>fj-commonutil</module>
+  	<module>fj-entity</module>
   	<module>fj-dao</module>
   	<module>fj-service</module>
   	<module>fj-uc</module>
-  	<module>fj-entity</module>
   </modules>
 </project>

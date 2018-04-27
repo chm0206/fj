@@ -13,8 +13,8 @@
 		<mvc:default-servlet-handler/>
 		
 		<context:component-scan base-package="com.chm.fj.controllor" />
-		<!-- <context:component-scan base-package="cn.riseinfo.user" />用于解决事务
-		<context:component-scan base-package="com.json" /> -->
+		<context:component-scan base-package="com.chm.fj" /><!-- 用于解决事务 -->
+		<!-- <context:component-scan base-package="com.json" /> -->
 		
 		<!-- 对静态资源文件的访问  restful     mapping表示页面使用到的路径，location表示从该路径下进行查找-->     
 		<mvc:resources mapping="/static/**" location="/,/static/" />
