@@ -1,9 +1,13 @@
 package com.chm.fj.dao;
 
+import com.chm.fj.dao.base.IDAO;
 import com.chm.fj.entity.UserInfo;
 
-public interface UserInfoMapper {
-    int insert(UserInfo record);
-
-    int insertSelective(UserInfo record);
+/**
+ * 用户信息表
+ * @author Administrator
+ *
+ */
+public interface UserInfoMapper extends IDAO<UserInfo, String>{
+	
 }

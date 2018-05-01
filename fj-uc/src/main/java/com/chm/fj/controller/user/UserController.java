@@ -30,7 +30,7 @@ public class UserController extends BaseController {
 		ModelAndView mv = new ModelAndView();
 		PageData pd = this.getPageData();
 		mv.addObject("pd",pd);
-		
+		mv.setViewName("user/userList");
 		return mv;
 	}
 	@RequestMapping(value = "/saveUserInfo", produces = "application/json;charset=UTF-8" )
