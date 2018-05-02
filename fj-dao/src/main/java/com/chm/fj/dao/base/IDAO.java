@@ -48,7 +48,7 @@ public interface IDAO<K,V> {
 	 * @param page
 	 * @return
 	 */
-	List<PageData> listPageUserInfo(Page page) throws Exception;
+	List<PageData> listPagePd(Page page) throws Exception;
 
 	/**
 	 * 根据id获取
@@ -56,12 +56,12 @@ public interface IDAO<K,V> {
 	 * @param userID
 	 * @return
 	 */
-	PageData findById(String id) throws Exception;
+	PageData findPdById(String id) throws Exception;
 	/**
 	 * 根据id获取指定的信息
 	 * @param userIDs
 	 * @return
 	 */
-	List<PageData> listPageUserByIDs(String userIDs) throws Exception;
+	List<PageData> listPagePdByIDs(String userIDs) throws Exception;
 
 }

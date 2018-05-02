@@ -17,7 +17,7 @@
 	</properties>
 	<dependencies>
 		<!-- 引入子项目 -->
-		
+
 		<dependency>
 			<groupId>com.chm.fj</groupId>
 			<artifactId>fj-commonutil</artifactId>
@@ -258,8 +258,17 @@
 			<version>4.5.4</version>
 		</dependency>
 
-
-
+		<!-- 引入JSTL标签库，否则前端无法使用EL表达式 -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+		</dependency>
 
 		<!-- 不太想用alibaba的json -->
 		<dependency>

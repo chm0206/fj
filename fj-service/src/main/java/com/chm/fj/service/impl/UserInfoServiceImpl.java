@@ -61,24 +61,24 @@ public class UserInfoServiceImpl implements UserInfoMapper {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<PageData> listPageUserInfo(Page page) throws Exception {
+	public List<PageData> listPagePd(Page page) throws Exception {
 		// TODO Auto-generated method stub
-		return  (List<PageData>) this.dao.findForList("UserInfoMapper.listPageUserInfo", page);
+		return  (List<PageData>) this.dao.findForList("UserInfoMapper.listPageK", page);
 	}
 
 	@Override
-	public PageData findById(String id) throws Exception {
+	public PageData findPdById(String id) throws Exception {
 		// TODO Auto-generated method stub
 		return (PageData) this.dao.findForObject("UserInfoMapper.findById", id);
 	}
 
 	@Override
-	public List<PageData> listPageUserByIDs(String userIDs) throws Exception {
+	public List<PageData> listPagePdByIDs(String userIDs) throws Exception {
 		// TODO Auto-generated method stub
 		PageData pd = new PageData();
 		pd.put("userIDs", userIDs);
 		Page page = new Page();
 		page.setPd(pd);
-		return this.listPageUserInfo(page);
+		return this.listPagePd(page);
 	}
 }

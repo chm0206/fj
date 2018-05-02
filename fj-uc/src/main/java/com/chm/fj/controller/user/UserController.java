@@ -1,12 +1,18 @@
 package com.chm.fj.controller.user;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.chm.fj.controller.base.BaseController;
+import com.chm.fj.dao.UserInfoMapper;
 import com.chm.fj.entity.UserInfo;
+import com.chm.fj.util.Page;
 import com.chm.fj.util.PageData;
 
 import net.sf.json.JSONObject;
@@ -22,13 +28,14 @@ import net.sf.json.JSONObject;
 public class UserController extends BaseController {
 	
 
-	/*@Resource(name = "btnService")
-	private ButtonService buttonService;*/
+	@Resource(name = "userInfoService")
+	private UserInfoMapper userInfoService;
 	
 	@RequestMapping(value = "/toUserList")
-	public ModelAndView toUserList() throws Exception{
+	public ModelAndView toUserList(Page page) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		PageData pd = this.getPageData();
+		List<PageData> userList = this.userInfoService.listPagePd(page);
 		mv.addObject("pd",pd);
 		mv.setViewName("user/userList");
 		return mv;
