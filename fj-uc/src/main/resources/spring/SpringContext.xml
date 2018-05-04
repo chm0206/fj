@@ -85,7 +85,7 @@
 	
 	<!-- 事物处理 -->
 	<aop:config>
-		<aop:pointcut id="pc" expression="execution(* com.chm.fj.service..*(..))" />
+		<aop:pointcut id="pc" expression="execution(* com.chm.fj.dao..*(..))" />
 		<aop:advisor pointcut-ref="pc" advice-ref="txAdvice" />
 	</aop:config>
 	

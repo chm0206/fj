@@ -14,6 +14,7 @@ import com.chm.fj.dao.UserInfoMapper;
 import com.chm.fj.entity.UserInfo;
 import com.chm.fj.util.Page;
 import com.chm.fj.util.PageData;
+import com.chm.fj.util.Tools;
 
 import net.sf.json.JSONObject;
 
@@ -36,6 +37,19 @@ public class UserController extends BaseController {
 		ModelAndView mv = new ModelAndView();
 		PageData pd = this.getPageData();
 		List<PageData> userList = this.userInfoService.listPagePd(page);
+		mv.addObject("pd",pd);
+		mv.setViewName("user/userList");
+		return mv;
+	}
+	@RequestMapping(value = "/toUserInfo")
+	public ModelAndView toUserInfo() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		PageData pd = this.getPageData();
+		String userID = pd.getString("userID");
+		if(Tools.isEmpty(userID)){
+			userID="1";
+		}
+		PageData userInfo = this.userInfoService.findPdById(userID);
 		mv.addObject("pd",pd);
 		mv.setViewName("user/userList");
 		return mv;

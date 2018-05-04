@@ -28,11 +28,11 @@
 			<artifactId>fj-entity</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.chm.fj</groupId>
 			<artifactId>fj-dao</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>com.chm.fj</groupId>
 			<artifactId>fj-service</artifactId>

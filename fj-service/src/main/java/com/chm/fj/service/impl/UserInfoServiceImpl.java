@@ -63,7 +63,7 @@ public class UserInfoServiceImpl implements UserInfoMapper {
 	@Override
 	public List<PageData> listPagePd(Page page) throws Exception {
 		// TODO Auto-generated method stub
-		return  (List<PageData>) this.dao.findForList("UserInfoMapper.listPageK", page);
+		return  (List<PageData>) this.dao.findForList("UserInfoMapper.listPagePd", page);
 	}
 
 	@Override
