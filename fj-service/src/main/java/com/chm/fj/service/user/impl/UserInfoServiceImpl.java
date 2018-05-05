@@ -1,4 +1,4 @@
-package com.chm.fj.service.impl;
+package com.chm.fj.service.user.impl;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.chm.fj.dao.UserInfoMapper;
 import com.chm.fj.dao.base.DaoSupport;
+import com.chm.fj.service.user.UserInfoService;
 import com.chm.fj.util.Page;
 import com.chm.fj.util.PageData;
 
@@ -18,7 +18,7 @@ import com.chm.fj.util.PageData;
  *
  */
 @Service("userInfoService")
-public class UserInfoServiceImpl implements UserInfoMapper {
+public class UserInfoServiceImpl implements UserInfoService {
 
 	@Resource(name = "daoSupport")
 	private DaoSupport dao;

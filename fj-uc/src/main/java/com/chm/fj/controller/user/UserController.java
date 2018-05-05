@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.chm.fj.controller.base.BaseController;
-import com.chm.fj.dao.UserInfoMapper;
 import com.chm.fj.entity.UserInfo;
+import com.chm.fj.service.user.UserInfoService;
 import com.chm.fj.util.Page;
 import com.chm.fj.util.PageData;
 import com.chm.fj.util.Tools;
@@ -30,7 +30,7 @@ public class UserController extends BaseController {
 	
 
 	@Resource(name = "userInfoService")
-	private UserInfoMapper userInfoService;
+	private UserInfoService userInfoService;
 	
 	@RequestMapping(value = "/toUserList")
 	public ModelAndView toUserList(Page page) throws Exception{

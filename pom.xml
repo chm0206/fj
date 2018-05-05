@@ -9,7 +9,6 @@
   <modules>
   	<module>fj-commonutil</module>
   	<module>fj-entity</module>
-  	<module>fj-dao</module>
   	<module>fj-service</module>
   	<module>fj-uc</module>
   </modules>

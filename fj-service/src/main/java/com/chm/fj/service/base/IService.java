@@ -1,4 +1,4 @@
-package com.chm.fj.dao.base;
+package com.chm.fj.service.base;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import com.chm.fj.util.PageData;
  * @param <K> 实体类
  * @param <V> 主键类型
  */
-public interface IDAO<K,V> {
+public interface IService<K,V> {
 	/**
 	 * 添加一条新的数据
 	 * 
