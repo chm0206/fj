@@ -17,7 +17,7 @@ import com.chm.fj.util.PageData;
  * @author Administrator
  *
  */
-@Service("userInfoService")
+@Service("menuInfoService")
 public class MenuInfoServiceImpl implements MenuInfoService {
 
 	@Resource(name = "daoSupport")

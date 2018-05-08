@@ -1,177 +1,220 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="MenuInfoMapper" >
-  <resultMap id="MenuInfoMap" type="com.chm.fj.entity.MenuInfo" >
-    <id column="menuID" property="menuID" jdbcType="VARCHAR" />
-    <result column="menuName" property="menuName" jdbcType="VARCHAR" />
-    <result column="menuUrl" property="menuUrl" jdbcType="VARCHAR" />
-    <result column="parentID" property="parentID" jdbcType="VARCHAR" />
-    <result column="menuRank" property="menuRank" jdbcType="INTEGER" />
-    <result column="menuStatus" property="menuStatus" jdbcType="CHAR" />
-    <result column="createDte" property="createDte" jdbcType="VARCHAR" />
-    <result column="editDte" property="editDte" jdbcType="VARCHAR" />
-    <result column="operatorID" property="operatorID" jdbcType="VARCHAR" />
-    <result column="menuRow1" property="menuRow1" jdbcType="VARCHAR" />
-    <result column="menuRow2" property="menuRow2" jdbcType="VARCHAR" />
-    <result column="menuRow3" property="menuRow3" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    menuID, menuName, menuUrl, parentID, menuRank, menuStatus, createDte, editDte, operatorID, 
-    menuRow1, menuRow2, menuRow3
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from uc_menu_info
-    where menuID = #{menuID,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from uc_menu_info
-    where menuID = #{menuID,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="a.entity.inventory.MenuInfo" >
-    insert into uc_menu_info (menuID, menuName, menuUrl, 
-      parentID, menuRank, menuStatus, 
-      createDte, editDte, operatorID, 
-      menuRow1, menuRow2, menuRow3
-      )
-    values (#{menuID,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, #{menuUrl,jdbcType=VARCHAR}, 
-      #{parentID,jdbcType=VARCHAR}, #{menuRank,jdbcType=INTEGER}, #{menuStatus,jdbcType=CHAR}, 
-      #{createDte,jdbcType=VARCHAR}, #{editDte,jdbcType=VARCHAR}, #{operatorID,jdbcType=VARCHAR}, 
-      #{menuRow1,jdbcType=VARCHAR}, #{menuRow2,jdbcType=VARCHAR}, #{menuRow3,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="a.entity.inventory.MenuInfo" >
-    insert into uc_menu_info
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="menuID != null" >
-        menuID,
-      </if>
-      <if test="menuName != null" >
-        menuName,
-      </if>
-      <if test="menuUrl != null" >
-        menuUrl,
-      </if>
-      <if test="parentID != null" >
-        parentID,
-      </if>
-      <if test="menuRank != null" >
-        menuRank,
-      </if>
-      <if test="menuStatus != null" >
-        menuStatus,
-      </if>
-      <if test="createDte != null" >
-        createDte,
-      </if>
-      <if test="editDte != null" >
-        editDte,
-      </if>
-      <if test="operatorID != null" >
-        operatorID,
-      </if>
-      <if test="menuRow1 != null" >
-        menuRow1,
-      </if>
-      <if test="menuRow2 != null" >
-        menuRow2,
-      </if>
-      <if test="menuRow3 != null" >
-        menuRow3,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="menuID != null" >
-        #{menuID,jdbcType=VARCHAR},
-      </if>
-      <if test="menuName != null" >
-        #{menuName,jdbcType=VARCHAR},
-      </if>
-      <if test="menuUrl != null" >
-        #{menuUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="parentID != null" >
-        #{parentID,jdbcType=VARCHAR},
-      </if>
-      <if test="menuRank != null" >
-        #{menuRank,jdbcType=INTEGER},
-      </if>
-      <if test="menuStatus != null" >
-        #{menuStatus,jdbcType=CHAR},
-      </if>
-      <if test="createDte != null" >
-        #{createDte,jdbcType=VARCHAR},
-      </if>
-      <if test="editDte != null" >
-        #{editDte,jdbcType=VARCHAR},
-      </if>
-      <if test="operatorID != null" >
-        #{operatorID,jdbcType=VARCHAR},
-      </if>
-      <if test="menuRow1 != null" >
-        #{menuRow1,jdbcType=VARCHAR},
-      </if>
-      <if test="menuRow2 != null" >
-        #{menuRow2,jdbcType=VARCHAR},
-      </if>
-      <if test="menuRow3 != null" >
-        #{menuRow3,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="a.entity.inventory.MenuInfo" >
-    update uc_menu_info
-    <set >
-      <if test="menuName != null" >
-        menuName = #{menuName,jdbcType=VARCHAR},
-      </if>
-      <if test="menuUrl != null" >
-        menuUrl = #{menuUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="parentID != null" >
-        parentID = #{parentID,jdbcType=VARCHAR},
-      </if>
-      <if test="menuRank != null" >
-        menuRank = #{menuRank,jdbcType=INTEGER},
-      </if>
-      <if test="menuStatus != null" >
-        menuStatus = #{menuStatus,jdbcType=CHAR},
-      </if>
-      <if test="createDte != null" >
-        createDte = #{createDte,jdbcType=VARCHAR},
-      </if>
-      <if test="editDte != null" >
-        editDte = #{editDte,jdbcType=VARCHAR},
-      </if>
-      <if test="operatorID != null" >
-        operatorID = #{operatorID,jdbcType=VARCHAR},
-      </if>
-      <if test="menuRow1 != null" >
-        menuRow1 = #{menuRow1,jdbcType=VARCHAR},
-      </if>
-      <if test="menuRow2 != null" >
-        menuRow2 = #{menuRow2,jdbcType=VARCHAR},
-      </if>
-      <if test="menuRow3 != null" >
-        menuRow3 = #{menuRow3,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where menuID = #{menuID,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="a.entity.inventory.MenuInfo" >
-    update uc_menu_info
-    set menuName = #{menuName,jdbcType=VARCHAR},
-      menuUrl = #{menuUrl,jdbcType=VARCHAR},
-      parentID = #{parentID,jdbcType=VARCHAR},
-      menuRank = #{menuRank,jdbcType=INTEGER},
-      menuStatus = #{menuStatus,jdbcType=CHAR},
-      createDte = #{createDte,jdbcType=VARCHAR},
-      editDte = #{editDte,jdbcType=VARCHAR},
-      operatorID = #{operatorID,jdbcType=VARCHAR},
-      menuRow1 = #{menuRow1,jdbcType=VARCHAR},
-      menuRow2 = #{menuRow2,jdbcType=VARCHAR},
-      menuRow3 = #{menuRow3,jdbcType=VARCHAR}
-    where menuID = #{menuID,jdbcType=VARCHAR}
-  </update>
+<mapper namespace="MenuInfoMapper">
+	<resultMap id="MenuInfoMap" type="com.chm.fj.entity.MenuInfo">
+		<id column="menuID" property="menuID" jdbcType="VARCHAR" />
+		<result column="menuName" property="menuName" jdbcType="VARCHAR" />
+		<result column="menuUrl" property="menuUrl" jdbcType="VARCHAR" />
+		<result column="parentID" property="parentID" jdbcType="VARCHAR" />
+		<result column="menuRank" property="menuRank" jdbcType="INTEGER" />
+		<result column="menuStatus" property="menuStatus" jdbcType="CHAR" />
+		<result column="createDte" property="createDte" jdbcType="VARCHAR" />
+		<result column="editDte" property="editDte" jdbcType="VARCHAR" />
+		<result column="operatorID" property="operatorID" jdbcType="VARCHAR" />
+		<result column="menuRow1" property="menuRow1" jdbcType="VARCHAR" />
+		<result column="menuRow2" property="menuRow2" jdbcType="VARCHAR" />
+		<result column="menuRow3" property="menuRow3" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 表名称 -->
+	<sql id="tableName">uc_menu_info</sql>
+	<!-- 所有字段 -->
+	<sql id="baseColumnList">
+		um.menuID, um.menuName, um.menuUrl, um.parentID,
+		um.menuRank, um.menuStatus,
+		um.createDte, um.editDte, um.operatorID,
+		um.menuRow1, um.menuRow2, um.menuRow3
+	</sql>
+	<!-- 关键字段 -->
+	<sql id="breviaryColumn"><!-- menuUrl看是否需要展示 -->
+		um.menuID, um.menuName, um.menuUrl, um.menuStatus, um.createDte,
+		um.operatorID
+	</sql>
+	<!-- 不使用直接添加是因为如果有唯一值判断且又可以为空时，会出现空重复的BUG -->
+	<insert id="doCreate" parameterType="pd">
+		insert into
+		<include refid="tableName" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="menuID != null and menuID !=''">
+				menuID,
+			</if>
+			<if test="menuName != null and menuName !=''">
+				menuName,
+			</if>
+			<if test="menuUrl != null and menuUrl !=''">
+				menuUrl,
+			</if>
+			<if test="parentID != null and parentID !=''">
+				parentID,
+			</if>
+			<if test="menuRank != null and menuRank !=''">
+				menuRank,
+			</if>
+			<if test="menuStatus != null and menuStatus !=''">
+				menuStatus,
+			</if>
+			<if test="createDte != null and createDte !=''">
+				createDte,
+			</if>
+			<if test="editDte != null and editDte !=''">
+				editDte,
+			</if>
+			<if test="operatorID != null and operatorID !=''">
+				operatorID,
+			</if>
+			<if test="menuRow1 != null and menuRow1 !=''">
+				menuRow1,
+			</if>
+			<if test="menuRow2 != null and menuRow2 !=''">
+				menuRow2,
+			</if>
+			<if test="menuRow3 != null and menuRow3 !=''">
+				menuRow3,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="menuID != null and menuID !=''">
+				#{menuID,jdbcType=VARCHAR},
+			</if>
+			<if test="menuName != null and menuName !=''">
+				#{menuName,jdbcType=VARCHAR},
+			</if>
+			<if test="menuUrl != null and menuUrl !=''">
+				#{menuUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="parentID != null and parentID !=''">
+				#{parentID,jdbcType=VARCHAR},
+			</if>
+			<if test="menuRank != null and menuRank !=''">
+				#{menuRank,jdbcType=INTEGER},
+			</if>
+			<if test="menuStatus != null and menuStatus !=''">
+				#{menuStatus,jdbcType=CHAR},
+			</if>
+			<if test="createDte != null and createDte !=''">
+				#{createDte,jdbcType=VARCHAR},
+			</if>
+			<if test="editDte != null and editDte !=''">
+				#{editDte,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorID != null and operatorID !=''">
+				#{operatorID,jdbcType=VARCHAR},
+			</if>
+			<if test="menuRow1 != null and menuRow1 !=''">
+				#{menuRow1,jdbcType=VARCHAR},
+			</if>
+			<if test="menuRow2 != null and menuRow2 !=''">
+				#{menuRow2,jdbcType=VARCHAR},
+			</if>
+			<if test="menuRow3 != null and menuRow3 !=''">
+				#{menuRow3,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<!-- 简写：update t_a a set a.name = '张三' where a.id = 1，执行结果：不报错，但是数据没有更新 
+		规范写法：update a set a.name = '张三' from t_a a where a.id = 1，执行结果：数据更新 -->
+	<update id="doUpdate" parameterType="pd">
+		update um
+		<set>
+			<if test="menuName != null and menuName != ''">
+				um.menuName = #{menuName,jdbcType=VARCHAR},
+			</if>
+			<if test="menuUrl != null and menuUrl != ''">
+				um.menuUrl = #{menuUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="parentID != null and parentID != ''">
+				um.parentID = #{parentID,jdbcType=VARCHAR},
+			</if>
+			<if test="menuRank != null and menuRank >= 0"><!-- int类型不能判断是否为'' -->
+				um.menuRank = #{menuRank,jdbcType=INTEGER},
+			</if>
+			<if test="menuStatus != null and menuStatus != ''">
+				um.menuStatus = #{menuStatus,jdbcType=CHAR},
+			</if>
+			<if test="createDte != null and createDte != ''">
+				um.createDte = #{createDte,jdbcType=VARCHAR},
+			</if>
+			<if test="editDte != null and editDte != ''">
+				um.editDte = #{editDte,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorID != null and operatorID != ''">
+				um.operatorID = #{operatorID,jdbcType=VARCHAR},
+			</if>
+			<if test="menuRow1 != null and menuRow1 != ''">
+				um.menuRow1 = #{menuRow1,jdbcType=VARCHAR},
+			</if>
+			<if test="menuRow2 != null and menuRow2 != ''">
+				um.menuRow2 = #{menuRow2,jdbcType=VARCHAR},
+			</if>
+			<if test="menuRow3 != null and menuRow3 != ''">
+				um.menuRow3 = #{menuRow3,jdbcType=VARCHAR},
+			</if>
+		</set>
+		FROM
+		<include refid="tableName" />
+		um
+		where um.menuID = #{menuID,jdbcType=VARCHAR}
+	</update>
+	<!-- 查询用户列表 listPage -->
+	<select id="listPagePd" parameterType="page" resultType="pd">
+		SELECT
+		<include refid="breviaryColumn" />
+		FROM
+		<include refid="tableName" /> um 
+		WHERE 1=1 
+		<if test="pd.searKey != null and pd.searKey != ''"><!-- 模糊查询 -->
+			and (
+			um.menuName LIKE CONCAT(CONCAT('%', #{pd.searKey}),'%')
+			or
+			um.menuID
+			LIKE CONCAT(CONCAT('%', #{pd.searKey}),'%')
+			)
+		</if>
+		<if test="pd.menuID != null and pd.menuID != ''">
+			and um.menuID = #{pd.menuID,jdbcType=VARCHAR} 
+		</if>
+		<if test="pd.menuName != null and pd.menuName != ''">
+			and um.menuName = #{pd.menuName,jdbcType=VARCHAR} 
+		</if>
+		<if test="pd.menuUrl != null and pd.menuUrl != ''">
+			and um.menuUrl = #{pd.menuUrl,jdbcType=VARCHAR} 
+		</if>
+		<if test="pd.parentID != null and pd.parentID != ''">
+			and um.parentID = #{pd.parentID,jdbcType=VARCHAR} 
+		</if>
+		<if test="pd.menuRank != null and pd.menuRank >= 0">
+			and um.menuRank = #{pd.menuRank,jdbcType=INTEGER} 
+		</if>
+		<if test="pd.menuStatus != null and pd.menuStatus != ''">
+			and um.menuStatus = #{pd.menuStatus,jdbcType=CHAR} 
+		</if>
+		<if test="pd.createDte != null and pd.createDte != ''">
+			and um.createDte = #{pd.createDte,jdbcType=VARCHAR} 
+		</if>
+		<if test="pd.editDte != null and pd.editDte != ''">
+			and um.editDte = #{pd.editDte,jdbcType=VARCHAR} 
+		</if>
+		<if test="pd.operatorID != null and pd.operatorID != ''">
+			and um.operatorID = #{pd.operatorID,jdbcType=VARCHAR} 
+		</if>
+		<if test="pd.menuRow1 != null and pd.menuRow1 != ''">
+			and um.menuRow1 = #{pd.menuRow1,jdbcType=VARCHAR} 
+		</if>
+		<if test="pd.menuRow2 != null and pd.menuRow2 != ''">
+			and um.menuRow2 = #{pd.menuRow2,jdbcType=VARCHAR} 
+		</if>
+		<if test="pd.menuRow3 != null and pd.menuRow3 != ''">
+			and um.menuRow3 = #{pd.menuRow3,jdbcType=VARCHAR} 
+		</if>
+		order by um.createDte desc
+	</select>
+	<select id="findPdById" parameterType="java.lang.String"
+		resultType="pd">
+		select
+		<include refid="baseColumnList" />
+		FROM
+		<include refid="tableName" />
+		um
+		where um.menuID = #{id,jdbcType=VARCHAR}
+	</select>
 </mapper>

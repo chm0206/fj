@@ -24,7 +24,7 @@
 		ui.ownerID, ui.userRow1, ui.userRow2, ui.userRow3
 	</sql>
 	<!-- 关键字段 -->
-	<sql id="breviaryColumn">ui.userID, ui.userAccount, ui.userIcon,ui.creatDte,
+	<sql id="breviaryColumn">ui.userID, ui.userAccount, ui.userIcon,ui.createDte,
 		ui.operatorID</sql>
 	<!-- 不使用直接添加是因为如果有唯一值判断且又可以为空时，会出现空重复的BUG -->
 	<insert id="doCreate" parameterType="pd">
@@ -195,7 +195,7 @@
 		<if test="pd.userRow3 != null and pd.userRow3 !=''">
 			and ui.userRow3 = #{pd.userRow3,jdbcType=VARCHAR}
 		</if>
-		order by ui.creatDte desc
+		order by ui.createDte desc
 	</select>
 	<select id="findPdById" parameterType="java.lang.String"
 		resultType="pd">
@@ -204,6 +204,6 @@
 		FROM
 		<include refid="tableName" />
 		ui
-		where ui.userID = #{userID,jdbcType=VARCHAR}
+		where ui.userID = #{id,jdbcType=VARCHAR}
 	</select>
 </mapper>

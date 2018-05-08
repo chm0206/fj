@@ -1,152 +1,193 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="GroupInfoMapper" >
-  <resultMap id="GroupInfoMap" type="com.chm.fj.entity.GroupInfo" >
-    <id column="gID" property="gID" jdbcType="VARCHAR" />
-    <result column="gName" property="gName" jdbcType="VARCHAR" />
-    <result column="parentID" property="parentID" jdbcType="VARCHAR" />
-    <result column="gStatus" property="gStatus" jdbcType="CHAR" />
-    <result column="createDte" property="createDte" jdbcType="VARCHAR" />
-    <result column="editDte" property="editDte" jdbcType="VARCHAR" />
-    <result column="operatorID" property="operatorID" jdbcType="VARCHAR" />
-    <result column="gRow1" property="gRow1" jdbcType="VARCHAR" />
-    <result column="gRow2" property="gRow2" jdbcType="VARCHAR" />
-    <result column="gRow3" property="gRow3" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    gID, gName, parentID, gStatus, createDte, editDte, operatorID, gRow1, gRow2, gRow3
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from uc_group_info
-    where gID = #{gID,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from uc_group_info
-    where gID = #{gID,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="a.entity.inventory.GroupInfo" >
-    insert into uc_group_info (gID, gName, parentID, 
-      gStatus, createDte, editDte, 
-      operatorID, gRow1, gRow2, 
-      gRow3)
-    values (#{gID,jdbcType=VARCHAR}, #{gName,jdbcType=VARCHAR}, #{parentID,jdbcType=VARCHAR}, 
-      #{gStatus,jdbcType=CHAR}, #{createDte,jdbcType=VARCHAR}, #{editDte,jdbcType=VARCHAR}, 
-      #{operatorID,jdbcType=VARCHAR}, #{gRow1,jdbcType=VARCHAR}, #{gRow2,jdbcType=VARCHAR}, 
-      #{gRow3,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="a.entity.inventory.GroupInfo" >
-    insert into uc_group_info
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="gID != null" >
-        gID,
-      </if>
-      <if test="gName != null" >
-        gName,
-      </if>
-      <if test="parentID != null" >
-        parentID,
-      </if>
-      <if test="gStatus != null" >
-        gStatus,
-      </if>
-      <if test="createDte != null" >
-        createDte,
-      </if>
-      <if test="editDte != null" >
-        editDte,
-      </if>
-      <if test="operatorID != null" >
-        operatorID,
-      </if>
-      <if test="gRow1 != null" >
-        gRow1,
-      </if>
-      <if test="gRow2 != null" >
-        gRow2,
-      </if>
-      <if test="gRow3 != null" >
-        gRow3,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="gID != null" >
-        #{gID,jdbcType=VARCHAR},
-      </if>
-      <if test="gName != null" >
-        #{gName,jdbcType=VARCHAR},
-      </if>
-      <if test="parentID != null" >
-        #{parentID,jdbcType=VARCHAR},
-      </if>
-      <if test="gStatus != null" >
-        #{gStatus,jdbcType=CHAR},
-      </if>
-      <if test="createDte != null" >
-        #{createDte,jdbcType=VARCHAR},
-      </if>
-      <if test="editDte != null" >
-        #{editDte,jdbcType=VARCHAR},
-      </if>
-      <if test="operatorID != null" >
-        #{operatorID,jdbcType=VARCHAR},
-      </if>
-      <if test="gRow1 != null" >
-        #{gRow1,jdbcType=VARCHAR},
-      </if>
-      <if test="gRow2 != null" >
-        #{gRow2,jdbcType=VARCHAR},
-      </if>
-      <if test="gRow3 != null" >
-        #{gRow3,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="a.entity.inventory.GroupInfo" >
-    update uc_group_info
-    <set >
-      <if test="gName != null" >
-        gName = #{gName,jdbcType=VARCHAR},
-      </if>
-      <if test="parentID != null" >
-        parentID = #{parentID,jdbcType=VARCHAR},
-      </if>
-      <if test="gStatus != null" >
-        gStatus = #{gStatus,jdbcType=CHAR},
-      </if>
-      <if test="createDte != null" >
-        createDte = #{createDte,jdbcType=VARCHAR},
-      </if>
-      <if test="editDte != null" >
-        editDte = #{editDte,jdbcType=VARCHAR},
-      </if>
-      <if test="operatorID != null" >
-        operatorID = #{operatorID,jdbcType=VARCHAR},
-      </if>
-      <if test="gRow1 != null" >
-        gRow1 = #{gRow1,jdbcType=VARCHAR},
-      </if>
-      <if test="gRow2 != null" >
-        gRow2 = #{gRow2,jdbcType=VARCHAR},
-      </if>
-      <if test="gRow3 != null" >
-        gRow3 = #{gRow3,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where gID = #{gID,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="a.entity.inventory.GroupInfo" >
-    update uc_group_info
-    set gName = #{gName,jdbcType=VARCHAR},
-      parentID = #{parentID,jdbcType=VARCHAR},
-      gStatus = #{gStatus,jdbcType=CHAR},
-      createDte = #{createDte,jdbcType=VARCHAR},
-      editDte = #{editDte,jdbcType=VARCHAR},
-      operatorID = #{operatorID,jdbcType=VARCHAR},
-      gRow1 = #{gRow1,jdbcType=VARCHAR},
-      gRow2 = #{gRow2,jdbcType=VARCHAR},
-      gRow3 = #{gRow3,jdbcType=VARCHAR}
-    where gID = #{gID,jdbcType=VARCHAR}
-  </update>
+<mapper namespace="GroupInfoMapper">
+	<resultMap id="GroupInfoMap" type="com.chm.fj.entity.GroupInfo">
+		<id column="gID" property="gID" jdbcType="VARCHAR" />
+		<result column="gName" property="gName" jdbcType="VARCHAR" />
+		<result column="parentID" property="parentID" jdbcType="VARCHAR" />
+		<result column="gStatus" property="gStatus" jdbcType="CHAR" />
+		<result column="createDte" property="createDte" jdbcType="VARCHAR" />
+		<result column="editDte" property="editDte" jdbcType="VARCHAR" />
+		<result column="operatorID" property="operatorID" jdbcType="VARCHAR" />
+		<result column="gRow1" property="gRow1" jdbcType="VARCHAR" />
+		<result column="gRow2" property="gRow2" jdbcType="VARCHAR" />
+		<result column="gRow3" property="gRow3" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- 表名称 -->
+	<sql id="tableName">uc_group_info</sql>
+	<!-- 所有字段 -->
+	<sql id="baseColumnList">
+		ug.gID, ug.gName, ug.parentID, ug.gStatus, ug.createDte,
+		ug.editDte,
+		ug.operatorID, ug.gRow1, ug.gRow2, ug.gRow3
+	</sql>
+	<!-- 关键字段 -->
+	<sql id="breviaryColumn">
+		ug.gID, ug.gName, ug.gStatus, ug.createDte, ug.operatorID
+	</sql>
+	<!-- 不使用直接添加是因为如果有唯一值判断且又可以为空时，会出现空重复的BUG -->
+	<insert id="doCreate" parameterType="pd">
+		insert into
+		<include refid="tableName" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="gID != null and gID != ''">
+				gID,
+			</if>
+			<if test="gName != null and gName != ''">
+				gName,
+			</if>
+			<if test="parentID != null and parentID != ''">
+				parentID,
+			</if>
+			<if test="gStatus != null and gStatus != ''">
+				gStatus,
+			</if>
+			<if test="createDte != null and createDte != ''">
+				createDte,
+			</if>
+			<if test="editDte != null and editDte != ''">
+				editDte,
+			</if>
+			<if test="operatorID != null and operatorID != ''">
+				operatorID,
+			</if>
+			<if test="gRow1 != null and gRow1 != ''">
+				gRow1,
+			</if>
+			<if test="gRow2 != null and gRow2 != ''">
+				gRow2,
+			</if>
+			<if test="gRow3 != null and gRow3 != ''">
+				gRow3,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="gID != null and gID != ''">
+				#{gID,jdbcType=VARCHAR},
+			</if>
+			<if test="gName != null and gName != ''">
+				#{gName,jdbcType=VARCHAR},
+			</if>
+			<if test="parentID != null and parentID != ''">
+				#{parentID,jdbcType=VARCHAR},
+			</if>
+			<if test="gStatus != null and gStatus != ''">
+				#{gStatus,jdbcType=CHAR},
+			</if>
+			<if test="createDte != null and createDte != ''">
+				#{createDte,jdbcType=VARCHAR},
+			</if>
+			<if test="editDte != null and editDte != ''">
+				#{editDte,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorID != null and operatorID != ''">
+				#{operatorID,jdbcType=VARCHAR},
+			</if>
+			<if test="gRow1 != null and gRow1 != ''">
+				#{gRow1,jdbcType=VARCHAR},
+			</if>
+			<if test="gRow2 != null and gRow2 != ''">
+				#{gRow2,jdbcType=VARCHAR},
+			</if>
+			<if test="gRow3 != null and gRow3 != ''">
+				#{gRow3,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<!-- 简写：update t_a a set a.name = '张三' where a.id = 1，执行结果：不报错，但是数据没有更新 
+		规范写法：update a set a.name = '张三' from t_a a where a.id = 1，执行结果：数据更新 -->
+	<update id="doUpdate" parameterType="pd">
+		update ug
+		<set>
+			<if test="gName != null and gName != ''">
+				ug.gName = #{gName,jdbcType=VARCHAR},
+			</if>
+			<if test="parentID != null and parentID != ''">
+				ug.parentID = #{parentID,jdbcType=VARCHAR},
+			</if>
+			<if test="gStatus != null and gStatus != ''">
+				ug.gStatus = #{gStatus,jdbcType=CHAR},
+			</if>
+			<if test="createDte != null and createDte != ''">
+				ug.createDte = #{createDte,jdbcType=VARCHAR},
+			</if>
+			<if test="editDte != null and editDte != ''">
+				ug.editDte = #{editDte,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorID != null and operatorID != ''">
+				ug.operatorID = #{operatorID,jdbcType=VARCHAR},
+			</if>
+			<if test="gRow1 != null and gRow1 != ''">
+				ug.gRow1 = #{gRow1,jdbcType=VARCHAR},
+			</if>
+			<if test="gRow2 != null and gRow2 != ''">
+				ug.gRow2 = #{gRow2,jdbcType=VARCHAR},
+			</if>
+			<if test="gRow3 != null and gRow3 != ''">
+				ug.gRow3 = #{gRow3,jdbcType=VARCHAR},
+			</if>
+		</set>
+		FROM
+		<include refid="tableName" />
+		ug
+		where ug.gID = #{gID,jdbcType=VARCHAR}
+	</update>
+	<!-- 查询用户列表 listPage -->
+	<select id="listPagePd" parameterType="page" resultType="pd">
+		SELECT
+		<include refid="breviaryColumn" />
+		FROM
+		<include refid="tableName" />
+		ug
+		WHERE 1=1
+		<if test="pd.searKey != null and pd.searKey != ''"><!-- 模糊查询 -->
+			and (
+			ug.gName LIKE CONCAT(CONCAT('%', #{pd.searKey}),'%')
+			or
+			ug.gID
+			LIKE CONCAT(CONCAT('%', #{pd.searKey}),'%')
+			)
+		</if>
+
+		<if test="pd.gID != null and pd.gID != ''">
+			and ug.gID = #{pd.gID,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.gName != null and pd.gName != ''">
+			and ug.gName = #{pd.gName,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.parentID != null and pd.parentID != ''">
+			and ug.parentID = #{pd.parentID,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.gStatus != null and pd.gStatus != ''">
+			and ug.gStatus = #{pd.gStatus,jdbcType=CHAR}
+		</if>
+		<if test="pd.createDte != null and pd.createDte != ''">
+			and ug.createDte = #{pd.createDte,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.editDte != null and pd.editDte != ''">
+			and ug.editDte = #{pd.editDte,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.operatorID != null and pd.operatorID != ''">
+			and ug.operatorID = #{pd.operatorID,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.gRow1 != null and pd.gRow1 = !''">
+			and ug.gRow1 = #{pd.gRow1,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.gRow2 != null and pd.gRow2 = !''">
+			and ug.gRow2 = #{pd.gRow2,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.gRow3 != null and pd.gRow3 = !''">
+			and ug.gRow3 = #{pd.gRow3,jdbcType=VARCHAR}
+		</if>
+		order by ug.createDte desc
+	</select>
+	<select id="findPdById" parameterType="java.lang.String"
+		resultType="pd">
+		select
+		<include refid="baseColumnList" />
+		FROM
+		<include refid="tableName" />
+		ug
+		where ug.gID = #{id,jdbcType=VARCHAR}
+	</select>
 </mapper>

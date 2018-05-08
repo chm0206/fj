@@ -17,7 +17,7 @@ import com.chm.fj.util.PageData;
  * @author Administrator
  *
  */
-@Service("userInfoService")
+@Service("groupInfoService")
 public class GroupInfoServiceImpl implements GroupInfoService {
 
 	@Resource(name = "daoSupport")
