@@ -1,4 +1,4 @@
-package com.chm.fj.service.user.impl;
+package com.chm.fj.service.menu.impl;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.chm.fj.dao.base.DaoSupport;
-import com.chm.fj.service.user.UserInfoService;
+import com.chm.fj.service.menu.MenuInfoService;
 import com.chm.fj.util.Page;
 import com.chm.fj.util.PageData;
 
@@ -18,7 +18,7 @@ import com.chm.fj.util.PageData;
  *
  */
 @Service("userInfoService")
-public class UserInfoServiceImpl implements UserInfoService {
+public class MenuInfoServiceImpl implements MenuInfoService {
 
 	@Resource(name = "daoSupport")
 	private DaoSupport dao;
@@ -26,13 +26,13 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public int doCreate(PageData pd) throws Exception {
 		// TODO Auto-generated method stub
-		return (int) this.dao.save("UserInfoMapper.doCreate", pd);
+		return (int) this.dao.save("MenuInfoMapper.doCreate", pd);
 	}
 
 	@Override
 	public int doUpdate(PageData pd) throws Exception {
 		// TODO Auto-generated method stub
-		return (int) this.dao.update("UserInfoMapper.doUpdate", pd);
+		return (int) this.dao.update("MenuInfoMapper.doUpdate", pd);
 	}
 
 	@Override
@@ -42,6 +42,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 		pd.put("userID", id);
 		pd.put("userStatus", "D");
 		return this.doUpdate(pd);
+		//return (int) this.dao.update("UserInfoMapper.editUserInfo", pd);
+		//return (int)this.dao.delete("UserInfoMapper.delUserInfo", pd);
 	}
 
 	@Override
@@ -53,19 +55,21 @@ public class UserInfoServiceImpl implements UserInfoService {
 			count += this.doRemove(id);
 		}
 		return count;
+		//return (int) this.dao.update("UserInfoMapper.editUserInfo", pd);
+		//return (int) this.dao.update("UserInfoMapper.editUserInfo", pd);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PageData> listPagePd(Page page) throws Exception {
 		// TODO Auto-generated method stub
-		return  (List<PageData>) this.dao.findForList("UserInfoMapper.listPagePd", page);
+		return  (List<PageData>) this.dao.findForList("MenuInfoMapper.listPagePd", page);
 	}
 
 	@Override
 	public PageData findPdById(String id) throws Exception {
 		// TODO Auto-generated method stub
-		return (PageData) this.dao.findForObject("UserInfoMapper.findPdById", id);
+		return (PageData) this.dao.findForObject("MenuInfoMapper.findById", id);
 	}
 
 	@Override

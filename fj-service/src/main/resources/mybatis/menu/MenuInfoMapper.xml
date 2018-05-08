@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MenuInfoMapper" >
+  <resultMap id="MenuInfoMap" type="com.chm.fj.entity.MenuInfo" >
+    <id column="menuID" property="menuID" jdbcType="VARCHAR" />
+    <result column="menuName" property="menuName" jdbcType="VARCHAR" />
+    <result column="menuUrl" property="menuUrl" jdbcType="VARCHAR" />
+    <result column="parentID" property="parentID" jdbcType="VARCHAR" />
+    <result column="menuRank" property="menuRank" jdbcType="INTEGER" />
+    <result column="menuStatus" property="menuStatus" jdbcType="CHAR" />
+    <result column="createDte" property="createDte" jdbcType="VARCHAR" />
+    <result column="editDte" property="editDte" jdbcType="VARCHAR" />
+    <result column="operatorID" property="operatorID" jdbcType="VARCHAR" />
+    <result column="menuRow1" property="menuRow1" jdbcType="VARCHAR" />
+    <result column="menuRow2" property="menuRow2" jdbcType="VARCHAR" />
+    <result column="menuRow3" property="menuRow3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    menuID, menuName, menuUrl, parentID, menuRank, menuStatus, createDte, editDte, operatorID, 
+    menuRow1, menuRow2, menuRow3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_menu_info
+    where menuID = #{menuID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from uc_menu_info
+    where menuID = #{menuID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="a.entity.inventory.MenuInfo" >
+    insert into uc_menu_info (menuID, menuName, menuUrl, 
+      parentID, menuRank, menuStatus, 
+      createDte, editDte, operatorID, 
+      menuRow1, menuRow2, menuRow3
+      )
+    values (#{menuID,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, #{menuUrl,jdbcType=VARCHAR}, 
+      #{parentID,jdbcType=VARCHAR}, #{menuRank,jdbcType=INTEGER}, #{menuStatus,jdbcType=CHAR}, 
+      #{createDte,jdbcType=VARCHAR}, #{editDte,jdbcType=VARCHAR}, #{operatorID,jdbcType=VARCHAR}, 
+      #{menuRow1,jdbcType=VARCHAR}, #{menuRow2,jdbcType=VARCHAR}, #{menuRow3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="a.entity.inventory.MenuInfo" >
+    insert into uc_menu_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="menuID != null" >
+        menuID,
+      </if>
+      <if test="menuName != null" >
+        menuName,
+      </if>
+      <if test="menuUrl != null" >
+        menuUrl,
+      </if>
+      <if test="parentID != null" >
+        parentID,
+      </if>
+      <if test="menuRank != null" >
+        menuRank,
+      </if>
+      <if test="menuStatus != null" >
+        menuStatus,
+      </if>
+      <if test="createDte != null" >
+        createDte,
+      </if>
+      <if test="editDte != null" >
+        editDte,
+      </if>
+      <if test="operatorID != null" >
+        operatorID,
+      </if>
+      <if test="menuRow1 != null" >
+        menuRow1,
+      </if>
+      <if test="menuRow2 != null" >
+        menuRow2,
+      </if>
+      <if test="menuRow3 != null" >
+        menuRow3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="menuID != null" >
+        #{menuID,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null" >
+        #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentID != null" >
+        #{parentID,jdbcType=VARCHAR},
+      </if>
+      <if test="menuRank != null" >
+        #{menuRank,jdbcType=INTEGER},
+      </if>
+      <if test="menuStatus != null" >
+        #{menuStatus,jdbcType=CHAR},
+      </if>
+      <if test="createDte != null" >
+        #{createDte,jdbcType=VARCHAR},
+      </if>
+      <if test="editDte != null" >
+        #{editDte,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorID != null" >
+        #{operatorID,jdbcType=VARCHAR},
+      </if>
+      <if test="menuRow1 != null" >
+        #{menuRow1,jdbcType=VARCHAR},
+      </if>
+      <if test="menuRow2 != null" >
+        #{menuRow2,jdbcType=VARCHAR},
+      </if>
+      <if test="menuRow3 != null" >
+        #{menuRow3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="a.entity.inventory.MenuInfo" >
+    update uc_menu_info
+    <set >
+      <if test="menuName != null" >
+        menuName = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null" >
+        menuUrl = #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentID != null" >
+        parentID = #{parentID,jdbcType=VARCHAR},
+      </if>
+      <if test="menuRank != null" >
+        menuRank = #{menuRank,jdbcType=INTEGER},
+      </if>
+      <if test="menuStatus != null" >
+        menuStatus = #{menuStatus,jdbcType=CHAR},
+      </if>
+      <if test="createDte != null" >
+        createDte = #{createDte,jdbcType=VARCHAR},
+      </if>
+      <if test="editDte != null" >
+        editDte = #{editDte,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorID != null" >
+        operatorID = #{operatorID,jdbcType=VARCHAR},
+      </if>
+      <if test="menuRow1 != null" >
+        menuRow1 = #{menuRow1,jdbcType=VARCHAR},
+      </if>
+      <if test="menuRow2 != null" >
+        menuRow2 = #{menuRow2,jdbcType=VARCHAR},
+      </if>
+      <if test="menuRow3 != null" >
+        menuRow3 = #{menuRow3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where menuID = #{menuID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="a.entity.inventory.MenuInfo" >
+    update uc_menu_info
+    set menuName = #{menuName,jdbcType=VARCHAR},
+      menuUrl = #{menuUrl,jdbcType=VARCHAR},
+      parentID = #{parentID,jdbcType=VARCHAR},
+      menuRank = #{menuRank,jdbcType=INTEGER},
+      menuStatus = #{menuStatus,jdbcType=CHAR},
+      createDte = #{createDte,jdbcType=VARCHAR},
+      editDte = #{editDte,jdbcType=VARCHAR},
+      operatorID = #{operatorID,jdbcType=VARCHAR},
+      menuRow1 = #{menuRow1,jdbcType=VARCHAR},
+      menuRow2 = #{menuRow2,jdbcType=VARCHAR},
+      menuRow3 = #{menuRow3,jdbcType=VARCHAR}
+    where menuID = #{menuID,jdbcType=VARCHAR}
+  </update>
+</mapper>

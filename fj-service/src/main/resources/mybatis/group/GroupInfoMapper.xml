@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="GroupInfoMapper" >
+  <resultMap id="GroupInfoMap" type="com.chm.fj.entity.GroupInfo" >
+    <id column="gID" property="gID" jdbcType="VARCHAR" />
+    <result column="gName" property="gName" jdbcType="VARCHAR" />
+    <result column="parentID" property="parentID" jdbcType="VARCHAR" />
+    <result column="gStatus" property="gStatus" jdbcType="CHAR" />
+    <result column="createDte" property="createDte" jdbcType="VARCHAR" />
+    <result column="editDte" property="editDte" jdbcType="VARCHAR" />
+    <result column="operatorID" property="operatorID" jdbcType="VARCHAR" />
+    <result column="gRow1" property="gRow1" jdbcType="VARCHAR" />
+    <result column="gRow2" property="gRow2" jdbcType="VARCHAR" />
+    <result column="gRow3" property="gRow3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    gID, gName, parentID, gStatus, createDte, editDte, operatorID, gRow1, gRow2, gRow3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_group_info
+    where gID = #{gID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from uc_group_info
+    where gID = #{gID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="a.entity.inventory.GroupInfo" >
+    insert into uc_group_info (gID, gName, parentID, 
+      gStatus, createDte, editDte, 
+      operatorID, gRow1, gRow2, 
+      gRow3)
+    values (#{gID,jdbcType=VARCHAR}, #{gName,jdbcType=VARCHAR}, #{parentID,jdbcType=VARCHAR}, 
+      #{gStatus,jdbcType=CHAR}, #{createDte,jdbcType=VARCHAR}, #{editDte,jdbcType=VARCHAR}, 
+      #{operatorID,jdbcType=VARCHAR}, #{gRow1,jdbcType=VARCHAR}, #{gRow2,jdbcType=VARCHAR}, 
+      #{gRow3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="a.entity.inventory.GroupInfo" >
+    insert into uc_group_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gID != null" >
+        gID,
+      </if>
+      <if test="gName != null" >
+        gName,
+      </if>
+      <if test="parentID != null" >
+        parentID,
+      </if>
+      <if test="gStatus != null" >
+        gStatus,
+      </if>
+      <if test="createDte != null" >
+        createDte,
+      </if>
+      <if test="editDte != null" >
+        editDte,
+      </if>
+      <if test="operatorID != null" >
+        operatorID,
+      </if>
+      <if test="gRow1 != null" >
+        gRow1,
+      </if>
+      <if test="gRow2 != null" >
+        gRow2,
+      </if>
+      <if test="gRow3 != null" >
+        gRow3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gID != null" >
+        #{gID,jdbcType=VARCHAR},
+      </if>
+      <if test="gName != null" >
+        #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentID != null" >
+        #{parentID,jdbcType=VARCHAR},
+      </if>
+      <if test="gStatus != null" >
+        #{gStatus,jdbcType=CHAR},
+      </if>
+      <if test="createDte != null" >
+        #{createDte,jdbcType=VARCHAR},
+      </if>
+      <if test="editDte != null" >
+        #{editDte,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorID != null" >
+        #{operatorID,jdbcType=VARCHAR},
+      </if>
+      <if test="gRow1 != null" >
+        #{gRow1,jdbcType=VARCHAR},
+      </if>
+      <if test="gRow2 != null" >
+        #{gRow2,jdbcType=VARCHAR},
+      </if>
+      <if test="gRow3 != null" >
+        #{gRow3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="a.entity.inventory.GroupInfo" >
+    update uc_group_info
+    <set >
+      <if test="gName != null" >
+        gName = #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentID != null" >
+        parentID = #{parentID,jdbcType=VARCHAR},
+      </if>
+      <if test="gStatus != null" >
+        gStatus = #{gStatus,jdbcType=CHAR},
+      </if>
+      <if test="createDte != null" >
+        createDte = #{createDte,jdbcType=VARCHAR},
+      </if>
+      <if test="editDte != null" >
+        editDte = #{editDte,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorID != null" >
+        operatorID = #{operatorID,jdbcType=VARCHAR},
+      </if>
+      <if test="gRow1 != null" >
+        gRow1 = #{gRow1,jdbcType=VARCHAR},
+      </if>
+      <if test="gRow2 != null" >
+        gRow2 = #{gRow2,jdbcType=VARCHAR},
+      </if>
+      <if test="gRow3 != null" >
+        gRow3 = #{gRow3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where gID = #{gID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="a.entity.inventory.GroupInfo" >
+    update uc_group_info
+    set gName = #{gName,jdbcType=VARCHAR},
+      parentID = #{parentID,jdbcType=VARCHAR},
+      gStatus = #{gStatus,jdbcType=CHAR},
+      createDte = #{createDte,jdbcType=VARCHAR},
+      editDte = #{editDte,jdbcType=VARCHAR},
+      operatorID = #{operatorID,jdbcType=VARCHAR},
+      gRow1 = #{gRow1,jdbcType=VARCHAR},
+      gRow2 = #{gRow2,jdbcType=VARCHAR},
+      gRow3 = #{gRow3,jdbcType=VARCHAR}
+    where gID = #{gID,jdbcType=VARCHAR}
+  </update>
+</mapper>
