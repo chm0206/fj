@@ -81,4 +81,10 @@ public class MenuInfoServiceImpl implements MenuInfoService {
 		page.setPd(pd);
 		return this.listPagePd(page);
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PageData> listAllMenu(String menuID) throws Exception {
+		return (List<PageData>) this.dao.findForList("MenuInfoMapper.listAllMenu", null);
+	}
 }

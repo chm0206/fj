@@ -1,0 +1,146 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  
+    url('../other/icomoon.eot') format('embedded-opentype'),
+    url('../other/icomoon.ttf') format('truetype'),
+    url('../other/icomoon.woff') format('woff'),
+    url('../other/icomoon.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-WeChat:before {
+  content: "\e914";
+}
+.icon-tongji:before {
+  content: "\e912";
+}
+.icon-company:before {
+  content: "\e926";
+}
+.icon-menu:before {
+  content: "\e923";
+}
+.icon-eyes-open:before {
+  content: "\e924";
+}
+.icon-eyes-closed:before {
+  content: "\e925";
+}
+.icon-set-up:before {
+  content: "\e91f";
+}
+.icon-arr:before {
+  content: "\e920";
+  color: #b07e7e;
+}
+.icon-synchro:before {
+  content: "\e921";
+}
+.icon-minus:before {
+  content: "\e900";
+}
+.icon-file:before {
+  content: "\e903";
+}
+.icon-folder:before {
+  content: "\e905";
+}
+.icon-revise:before {
+  content: "\e907";
+}
+.icon-del:before {
+  content: "\e90b";
+}
+.icon-enlarge:before {
+  content: "\e90d";
+}
+.icon-search:before {
+  content: "\e90e";
+}
+.icon-ONLINE:before {
+  content: "\e90f";
+}
+.icon-Todo:before {
+  content: "\e910";
+}
+.icon-help:before {
+  content: "\e913";
+}
+.icon-quit:before {
+  content: "\e919";
+}
+.icon-collection:before {
+  content: "\e91a";
+}
+.icon-cukun:before {
+  content: "\e91b";
+}
+.icon-goods:before {
+  content: "\e91c";
+}
+.icon-logo:before {
+  content: "\e91e";
+}
+.icon-add:before {
+  content: "\e908";
+}
+.icon-caiwu:before {
+  content: "\e901";
+}
+.icon-cangku:before {
+  content: "\e902";
+}
+.icon-dingdan:before {
+  content: "\e904";
+}
+.icon-fahuo:before {
+  content: "\e906";
+}
+.icon-gongneng:before {
+  content: "\e922";
+}
+.icon-gongying:before {
+  content: "\e909";
+  color: #666;
+}
+.icon-home:before {
+  content: "\e90a";
+}
+.icon-kuaidi:before {
+  content: "\e90c";
+}
+.icon-shangpu:before {
+  content: "\e911";
+}
+.icon-xinxi:before {
+  content: "\e915";
+}
+.icon-xitong:before {
+  content: "\e916";
+}
+.icon-xitongguanli:before {
+  content: "\e917";
+}
+.icon-xitongshezhi:before {
+  content: "\e918";
+}
+.icon-yonghu:before {
+  content: "\e91d";
+  color: #808080;
+}

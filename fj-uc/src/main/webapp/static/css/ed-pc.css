@@ -1,0 +1,121 @@
+/*login*/
+.actived {
+	border-bottom: 2px solid #00abeb;
+}
+.login-form a{
+	color: #00abeb !important;
+}
+.login-form #tijiao{
+	background:#00abeb;
+}
+/*register*/
+.psdBox a{
+	color: #00abeb !important;
+}
+/*首页头部及导航*/
+.layui-tab-title .layui-this {
+    border-top: 2px solid #00abeb;
+    line-height: 27px !important;
+    color: #00abeb;
+}
+.nav3 li:hover {
+    color: #00abeb !important;
+}
+.nav3 .layui-this:hover{
+	color:#fff !important;
+}
+.layui-nav-tree .layui-nav-child dd.layui-this,
+.layui-nav-tree .layui-nav-child dd.layui-this a,
+.layui-nav-tree .layui-this,
+.layui-nav-tree .layui-this>a,
+.layui-nav-tree .layui-this>a:hover,
+.nav3 .layui-this{
+	background-color:#00abeb !important;
+	color:#fff !important;
+}
+.layui-header,.layui-nav-tree .layui-nav-bar{
+	background: #00abeb;
+}
+.layui-header .layui-breadcrumb a{
+	color: #99d7ef !important;
+}
+.layui-header .collection,.layui-breadcrumb a i{
+	color: #99d7ef !important;
+}
+.myIcon{
+	color: #00abeb;
+}
+.layui-nav-tree .layui-nav-item a:hover{
+	color: #00abeb !important;
+}
+.layui-nav-tree .layui-this a:hover{
+	color:#fff !important;
+}
+.layui-form-select dl dd.layui-this {
+    background-color: #00abeb;
+}
+.layui-form-checked, .layui-form-checked:hover {
+    border-color: #00abeb;
+}
+.layui-form-checked i, .layui-form-checked:hover i {
+    color: #00abeb;
+}
+.layui-form-checked span, .layui-form-checked:hover span{
+	background-color: #00abeb;
+}
+.yetOpen .layui-nav-more,.PrimaryTitle:hover .layui-nav-more {
+    background-image: url(../img/openANDclose_blue.png);
+}
+.nav3:hover .TitleLv3 {
+    background-image: url(../img/openANDclose_blue.png);
+}
+/*菜单管理*/
+.shopsOperate a {
+    border-color: #00abeb !important;
+    color: #00abeb !important;
+}
+.shopsOperate a:hover {
+    background-color: #00abeb !important;
+    color: #ffffff !important;
+}
+body .hoverCBchange:hover {
+    color: #00abeb !important;
+    border-color: #00abeb !important;
+}
+.layui-form-onswitch {
+    border-color: #00abeb;
+    background-color: #00abeb;
+}
+.layui-form-radio>i:hover, .layui-form-radioed>i{
+	color: #00abeb;
+}
+.lay-submit {
+    background-color: #00abeb !important;
+}
+.layui-form-checked[lay-skin=primary] i{
+	border-color: #00abeb;
+    background-color: #00abeb;
+}
+.pagelist .layui-table #content tr:hover {
+    background-color: rgba(237,246,249,1) !important;
+}
+/*权限管理*/
+body .CBgreen {
+    color: #00abeb !important;
+    border-color: #00abeb !important;
+}
+/*分页*/
+.hoverColorC:hover {
+    color: #00abeb !important;
+}
+#skip:hover {
+    background-color: #00abeb;
+    border-color: #00abeb !important;
+}
+.searchBtn{
+	background-color: #00abeb !important;
+}
+/*用户管理*/
+.font{
+	color:#00abeb;
+}

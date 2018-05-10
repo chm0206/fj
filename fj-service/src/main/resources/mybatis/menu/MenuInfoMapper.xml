@@ -217,4 +217,16 @@
 		um
 		where um.menuID = #{id,jdbcType=VARCHAR}
 	</select>
+	
+	<select id="listAllMenu" parameterType="java.lang.String" resultType="pd">
+		SELECT
+		<include refid="breviaryColumn" />
+		FROM
+		<include refid="tableName" /> um 
+		WHERE 1=1  
+		<if test="menuID != null and menuID != ''">
+			and um.parentID = #{menuID,jdbcType=VARCHAR} 
+		</if>
+	</select>
+	
 </mapper>
