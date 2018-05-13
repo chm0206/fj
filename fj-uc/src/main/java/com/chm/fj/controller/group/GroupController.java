@@ -12,9 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.chm.fj.controller.base.BaseController;
 import com.chm.fj.entity.UserInfo;
 import com.chm.fj.service.group.GroupInfoService;
-import com.chm.fj.util.Page;
-import com.chm.fj.util.PageData;
-import com.chm.fj.util.Tools;
+import com.chm.fj.util.CheckUtil;
+import com.chm.fj.util.init.Page;
+import com.chm.fj.util.init.PageData;
 
 import net.sf.json.JSONObject;
 
@@ -46,7 +46,7 @@ public class GroupController extends BaseController {
 		ModelAndView mv = new ModelAndView();
 		PageData pd = this.getPageData();
 		String gID = pd.getString("gID");
-		if(Tools.isEmpty(gID)){
+		if(CheckUtil.isEmpty(gID)){
 			gID="1";
 		}
 		PageData userInfo = this.groupInfoService.findPdById(gID);

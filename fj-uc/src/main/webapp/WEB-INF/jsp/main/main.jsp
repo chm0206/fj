@@ -65,75 +65,70 @@
 
 	<!-- 左边导航 -->
 	<div class="layui-side layui-side-bg layui-larry-side" id="larry-side">
-		<div class="layui-side-scroll" id="larry-nav-side" lay-filter="side">
-			<ul class="layui-nav layui-nav-tree" lay-filter="openNav">
-				<!-- 要加左边的导航只需加li，有三级下拉的多加一个a标签，需要页面跳转的div里面需要放打开的页面路径 -->
-				<!-- <li class="layui-nav-item layui-this" data-url="login_default.do"data-id="home">
-					<dd>
-						<a href="javascript:;" style="padding-left: 20px !important;"><span
-							class="icon-home myIcon"></span>后台首页</a>
-					</dd>
-				</li> -->
-				<!-- forEach menu1 start -->
-				<c:forEach items="${menuList}" var="menu1">
-					<c:if test="${menu1.hasMenu && '1' == menu1.menuStatus}">
-						<!--1级菜单start-->
-						<li class="layui-nav-item"><a href="javascript:;"
-							class="PrimaryTitle">
-								${menu1.menuName }
-						</a> <!--下面这行↓是修饰的,如果子菜单不为空则展示，根据具体的样式决定是否屏蔽--> 
-						<c:if test="${'[]' != menu1.subMenu}">
-							<b class="arrow fa fa-angle-down"></b>
-						</c:if> 
-						<b class="arrow"></b> 
-						<c:if test="${'[]' != menu1.subMenu}">
-								<!--2级菜单start-->
-							<c:forEach items="${menu1.subMenu}" var="menu2">
-								<c:if test="${menu2.hasMenu && '1' == menu2.menuStatus}">
-									<%-- <c:if test="${'1' == menu2.menuStatus}"> --%>
-									<dl class="layui-nav-child">
-									<!--如果菜单URL等于空或者 # 则菜单url ="" -->
-									<c:if test="${'[]' == menu2.subMenu}">
+	<div class="layui-side-scroll" id="larry-nav-side" lay-filter="side">
+		<ul class="layui-nav layui-nav-tree" lay-filter="openNav">
+			<!-- 要加左边的导航只需加li，有三级下拉的多加一个a标签，需要页面跳转的div里面需要放打开的页面路径 -->
+			<li class="layui-nav-item layui-this" data-url="login_default.do"
+				data-id="home">
+				<dd>
+					<a href="javascript:;" style="padding-left: 20px !important;"><span
+						class="icon-home myIcon"></span>后台首页</a>
+				</dd>
+			</li>
+			<!-- forEach menu1 start -->
+			<c:forEach items="${menuList}" var="menu1">
+				<!--1级菜单start-->
+				<li class="layui-nav-item">
+					<a href="javascript:;" class="PrimaryTitle">${menu1.menuName }</a> 
+					<!--下面这行↓是修饰的,如果子菜单不为空则展示，根据具体的样式决定是否屏蔽--> 
+					<c:if test="${menu1.child }">
+						<b class="arrow fa fa-angle-down"></b>
+					</c:if> 
+					<b class="arrow"></b> 
+					
+					<c:if test="${menu1.child}">
+						<!--2级菜单start-->
+						<c:forEach items="${menu1.childMenu}" var="menu2">
+							<dl class="layui-nav-child">
+								<!--如果菜单URL等于空或者 # 则菜单url ="" -->
+								<c:if test="${!menu2.child}">
 									<!--没有子菜单的2级菜单-->
-									<dd 
-									<c:if test="${not empty menu2.menuUrl && '#' != menu2.menuUrl}"> data-url="${menu2.menuUrl}?accToken=${cookie['accToken'].value}" </c:if>
-									<c:if test="${'[]' != menu2.subMenu}"> class="dropdown-toggle"</c:if> data-id="${menu2.menuID }"
-									>
-										<a href="javascript:;">${menu2.menuName }</a>
+									<dd
+										<c:if test="${not empty menu2.menuUrl && '#' != menu2.menuUrl}"> data-url="${menu2.menuUrl}" </c:if>
+										<c:if test="${menu2.child}"> class="dropdown-toggle"</c:if>
+										data-id="${menu2.menuID }">
+										<a href="javascript:;">
+											${menu2.menuName }
+										</a>
 									</dd>
 								</c:if>
-								<c:if test="${'[]' != menu2.subMenu}">
-								<!--有子菜单的2级菜单-->
+								<c:if test="${menu2.child}">
+									<!--有子菜单的2级菜单-->
 									<div class="nav3">
-										<a href="javascript:;">${menu2.menuName }
+										<a href="javascript:;"> <%-- <span class="${menu2.MENU_ICON }"></span> --%>
+											${menu2.menuName } 
 											<i class="layui-icon TitleLv3"></i>
 										</a>
 										<ul id="nav3">
-											<c:forEach items="${menu2.subMenu}" var="menu3">
-												<c:if test="${menu3.hasMenu && '1' == menu3.menuStatus}">
-												<c:if test="${not empty menu3.menuUrl && '#' != menu3.menuUrl}"> 
-													data-url="${menu3.menuUrl}?accToken=${cookie['accToken'].value}" 
-												</c:if>
-												<c:if test="${'[]' != menu3.subMenu}"> 
-													class="dropdown-toggle"
-												</c:if>
-													data-id="${menu3.menuID }">${menu3.menuName }</li>
-												</c:if>
+											<c:forEach items="${menu2.childMenu}" var="menu3">
+												<li
+													<c:if test="${not empty menu3.menuUrl && '#' != menu3.menuUrl}"> data-url="${menu3.menuUrl}?accToken=${cookie['accToken'].value}" </c:if>
+													<c:if test="${ menu3.child}"> class="dropdown-toggle"</c:if>
+													data-id="${menu3.menuID }">${menu3.menuName }
+												</li>
 											</c:forEach>
 										</ul>
 									</div>
 								</c:if>
 							</dl>
-						</c:if>
-					</c:forEach>
-				<!--2级菜单end-->
-				</c:if>
-			</li>
-			<!--1级菜单end-->
-		</c:if>
-	</c:forEach>
-	<!-- forEach menu1 end -->
-	</ul>
+						</c:forEach>
+						<!--2级菜单end-->
+					</c:if>
+				</li>
+				<!--1级菜单end-->
+			</c:forEach>
+			<!-- forEach menu1 end -->
+		</ul>
 	</div>
 </div>
 	<!-- 主体内容 -->
@@ -198,6 +193,12 @@
 			id = (getType == "nav3") ? mynav.attr("data-id"): elem.attr("data-id"), 
 			tabName = (getType == "nav3") ? mynav.text(): elem.children().text(), 
 			endH = parseInt($("div.layui-body").css("height")) - 90
+			
+			console.log("FrameName="+FrameName)
+			console.log("url="+url)
+			console.log("id="+id)
+			console.log("tabName="+tabName)
+			console.log("endH="+endH)
 			//alert(url);
 			if (!$("[lay-id='home']").length) {
 				id = "home";

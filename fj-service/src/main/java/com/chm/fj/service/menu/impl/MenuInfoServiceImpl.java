@@ -6,10 +6,13 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.chm.fj.consts.ParamConst;
 import com.chm.fj.dao.base.DaoSupport;
+import com.chm.fj.entity.MenuInfo;
 import com.chm.fj.service.menu.MenuInfoService;
-import com.chm.fj.util.Page;
-import com.chm.fj.util.PageData;
+import com.chm.fj.util.CheckUtil;
+import com.chm.fj.util.init.Page;
+import com.chm.fj.util.init.PageData;
 
 /**
  * 用户信息表
@@ -22,6 +25,8 @@ public class MenuInfoServiceImpl implements MenuInfoService {
 
 	@Resource(name = "daoSupport")
 	private DaoSupport dao;
+
+	private static List<MenuInfo> allMenu = null;
 
 	@Override
 	public int doCreate(PageData pd) throws Exception {
@@ -42,8 +47,8 @@ public class MenuInfoServiceImpl implements MenuInfoService {
 		pd.put("userID", id);
 		pd.put("userStatus", "D");
 		return this.doUpdate(pd);
-		//return (int) this.dao.update("UserInfoMapper.editUserInfo", pd);
-		//return (int)this.dao.delete("UserInfoMapper.delUserInfo", pd);
+		// return (int) this.dao.update("UserInfoMapper.editUserInfo", pd);
+		// return (int)this.dao.delete("UserInfoMapper.delUserInfo", pd);
 	}
 
 	@Override
@@ -55,15 +60,15 @@ public class MenuInfoServiceImpl implements MenuInfoService {
 			count += this.doRemove(id);
 		}
 		return count;
-		//return (int) this.dao.update("UserInfoMapper.editUserInfo", pd);
-		//return (int) this.dao.update("UserInfoMapper.editUserInfo", pd);
+		// return (int) this.dao.update("UserInfoMapper.editUserInfo", pd);
+		// return (int) this.dao.update("UserInfoMapper.editUserInfo", pd);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PageData> listPagePd(Page page) throws Exception {
 		// TODO Auto-generated method stub
-		return  (List<PageData>) this.dao.findForList("MenuInfoMapper.listPagePd", page);
+		return (List<PageData>) this.dao.findForList("MenuInfoMapper.listPagePd", page);
 	}
 
 	@Override
@@ -82,9 +87,27 @@ public class MenuInfoServiceImpl implements MenuInfoService {
 		return this.listPagePd(page);
 	}
 
+	@Override
+	public List<MenuInfo> listAllMenu(String menuID) throws Exception {
+		List<MenuInfo> allMenu = this.getChildMenu(menuID);
+		for (MenuInfo menuInfo : allMenu) {
+			menuInfo.setChildMenu(this.listAllMenu(menuInfo.getMenuID()));
+		}
+		return allMenu;
+	}
+
+	@SuppressWarnings("static-access")
+	public List<MenuInfo> getAllMenu() throws Exception {
+		if (CheckUtil.isEmpty(this.allMenu)) {
+			this.allMenu = listAllMenu(ParamConst.MENU_ROOT_ID);
+		}
+		return this.allMenu;
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<PageData> listAllMenu(String menuID) throws Exception {
-		return (List<PageData>) this.dao.findForList("MenuInfoMapper.listAllMenu", null);
+	public List<MenuInfo> getChildMenu(String parentID) throws Exception {
+		// TODO Auto-generated method stub
+		return (List<MenuInfo>) this.dao.findForList("MenuInfoMapper.listAllMenu", parentID);
 	}
 }

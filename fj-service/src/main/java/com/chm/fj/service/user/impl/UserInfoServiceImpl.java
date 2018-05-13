@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.chm.fj.dao.base.DaoSupport;
 import com.chm.fj.service.user.UserInfoService;
-import com.chm.fj.util.Page;
-import com.chm.fj.util.PageData;
+import com.chm.fj.util.init.Page;
+import com.chm.fj.util.init.PageData;
 
 /**
  * 用户信息表

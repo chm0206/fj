@@ -197,7 +197,7 @@
 		</if>
 		order by ui.createDte desc
 	</select>
-	<select id="findPdById" parameterType="java.lang.String"
+	<select id="findPdById" parameterType="string"
 		resultType="pd">
 		select
 		<include refid="baseColumnList" />

@@ -208,7 +208,7 @@
 		</if>
 		order by um.createDte desc
 	</select>
-	<select id="findPdById" parameterType="java.lang.String"
+	<select id="findPdById" parameterType="string"
 		resultType="pd">
 		select
 		<include refid="baseColumnList" />
@@ -218,14 +218,14 @@
 		where um.menuID = #{id,jdbcType=VARCHAR}
 	</select>
 	
-	<select id="listAllMenu" parameterType="java.lang.String" resultType="pd">
+	<select id="listAllMenu" parameterType="string" resultMap="MenuInfoMap">
 		SELECT
 		<include refid="breviaryColumn" />
 		FROM
 		<include refid="tableName" /> um 
-		WHERE 1=1  
-		<if test="menuID != null and menuID != ''">
-			and um.parentID = #{menuID,jdbcType=VARCHAR} 
+		WHERE 1=1  and um.menuStatus = "0" 
+		<if test="_parameter != null and _parameter != ''"><!-- 解决直接使用parrenID报转换异常的错 -->
+			and um.parentID = #{parentID,jdbcType=VARCHAR} 
 		</if>
 	</select>
 	
