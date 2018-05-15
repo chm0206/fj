@@ -4,15 +4,15 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.chm.fj.controller.base.BaseController;
-import com.chm.fj.entity.UserInfo;
+import com.chm.fj.entity.GroupInfo;
 import com.chm.fj.service.group.GroupInfoService;
 import com.chm.fj.util.CheckUtil;
+import com.chm.fj.util.ResponseUtil;
 import com.chm.fj.util.init.Page;
 import com.chm.fj.util.init.PageData;
 
@@ -24,7 +24,8 @@ import net.sf.json.JSONObject;
  * @data 2018/05/09 23:01
  *
  */
-@Controller
+//@Controller
+@RestController//rest接口必备
 @RequestMapping(value = "group")
 public class GroupController extends BaseController {
 	
@@ -32,34 +33,34 @@ public class GroupController extends BaseController {
 	@Resource(name = "groupInfoService")
 	private GroupInfoService groupInfoService;
 	
-	@RequestMapping(value = "/toGroupList")
-	public ModelAndView toUserList(Page page) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	@RequestMapping(value = "/toGroupList", produces = "application/json;charset=UTF-8" )
+	public Object toGroupList(Page page) throws Exception{
+		JSONObject json = new JSONObject();
 		PageData pd = this.getPageData();
-		List<PageData> userList = this.groupInfoService.listPagePd(page);
-		mv.addObject("pd",pd);
-		mv.setViewName("user/userList");
-		return mv;
+		List<PageData> groupList = this.groupInfoService.listPagePd(page);
+		json.put("pd", pd);
+		json.put("groupList", groupList);
+		return ResponseUtil.returnJson(json);
 	}
-	@RequestMapping(value = "/toGroupInfo")
-	public ModelAndView toUserInfo() throws Exception{
-		ModelAndView mv = new ModelAndView();
+	@RequestMapping(value = "/toGroupInfo", produces = "application/json;charset=UTF-8" )
+	public Object toGroupInfo() throws Exception{
+		JSONObject json = new JSONObject();
 		PageData pd = this.getPageData();
 		String gID = pd.getString("gID");
 		if(CheckUtil.isEmpty(gID)){
 			gID="1";
 		}
-		PageData userInfo = this.groupInfoService.findPdById(gID);
-		mv.addObject("pd",pd);
-		mv.setViewName("user/userList");
-		return mv;
+		PageData groupInfo = this.groupInfoService.findPdById(gID);
+		json.put("pd",pd);
+		json.put("groupInfo", groupInfo);
+		return ResponseUtil.returnJson(json);//不使用toString
 	}
-	@RequestMapping(value = "/saveUserInfo", produces = "application/json;charset=UTF-8" )
+	@RequestMapping(value = "/saveGroupInfo", produces = "application/json;charset=UTF-8" )
 	@ResponseBody
-	public Object saveUserInfo()throws Exception{
-		JSONObject object = new JSONObject();
+	public Object saveGroupInfo()throws Exception{
+		JSONObject json = new JSONObject();
 		PageData pd = this.getPageData();
-		object.put("user", new UserInfo());
-		return object.toString();
+		json.put("group", new GroupInfo());
+		return ResponseUtil.returnJson(json);
 	}
 }

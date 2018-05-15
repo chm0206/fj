@@ -4,27 +4,27 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.chm.fj.controller.base.BaseController;
-import com.chm.fj.entity.UserInfo;
+import com.chm.fj.entity.MenuInfo;
 import com.chm.fj.service.menu.MenuInfoService;
 import com.chm.fj.util.CheckUtil;
+import com.chm.fj.util.ResponseUtil;
 import com.chm.fj.util.init.Page;
 import com.chm.fj.util.init.PageData;
 
 import net.sf.json.JSONObject;
 
 /**
- * 用户信息
- * @author Administrator
- * @data 2018/04/26 23:01
+ * 菜单信息
+ * @author 陈焕明
+ * @data 2018/05/09 23:01
  *
  */
-@Controller
+@RestController
 @RequestMapping(value = "menu")
 public class MenuController extends BaseController {
 	
@@ -32,34 +32,34 @@ public class MenuController extends BaseController {
 	@Resource(name = "menuInfoService")
 	private MenuInfoService menuInfoService;
 	
-	@RequestMapping(value = "/toMenuList")
-	public ModelAndView toUserList(Page page) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	@RequestMapping(value = "/toMenuList", produces = "application/json;charset=UTF-8")
+	public Object toUserList(Page page) throws Exception{
+		JSONObject json = new JSONObject();
 		PageData pd = this.getPageData();
-		List<PageData> userList = this.menuInfoService.listPagePd(page);
-		mv.addObject("pd",pd);
-		mv.setViewName("user/userList");
-		return mv;
+		List<PageData> menuList = this.menuInfoService.listPagePd(page);
+		json.put("pd",pd);
+		json.put("menuList", menuList);
+		return ResponseUtil.returnJson(json);
 	}
-	@RequestMapping(value = "/toMenuInfo")
-	public ModelAndView toUserInfo() throws Exception{
-		ModelAndView mv = new ModelAndView();
+	@RequestMapping(value = "/toMenuInfo", produces = "application/json;charset=UTF-8")
+	public Object toMenuInfo() throws Exception{
+		JSONObject json = new JSONObject();
 		PageData pd = this.getPageData();
 		String menuID = pd.getString("menuID");
 		if(CheckUtil.isEmpty(menuID)){
 			menuID="1";
 		}
-		PageData userInfo = this.menuInfoService.findPdById(menuID);
-		mv.addObject("pd",pd);
-		mv.setViewName("user/userList");
-		return mv;
+		PageData menuInfo = this.menuInfoService.findPdById(menuID);
+		json.put("pd",pd);
+		json.put("menuInfo", menuInfo);
+		return ResponseUtil.returnJson(json);
 	}
-	@RequestMapping(value = "/saveUserInfo", produces = "application/json;charset=UTF-8" )
+	@RequestMapping(value = "/saveMenuInfo", produces = "application/json;charset=UTF-8" )
 	@ResponseBody
 	public Object saveUserInfo()throws Exception{
-		JSONObject object = new JSONObject();
+		JSONObject json = new JSONObject();
 		PageData pd = this.getPageData();
-		object.put("user", new UserInfo());
-		return object.toString();
+		json.put("menu", new MenuInfo());
+		return ResponseUtil.returnJson(json);
 	}
 }

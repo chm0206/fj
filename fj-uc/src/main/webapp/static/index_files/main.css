@@ -1,0 +1,358 @@
+body{
+	 font-family: "Helvetica Neue", Helvetica, "PingFang SC", 寰蒋闆呴粦, Tahoma, Arial, sans-serif;
+}
+html,body{
+	height:100%;
+}
+
+/*修改主页菜单的样式*/
+.layui-nav-tree .layui-nav-item a {
+	padding-right: 10px;
+    background-color: #f9f9f9 !important;
+    color: #000000 !important;
+}
+.layui-nav-itemed>a, .layui-nav-tree .layui-nav-title a, .layui-nav-tree .layui-nav-title a:hover {
+    background-color: #fef6e6 !important;
+}
+.layui-nav-tree .layui-nav-item a:hover {
+    color: #ffa800 !important;
+}
+.layui-nav-tree .layui-nav-bar {
+    background-color: #ffa800;
+}
+
+
+.icon-logo{
+	font-size:26px;
+	display: inline-block;
+    font-size: 26px;
+    padding-top: 8.5px;
+    float: left;
+    margin-right: 5px;
+}
+ .layui-layer{
+ 	box-shadow:none !important;
+ }
+ .layui-layer-close2{
+ 	background-position: 1px -40px !important;
+ 	width:16px !important;
+ 	height:16px !important;
+ 	position:static !important;
+   	cursor: pointer;
+ }
+ .collection{
+ 	font-size:15px;
+ 	color:#ffebc5;
+ 	cursor:pointer;
+ }
+ .collection:hover{
+ 	color:#ffffff;
+ }
+ .collection i{
+ 	font-size:20px;
+ 	float: left;
+   	margin: 13px 5px 0 30px;
+ }
+/* 澶撮儴 */
+.layui-header {
+    height: 45px;
+    background: #ffa800;
+    padding:0 16px 0 16px;
+}
+.layui-breadcrumb a i{
+    display: inline-block;
+    color: #ffebc5 !important;
+    font-size: 20px;
+    float: left !important;
+    margin: 12px 3px 0 0 !important;
+}
+.layui-breadcrumb a .layui-box{
+	color:#febd40 !important;
+}
+.layui-breadcrumb  .icon-help{
+	font-size:18px !important;
+}
+.layui-header .layui-breadcrumb a{
+	padding-right: 20px;
+	font-size:15px;
+	display: inline-block;
+	color:#ffebc5 !important;
+}
+.layui-header .layui-breadcrumb a:last-child{
+	padding-right:0;
+}
+.layui-breadcrumb span[lay-separator]{
+	color: #febd40;
+}
+.layui-header .layui-breadcrumb a:hover,.layui-header .layui-breadcrumb a:hover i{
+	color:#ffffff !important;
+}
+.layui-tab-title{
+	height:28px;
+}
+.layui-tab-title li{
+	line-height:28px;
+}
+.layui-tab-title .layui-this{
+	border-top:2px solid #5aaa4d;
+	line-height:27px !important;
+	color:#5aaa4d;
+}
+.layui-tab-title .layui-this:after{
+	height:27px !important;
+}
+.layui-main{
+	width:100%;
+}
+.layui-header div{
+	display:block;
+	float:left;
+	height:45px;
+	line-height:45px;
+	color:#ffffff;
+	font-size:20px
+}
+.layui-header .layui-breadcrumb{
+	float:right;
+}
+.layui-header span{
+	height:45px;
+}
+.layui-header a{
+	color:#ffffff !important;
+	line-height:45px;
+}
+#larry-side{
+	top:45px;
+}	
+.layui-body{
+	top:45px;
+	bottom: 0;
+	margin-left:16px;
+}
+.layui-tab-content{
+	padding:10px 0;
+}
+dd a,dl div a{
+    padding-left: 40px !important;
+}
+.nav3 ul{
+	
+    line-height: 40px;
+    color: #000000;
+    display:none;
+}
+.nav3:hover .TitleLv3{
+	background-image:url(../images/openANDclose_orange.png)
+}
+.nav3 li{
+	height: 40px;
+	padding:0 20px 0 60px;
+	cursor:pointer;
+	background-color:#f9f9f9;
+}
+.nav3{
+	background-color:#f9f9f9;
+}
+.nav3 li:hover{
+	/* background-color: #fef6e6; */
+	color:#ffa800 !important;
+}
+
+.layui-nav-tree .layui-nav-child dd.layui-this,
+.layui-nav-tree .layui-nav-child dd.layui-this a,
+.layui-nav-tree .layui-this,
+.layui-nav-tree .layui-this>a,
+.layui-nav-tree .layui-this>a:hover,
+.nav3 .layui-this{
+	background-color:#fef6e6 !important;
+	color:#ffa800 !important;
+}
+/*澶村儚*/
+.headPortraitBox{
+	position:relative;
+}
+.headPortraitBox .layui-box{
+	padding-left:20px;
+}
+.headPortrait{
+	width:36px;
+	height:36px;
+	border-radius:50%;
+}
+.headPortraitArrow{
+	content: '';
+    width: 0;
+    height: 0 !important;
+    padding-left:0 !important;
+    border-style: solid dashed dashed;
+    border-color: #fff transparent transparent;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    border-width: 6px;
+}
+
+/*澶村儚鍐呭閮ㄥ垎*/
+.headPortraitContentBox{
+	display: none !important;
+    position: absolute;
+    left: 5%;
+    top: 70px;
+    height: auto !important;
+    line-height: 36px !important;
+    font-size: 14px !important;
+    padding-top: 10px;
+    z-index: 999;
+    min-width: 80%;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #fff;
+}
+.headPortraitContent{
+	min-width: 80%;
+	max-height: 300px;
+	padding: 5px 0;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.12);
+    box-sizing: border-box;
+    border: 1px solid #d2d2d2;
+}
+.headPortraitContent li{
+    padding: 0 10px;
+    line-height: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color:#333333 !important;
+    text-align:center;
+}
+.headPortraitContent li:hover{
+	background-color:#f6f6f6;
+}
+.headPortraitContent:hover{
+	display:block !important;
+}
+.layui-header .layui-breadcrumb .headPortraitBox:hover .headPortraitContentBox{
+	display:block !important;
+	animation:toTop 0.3s ease-out forwards;
+} 
+.layui-header .layui-breadcrumb .headPortraitBox:hover .headPortraitArrow{
+	top: 12px;
+   	border-style: dashed dashed solid;
+   	border-color: transparent transparent #ffffff;
+}
+
+@keyframes toTop{
+	0%{top:70px;}
+	100%{top:100%;}
+}
+/*棣栭〉鍏抽棴鎸夐挳鍙栨秷*/
+.layui-tab-title li:first-child i{
+	display:none;
+}
+/* //涓夌骇瀵艰埅鍥炬爣 */
+ a i{
+	color: #1E9FFF;
+	float:right;
+	margin-right:-14px;
+}
+/**/
+.layui-nav-more{
+	width:10px !important;
+	height:10px !important;
+	border-width:0px !important;
+	top: 14px !important;
+	border:none;
+	background-image:url(../images/openANDclose.png)
+} 
+.PrimaryTitle:hover .layui-nav-more{
+	background-image:url(../images/openANDclose_orange.png)
+}
+.layui-nav-itemed .layui-nav-more {
+    background-position-y: -10px;
+}
+.TitleLv3{
+	width:10px !important;
+	height:10px !important;
+	position: absolute;
+   	right: 25px;
+	top: 14px !important;
+	background-image:url(../images/openANDclose.png);
+	transition: all .3s;
+   	-webkit-transition: all .3s;
+}
+.TitleLv3-open{
+	background-position-y: -10px;
+}
+/*宸︿晶瀵艰埅鍥炬爣*/
+.myIcon{
+	font-size: 15px;
+    color: #ffa800;
+    margin-right: 7px;
+}
+.yetOpen .layui-nav-more{
+	background-image:url(../images/openANDclose_orange.png)
+}
+/*鏀惧ぇ鍥剧墖鏀惧湪涓婚〉闈�*/
+#zoomImg{
+	display:none;
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	background-color:rgba(0,0,0,0.5);
+	z-index:19950111;
+}   
+#zoomImgBox{
+	width:100%;
+	height:100%;
+	position:relative;
+} 
+#closeBtnOutSideBox{
+	/* min-width:600px;
+	min-height:400px; */
+	display:inline-block;
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+	-webkit-transform:translate(-50%,-50%);
+}
+#closeBtnOutSideBox span{
+	width:38px;
+	height:38px;
+	border-radius:50%;
+	background-color:#000000;
+    position: absolute;
+    right: -19px;
+   	top: -19px;
+    cursor: pointer;
+    z-index:2;
+    text-align: center;
+   	line-height: 38px;
+}
+#closeBtnOutSideBox span .close{
+	margin:11px 0 0 11px;
+}
+#closeBtnOutSideBox span:hover{
+	background-color:#d43f27;
+}
+#zoomImgBox img{
+	/* max-width:100%;
+	max-height:100%; */
+	/* position:absolute;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+	-webkit-transform:translate(-50%,-50%); */
+	height:auto;
+	max-width:100%;
+	max-height:100%;
+	display:block;
+}

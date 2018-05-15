@@ -28,6 +28,8 @@ public class MenuInfoServiceImpl implements MenuInfoService {
 
 	private static List<MenuInfo> allMenu = null;
 
+	private static int menuCount = 0;
+
 	@Override
 	public int doCreate(PageData pd) throws Exception {
 		// TODO Auto-generated method stub
@@ -98,8 +100,11 @@ public class MenuInfoServiceImpl implements MenuInfoService {
 
 	@SuppressWarnings("static-access")
 	public List<MenuInfo> getAllMenu() throws Exception {
-		if (CheckUtil.isEmpty(this.allMenu)) {
-			this.allMenu = listAllMenu(ParamConst.MENU_ROOT_ID);
+		String rootID = ParamConst.MENU_ROOT_ID;
+		int count = (int) this.dao.findForObject("MenuInfoMapper.getCountByStatus", ParamConst.MENU_STATUS_NORMAL);
+		if (CheckUtil.isEmpty(this.allMenu) || this.menuCount != count) {
+			this.allMenu = listAllMenu(rootID);
+			this.menuCount = count;
 		}
 		return this.allMenu;
 	}

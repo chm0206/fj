@@ -1,0 +1,121 @@
+//设置cookie 
+var jsidName = 'jsid',accToken = 'accToken' , refreshToken = 'refreshToken';
+var splits = ',' ;
+function setCookie(name, value,min) { //封装一个设置cookie的函数
+    var exp = new Date();  
+    exp.setTime(exp.getTime() + min*60*1000);//过期时间date分钟 
+	document.cookie = name + '=' + value + ';expires=' + exp.toGMTString()+";path=/";
+}
+
+function setCookie(name, value) { //封装一个设置cookie的函数
+	var Days = 365; 
+    var exp = new Date();  
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);//过期时间365天  
+    document.cookie = name + '=' + value + ';expires=' + exp.toGMTString()+";path=/";
+}
+
+function setAllCookie(name,jsid,acc,fresh) { //封装一个设置cookie的函数
+	var str = jsid+splits+acc+splits+fresh ;
+	var Days = 365; 
+    var exp = new Date();  
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);//过期时间365天  
+    document.cookie = name + '=' + str + ';expires=' + exp.toGMTString()+";path=/";
+}
+
+/***设置jsid cookie 默认时间****/
+function setJsid(value) {
+	setCookie(jsidName, value,60) ;
+}
+/***设置jsid cookie自定义时间****/
+function setJsid(value,min) {
+	setCookie(jsidName, value,min) ;
+}
+/***设置accToken cookie 默认时间****/
+function setAccToken(value) {
+	setCookie(accToken, value,60) ;
+}
+/***设置accToken cookie 自定义时间****/
+function setAccToken(value,min) {
+	setCookie(accToken, value,min) ;
+}
+/***设置refreshToken cookie 默认时间****/
+function setRefreshToken(value) {
+	setCookie(refreshToken, value,60) ;
+}
+/***设置refreshToken cookie 默认时间****/
+function setRefreshToken(value,min) {
+	setCookie(refreshToken, value,min) ;
+}
+
+//获取cookie
+/*function getCookieValue(name) {
+	var arr = document.cookie.split(';');
+	for (var i = 0; i < arr.length; i++) {
+		var arr2 = arr[i].split('=');
+		if (arr2[0] == name) {
+			return arr2[1]; //找到所需要的信息返回出来
+		}
+	}
+	return ''; //找不到就返回空字符串
+}*/
+
+function getCookieValue(name){
+var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+if(arr=document.cookie.match(reg))
+return unescape(arr[2]);
+else
+return null;
+}
+/**获取jsid(userID)***/
+function getJsid(){
+	return getCookieValue(jsidName) ;
+}
+/*function getJsid(name){
+	var jsid = getCookieValue(name) ;
+	var jsids = jsid.split(splits) ;
+	return jsids[0] ;
+}*/
+/**获取accToken***/
+function getAccToken(){
+	return getCookieValue(accToken) ;
+}
+/*function getAccToken(name){
+	var jsid = getCookieValue(name) ;
+	var jsids = jsid.split(splits) ;
+	return jsids[1] ;
+}*/
+/**获取refreshToken***/
+function getRefreshToken(){
+	return getCookieValue(refreshToken) ;
+}
+/*function getRefreshToken(name){
+	var jsid = getCookieValue(name) ;
+	var jsids = jsid.split(splits) ;
+	return jsids[2] ;
+}*/
+
+//清除cookie  
+function clearCookie(name) {
+	setCookie(name, "", -1);
+}
+
+function delCookie(name) {
+	var exp = new Date();
+	exp.setTime(exp.getTime() - 1);
+	var cval = getCookieValue(name);
+	if (cval != null)
+		document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+}
+
+function deleteCookie(name){//为了删除指定名称的cookie，可以将其过期时间设定为一个过去的时间 
+	var date = new Date(); 
+    date.setTime(date.getTime() - 10000); 
+    document.cookie = name + "=a; expires=" + date.toGMTString()+"; path=/";//还要关注域(不同的域的cookie是不同的)
+} 
+
+//清空所有的cookie
+function delAllCookie(){
+	deleteCookie(jsidName) ;
+	deleteCookie(accToken) ;
+	deleteCookie(refreshToken) ;
+}

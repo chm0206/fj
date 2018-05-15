@@ -160,8 +160,9 @@
 		SELECT
 		<include refid="breviaryColumn" />
 		FROM
-		<include refid="tableName" /> um 
-		WHERE 1=1 
+		<include refid="tableName" />
+		um
+		WHERE 1=1
 		<if test="pd.searKey != null and pd.searKey != ''"><!-- 模糊查询 -->
 			and (
 			um.menuName LIKE CONCAT(CONCAT('%', #{pd.searKey}),'%')
@@ -171,45 +172,44 @@
 			)
 		</if>
 		<if test="pd.menuID != null and pd.menuID != ''">
-			and um.menuID = #{pd.menuID,jdbcType=VARCHAR} 
+			and um.menuID = #{pd.menuID,jdbcType=VARCHAR}
 		</if>
 		<if test="pd.menuName != null and pd.menuName != ''">
-			and um.menuName = #{pd.menuName,jdbcType=VARCHAR} 
+			and um.menuName = #{pd.menuName,jdbcType=VARCHAR}
 		</if>
 		<if test="pd.menuUrl != null and pd.menuUrl != ''">
-			and um.menuUrl = #{pd.menuUrl,jdbcType=VARCHAR} 
+			and um.menuUrl = #{pd.menuUrl,jdbcType=VARCHAR}
 		</if>
 		<if test="pd.parentID != null and pd.parentID != ''">
-			and um.parentID = #{pd.parentID,jdbcType=VARCHAR} 
+			and um.parentID = #{pd.parentID,jdbcType=VARCHAR}
 		</if>
 		<if test="pd.menuRank != null and pd.menuRank >= 0">
-			and um.menuRank = #{pd.menuRank,jdbcType=INTEGER} 
+			and um.menuRank = #{pd.menuRank,jdbcType=INTEGER}
 		</if>
 		<if test="pd.menuStatus != null and pd.menuStatus != ''">
-			and um.menuStatus = #{pd.menuStatus,jdbcType=CHAR} 
+			and um.menuStatus = #{pd.menuStatus,jdbcType=CHAR}
 		</if>
 		<if test="pd.createDte != null and pd.createDte != ''">
-			and um.createDte = #{pd.createDte,jdbcType=VARCHAR} 
+			and um.createDte = #{pd.createDte,jdbcType=VARCHAR}
 		</if>
 		<if test="pd.editDte != null and pd.editDte != ''">
-			and um.editDte = #{pd.editDte,jdbcType=VARCHAR} 
+			and um.editDte = #{pd.editDte,jdbcType=VARCHAR}
 		</if>
 		<if test="pd.operatorID != null and pd.operatorID != ''">
-			and um.operatorID = #{pd.operatorID,jdbcType=VARCHAR} 
+			and um.operatorID = #{pd.operatorID,jdbcType=VARCHAR}
 		</if>
 		<if test="pd.menuRow1 != null and pd.menuRow1 != ''">
-			and um.menuRow1 = #{pd.menuRow1,jdbcType=VARCHAR} 
+			and um.menuRow1 = #{pd.menuRow1,jdbcType=VARCHAR}
 		</if>
 		<if test="pd.menuRow2 != null and pd.menuRow2 != ''">
-			and um.menuRow2 = #{pd.menuRow2,jdbcType=VARCHAR} 
+			and um.menuRow2 = #{pd.menuRow2,jdbcType=VARCHAR}
 		</if>
 		<if test="pd.menuRow3 != null and pd.menuRow3 != ''">
-			and um.menuRow3 = #{pd.menuRow3,jdbcType=VARCHAR} 
+			and um.menuRow3 = #{pd.menuRow3,jdbcType=VARCHAR}
 		</if>
 		order by um.createDte desc
 	</select>
-	<select id="findPdById" parameterType="string"
-		resultType="pd">
+	<select id="findPdById" parameterType="string" resultType="pd">
 		select
 		<include refid="baseColumnList" />
 		FROM
@@ -217,16 +217,23 @@
 		um
 		where um.menuID = #{id,jdbcType=VARCHAR}
 	</select>
-	
+	<select id="getCountByStatus" parameterType="string" resultType="Integer">
+		select count(menuID) from
+		<include refid="tableName" />
+		um
+		WHERE um.menuStatus = #{userStatus,jdbcType=VARCHAR}
+	</select>
+
 	<select id="listAllMenu" parameterType="string" resultMap="MenuInfoMap">
 		SELECT
 		<include refid="breviaryColumn" />
 		FROM
-		<include refid="tableName" /> um 
-		WHERE 1=1  and um.menuStatus = "0" 
+		<include refid="tableName" />
+		um
+		WHERE 1=1 and um.menuStatus = "0"
 		<if test="_parameter != null and _parameter != ''"><!-- 解决直接使用parrenID报转换异常的错 -->
-			and um.parentID = #{parentID,jdbcType=VARCHAR} 
+			and um.parentID = #{parentID,jdbcType=VARCHAR}
 		</if>
 	</select>
-	
+
 </mapper>
