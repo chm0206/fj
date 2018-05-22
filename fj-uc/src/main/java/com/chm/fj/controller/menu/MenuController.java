@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.chm.fj.controller.base.BaseController;
-import com.chm.fj.entity.MenuInfo;
 import com.chm.fj.service.menu.MenuInfoService;
 import com.chm.fj.util.CheckUtil;
 import com.chm.fj.util.ResponseUtil;
@@ -59,7 +58,7 @@ public class MenuController extends BaseController {
 	public Object saveUserInfo()throws Exception{
 		JSONObject json = new JSONObject();
 		PageData pd = this.getPageData();
-		json.put("menu", new MenuInfo());
+		json.put("menu", this.menuInfoService.findPdById(pd.getString("menuID")));
 		return ResponseUtil.returnJson(json);
 	}
 }

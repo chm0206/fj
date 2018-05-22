@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.chm.fj.controller.base.BaseController;
-import com.chm.fj.entity.GroupInfo;
 import com.chm.fj.service.group.GroupInfoService;
 import com.chm.fj.util.CheckUtil;
 import com.chm.fj.util.ResponseUtil;
@@ -60,7 +59,7 @@ public class GroupController extends BaseController {
 	public Object saveGroupInfo()throws Exception{
 		JSONObject json = new JSONObject();
 		PageData pd = this.getPageData();
-		json.put("group", new GroupInfo());
+		json.put("group", this.groupInfoService.findPdById(pd.getString("gID")));
 		return ResponseUtil.returnJson(json);
 	}
 }

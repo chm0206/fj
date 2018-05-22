@@ -1,7 +1,6 @@
 package com.chm.fj.entity;
 
 import java.util.List;
-import java.util.zip.Checksum;
 
 import com.chm.fj.consts.ParamConst;
 import com.chm.fj.util.CheckUtil;

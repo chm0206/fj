@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.chm.fj.entity.MenuInfo;
 import com.chm.fj.service.base.IService;
-import com.chm.fj.util.init.PageData;
 
 public interface MenuInfoService extends IService<MenuInfo, String> {
 	/**
