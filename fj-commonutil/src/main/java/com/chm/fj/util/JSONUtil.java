@@ -61,7 +61,8 @@ public class JSONUtil {
 		if(count ==-1){
 			return object;
 		}
-		return isJSONArray(object.get(count).getClass().toString())?getJSONArrayValue(object.getJSONArray(count), keys, index+1):getJSONObjectValue(object.getJSONObject(count), keys, index+1);
+		return null;
+		//return isJSONArray(object.get(count).getClass().toString())?getJSONArrayValue(object.getJSONArray(count), keys, index+1):getJSONObjectValue(object.getJSONObject(count), keys, index+1);
 	}
 	
 	public static int getArraySub(String key){
