@@ -24,6 +24,7 @@ import org.apache.shiro.codec.Base64;
 import org.apache.shiro.crypto.hash.SimpleHash;
 
 import com.chm.fj.consts.ParamConst;
+import com.chm.fj.util.init.PageData;
 
 import net.sf.json.JSONObject;
 

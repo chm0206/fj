@@ -22,5 +22,38 @@ public class ParamConst {
 	public static final String FJ_USER_ID = "userID" ;
 	
 	public static final String FJ_ACC_TOKEN = "accToken";
+	/**
+	 * 包含子菜单
+	 */
+	public static final Boolean MENU_IS_CHILD = true;
+	/**
+	 * 不包含子菜单
+	 */
+	public static final Boolean MENU_NOT_CHILD = false;
+	/**
+	 * 根菜单
+	 */
+	public static final String MENU_ROOT_ID = "0";
+	/**
+	 * 菜单正常状态
+	 */
+	public static final String MENU_STATUS_NORMAL = "0";
+	/**
+	 * 菜单锁定状态
+	 */
+	public static final String MENU_STATUS_LOCKING="L";
+	
+	/**
+	 * 左括号
+	 */
+	public static final String LEFT_PARENTHESIS = "[";
+	/**
+	 * 右括号
+	 */
+	public static final String RIGHT_PARENTHESIS = "]";
+	/**
+	 * 点
+	 */
+	public static final String SEPARATOR_DOT = "\\.";
 	
 }
