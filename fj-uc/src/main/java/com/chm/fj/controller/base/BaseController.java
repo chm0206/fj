@@ -2,25 +2,20 @@ package com.chm.fj.controller.base;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.session.Session;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.chm.fj.util.Jurisdiction;
-import com.chm.fj.util.Page;
-import com.chm.fj.util.PageData;
 import com.chm.fj.util.Tools;
-
-import redis.clients.jedis.Jedis;
+import com.chm.fj.util.init.Jurisdiction;
+import com.chm.fj.util.init.Page;
+import com.chm.fj.util.init.PageData;
 
 /**
  * @author riseinfo.cn 修改时间：2015、12、11

@@ -12,9 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.chm.fj.controller.base.BaseController;
 import com.chm.fj.entity.UserInfo;
 import com.chm.fj.service.user.UserInfoService;
-import com.chm.fj.util.Page;
-import com.chm.fj.util.PageData;
 import com.chm.fj.util.Tools;
+import com.chm.fj.util.init.Page;
+import com.chm.fj.util.init.PageData;
 
 import net.sf.json.JSONObject;
 
