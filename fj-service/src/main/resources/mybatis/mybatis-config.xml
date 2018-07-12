@@ -10,14 +10,14 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="com.chm.fj.util.PageData" alias="pd" /><!-- 
+		<typeAlias type="com.chm.fj.util.init.PageData" alias="pd" /><!-- 
 			新发布的需要添加 -->
 		<!-- 分页 -->
-		<typeAlias type="com.chm.fj.util.Page" alias="Page" />
+		<typeAlias type="com.chm.fj.util.init.Page" alias="Page" />
 	</typeAliases>
 
 	<plugins>
-		<plugin interceptor="com.chm.fj.util.PagePlugin">
+		<plugin interceptor="com.chm.fj.util.init.PagePlugin">
 			<property name="dialect" value="mysql" />
 			<property name="pageSqlId" value=".*listPage.*" />
 		</plugin>
