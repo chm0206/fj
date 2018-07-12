@@ -45,7 +45,7 @@
     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
   </listener>
   <listener>  
-    <listener-class>com.chm.fj.util.SessionListener</listener-class>  
+    <listener-class>com.chm.fj.util.init.SessionListener</listener-class>  
   </listener>  
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
