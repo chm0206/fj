@@ -13,4 +13,6 @@ public class StatusCodeConst {
 	 * 正常
 	 */
 	public static String NORMAL = "200";
+	
+	public static Integer CODE_NORMAL = 200;
 }
