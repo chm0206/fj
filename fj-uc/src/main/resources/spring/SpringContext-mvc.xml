@@ -21,12 +21,12 @@
 		<!-- <mvc:resources mapping="/utils/**" location="/,/utils/" /> -->
 		
 		<!-- 针对/**/**格式的action 访问拦截  -->  
-	  	 <!-- <mvc:interceptors>
+	  	 <mvc:interceptors>
 			<mvc:interceptor>
-				<mvc:mapping path="/**/**"/>
-				<bean class="cn.riseinfo.user.interceptor.LoginHandlerInterceptor"/>
+				<mvc:mapping path="/user/**"/>
+				<bean class="com.chm.fj.interceptor.LoginInterceptor"/>
 			</mvc:interceptor>
-		</mvc:interceptors>  -->
+		</mvc:interceptors>
 		
 		<!-- 配置SpringMVC的视图解析器 -->
 		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

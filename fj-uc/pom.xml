@@ -182,7 +182,7 @@
 			<artifactId>druid</artifactId>
 			<version>1.0.9</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache-core</artifactId>
 			<version>2.6.9</version>
@@ -191,7 +191,7 @@
 			<groupId>net.sf.ezmorph</groupId>
 			<artifactId>ezmorph</artifactId>
 			<version>1.0.6</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>

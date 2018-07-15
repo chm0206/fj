@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONObject;
 import com.chm.fj.controller.base.BaseController;
 import com.chm.fj.service.menu.MenuInfoService;
 import com.chm.fj.util.CheckUtil;
 import com.chm.fj.util.ResponseUtil;
 import com.chm.fj.util.init.Page;
 import com.chm.fj.util.init.PageData;
-
-import net.sf.json.JSONObject;
 
 /**
  * 菜单信息

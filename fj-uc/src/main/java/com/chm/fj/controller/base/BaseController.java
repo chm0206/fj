@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.chm.fj.redis.JedisCacheClient;
 import com.chm.fj.util.Tools;
 import com.chm.fj.util.init.Jurisdiction;
 import com.chm.fj.util.init.Page;
@@ -26,7 +28,6 @@ public class BaseController {
 
 	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 6357869213649815390L;
-
 	/**
 	 * new PageData对象
 	 * 
