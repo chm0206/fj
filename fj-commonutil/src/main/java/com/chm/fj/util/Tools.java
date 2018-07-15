@@ -23,10 +23,9 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.crypto.hash.SimpleHash;
 
+import com.alibaba.fastjson.JSONObject;
 import com.chm.fj.consts.ParamConst;
 import com.chm.fj.util.init.PageData;
-
-import net.sf.json.JSONObject;
 
 /** 
  * 说明：常用工具
@@ -516,7 +515,7 @@ public class Tools {
 	public static Map<String,Object> getMenuQX(String menuQX,String menuID) throws Exception {
 		Map<String,Object> resultMap = new HashMap<String,Object>() ;
 		JSONObject json = new JSONObject() ;
-		json = JSONObject.fromObject(menuQX).getJSONObject("menuQX") ;
+		json = JSONObject.parseObject(menuQX).getJSONObject("menuQX") ;
 		resultMap.put("menuID",menuID) ;
 		if(isMatcher(fomatString(json.getString("qx_adds")),menuID)){
 			resultMap.put("add","1") ;

@@ -13,6 +13,12 @@ public class StatusCodeConst {
 	 * 正常
 	 */
 	public static String NORMAL = "200";
-	
+	/**
+	 * 密码错误
+	 */
+	public static Integer USER_OR_PASS_ERROR = 401;
+	/**
+	 * 操作成功
+	 */
 	public static Integer CODE_NORMAL = 200;
 }

@@ -15,8 +15,10 @@ import java.util.Date;
 public class DateUtil {
 	
 	private final static SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
-	private final static SimpleDateFormat sdfDay  = new SimpleDateFormat("yyyy-MM-dd");
-	private final static SimpleDateFormat sdfDays = new SimpleDateFormat("yyyyMMdd");
+	private final static SimpleDateFormat sdfMonth  = new SimpleDateFormat("MM");
+	private final static SimpleDateFormat sdfDay  = new SimpleDateFormat("dd");
+	private final static SimpleDateFormat sdfYMD  = new SimpleDateFormat("yyyy-MM-dd");
+	private final static SimpleDateFormat sdfYMD1 = new SimpleDateFormat("yyyyMMdd");
 	private final static SimpleDateFormat sdfTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private final static SimpleDateFormat sdfYMDHM = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private final static SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
@@ -28,21 +30,33 @@ public class DateUtil {
 	public static String getYear() {
 		return sdfYear.format(new Date());
 	}
-
 	/**
-	 * 获取YYYY-MM-DD格式
+	 * 获取MM格式
+	 * @return
+	 */
+	public static String getMonth() {
+		return sdfMonth.format(new Date());
+	}
+	/**
+	 * 获取dd格式
 	 * @return
 	 */
 	public static String getDay() {
 		return sdfDay.format(new Date());
 	}
-	
+	/**
+	 * 获取yyyy-MM-dd格式
+	 * @return
+	 */
+	public static String getYMD(){
+		return sdfYMD.format(new Date());
+	}
 	/**
 	 * 获取YYYYMMDD格式
 	 * @return
 	 */
-	public static String getDays(){
-		return sdfDays.format(new Date());
+	public static String getYMD1(){
+		return sdfYMD1.format(new Date());
 	}
 
 	/**
@@ -82,6 +96,11 @@ public class DateUtil {
 			return false;
 		}
 		return fomatDate(s).getTime() >=fomatDate(e).getTime();
+	}
+	
+	public static String getTimeStamp(){
+		return new Date().getTime()+"";
+		//date.getTime();
 	}
 
 	/**

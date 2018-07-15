@@ -1,6 +1,6 @@
 package com.chm.fj.util;
 
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 
 public class ResponseUtil {
 	/**
