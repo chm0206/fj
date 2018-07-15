@@ -206,4 +206,24 @@
 		ui
 		where ui.userID = #{id,jdbcType=VARCHAR}
 	</select>
+	
+	<select id="findUserLoginInfo" parameterType="pd"
+		resultType="pd">
+		select
+		<include refid="baseColumnList" />
+		FROM
+		<include refid="tableName" />
+		ui
+		where ui.userPass = #{userPass,jdbcType=VARCHAR}
+		
+		and 
+		( 1=0 
+		<if test="userID != null and userID !=''">
+			or userID =  #{userID,jdbcType=VARCHAR} 
+		</if>
+		<if test="userAccount != null and userAccount !=''">
+			or userAccount =  #{userAccount,jdbcType=VARCHAR} 
+		</if>
+		)
+	</select>
 </mapper>

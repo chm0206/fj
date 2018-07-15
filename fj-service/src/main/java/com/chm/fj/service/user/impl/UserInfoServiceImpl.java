@@ -6,8 +6,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.chm.fj.consts.StringConst;
 import com.chm.fj.dao.base.DaoSupport;
 import com.chm.fj.service.user.UserInfoService;
+import com.chm.fj.util.CheckUtil;
+import com.chm.fj.util.Tools;
 import com.chm.fj.util.init.Page;
 import com.chm.fj.util.init.PageData;
 
@@ -76,5 +79,31 @@ public class UserInfoServiceImpl implements UserInfoService {
 		Page page = new Page();
 		page.setPd(pd);
 		return this.listPagePd(page);
+	}
+
+	@Override
+	public PageData findUserLoginInfo(PageData pd) throws Exception{
+		// TODO Auto-generated method stub
+		if(!checkUserInfo(pd)){
+			return null;
+		}
+		return (PageData) this.dao.findForObject("UserInfoMapper.findUserLoginInfo", pd);
+	}
+	/**
+	 * 校验登录信息是否完整
+	 * @param pd
+	 * @return
+	 * @throws Exception
+	 */
+	private boolean checkUserInfo(PageData pd) throws Exception{
+		if(CheckUtil.isEmpty(pd.getString(StringConst.USER_PASS))){
+			return false;
+		}
+		if(CheckUtil.notEmpty(pd.getString(StringConst.USER_ACCOUNT))
+		||CheckUtil.notEmpty(pd.getString(StringConst.USER_ID))){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }
