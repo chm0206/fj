@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.chm.fj.util.CheckUtil;
 import com.chm.fj.util.FormatUtil;
 
 import redis.clients.jedis.Jedis;
@@ -44,7 +45,11 @@ public class JedisCacheClient {
             jedis.select(index);
 //            jedis.set(WebConfigConstant.PROJECT+key, json);
 //            jedis.expire(WebConfigConstant.PROJECT+key, seconds);
-            jedis.set(key, json);
+            if(jedis.exists(key)){
+            	jedis.set(key, json);
+            }else{
+            	jedis.getSet(key, json);
+            }
             jedis.expire(key, seconds);
         } catch (Exception e) {
             log.error("setV初始化jedis异常：" + e);
@@ -74,7 +79,11 @@ public class JedisCacheClient {
             jedis = jedisPool.getResource();
             jedis.select(index);
 //            jedis.set(WebConfigConstant.PROJECT+key, json);
-            jedis.set(key, json);
+            if(jedis.exists(key)){
+            	jedis.set(key, json);
+            }else{
+            	jedis.getSet(key, json);
+            }
         } catch (Exception e) {
             log.error("setV初始化jedis异常：" + e);
             if (jedis != null) {
@@ -133,6 +142,7 @@ public class JedisCacheClient {
             jedis = jedisPool.getResource();
             jedis.select(index);
             value = jedis.get(key);
+            value = value.substring(1, value.length()-1);
         } catch (Exception e) {
             log.error("getVString初始化jedis异常：" + e);
             if (jedis != null) {
@@ -143,6 +153,30 @@ public class JedisCacheClient {
             closeJedis(jedis);
         }
         return value;
+    }
+    /**
+     * 删除redis指定key
+     * @param key 要删除的键
+     * @param index redis集群位置，默认为0
+     */
+    public void delKey(String key,int index){
+        Jedis jedis = null;
+    	if(CheckUtil.isEmpty(key)){
+    		return;
+    	}
+    	try{
+    		jedis = jedisPool.getResource();
+            jedis.select(index);//获取指定库
+            jedis.del(key);
+    	} catch (Exception e) {
+            log.error("getVString初始化jedis异常：" + e);
+            if (jedis != null) {
+//                jedisPool.returnBrokenResource(jedis);
+            	jedis.close();
+            }
+        } finally {
+            closeJedis(jedis);
+        }
     }
 
     /**
@@ -313,6 +347,40 @@ public class JedisCacheClient {
 
     public void setJedisPool(JedisPool jedisPool) {
         this.jedisPool = jedisPool;
+    }
+    public boolean isExpire(String key,int index){
+    	Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            jedis.select(index);
+            if(jedis.exists(key)){
+            	Long ttl = jedis.ttl(key);
+            	if(ttl>0){
+            		return true;
+            	}
+            }else{
+            	return false;
+            }
+        } catch (Exception e) {
+            log.error("Pop初始化jedis异常：" + e);
+            if (jedis != null) {
+                //jedisPool.returnBrokenResource(jedis);
+            	jedis.close();
+            }
+            return false;
+        } finally {
+            closeJedis(jedis);
+        }
+        return false;
+    }
+    /**
+     * 判断是否不存在
+     * @param key
+     * @param index
+     * @return
+     */
+    public boolean notExpire(String key,int index){
+    	return !isExpire(key, index);
     }
 
 }

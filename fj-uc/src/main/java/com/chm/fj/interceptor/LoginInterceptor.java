@@ -25,20 +25,26 @@ public class LoginInterceptor extends BaseController implements HandlerIntercept
 			throws Exception {
 		PageData pd = this.getPageData();
 		// 判断是否有accToken
-		String accToken = CheckUtil.isEmpty(pd.getString(StringConst.REDIS_ACCTOKEN))
-				? CookieUtil.getCkValue(request, StringConst.REDIS_ACCTOKEN):pd.getString(StringConst.REDIS_ACCTOKEN);
+		String accToken = CheckUtil.isEmpty(pd.getString(StringConst.REDIS_ACC_TOKEN))
+				? CookieUtil.getCkValue(request, StringConst.REDIS_ACC_TOKEN):pd.getString(StringConst.REDIS_ACC_TOKEN);
 		if (CheckUtil.isEmpty(accToken)) {
 			System.out.println("尚未登录，调到登录页面");
 			response.sendRedirect(request.getContextPath() + "/" + UrlConst.PAGE_LOGIN);
 			return false;
 		}
 		// accToken是否已过期
-		String userID = jedis.getVStr(accToken, 0);
-		if (CheckUtil.isEmpty(userID)) {
+		boolean unlisted = jedis.notExpire(accToken, 0);
+		if(unlisted){
 			System.out.println("登录过期，调到登录页面");
 			response.sendRedirect(request.getContextPath() + "/" + UrlConst.PAGE_LOGIN);
 			return false;
 		}
+		/*String userID = jedis.getVStr(accToken, 0);
+		if (CheckUtil.isEmpty(userID)) {
+			System.out.println("登录过期，调到登录页面");
+			response.sendRedirect(request.getContextPath() + "/" + UrlConst.PAGE_LOGIN);
+			return false;
+		}*/
 		System.out.println("已登录");
 		return true;
 	}

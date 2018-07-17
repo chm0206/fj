@@ -4,11 +4,15 @@ public class ParamConst {
 	/*** 每页默认记录数 20 */
 	public static final String PAGE_SIZE ="20";
 	/**参数间分隔符(尽量别改)*/
-	public static final String PARAM_REGEX = "\\|";
+	public static final String DIVISION_PARAM_REGEX = "\\|";
 	/**参数内分隔符(尽量别改)*/
-	public static final String VALUE_REGEX = "\\#";
+	public static final String DIVISION_VALUE_REGEX = "\\#";
+	/**
+	 * 分割符","
+	 */
+	public static final String DIVISION_KOMMA = ",";
 	/*** TOKEN_KEY */
-	public static final String TOKEN_KEY = "huazhou" ;
+	public static final String TOKEN_KEY = "FJ" ;
 	/**
 	 * TOKEN_KEY_LEN
 	 * 长度 = 40 - n （16 = 40 - 24）
@@ -30,6 +34,9 @@ public class ParamConst {
 	 * 不包含子菜单
 	 */
 	public static final Boolean MENU_NOT_CHILD = false;
+	
+	public static final Integer GET_USERINFO = 1;
+	public static final String GET_INFO = "getInfo";
 	/**
 	 * 根菜单
 	 */

@@ -25,7 +25,9 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 
 import com.alibaba.fastjson.JSONObject;
 import com.chm.fj.consts.ParamConst;
+import com.chm.fj.other.DateUtil;
 import com.chm.fj.util.init.PageData;
+
 
 /** 
  * 说明：常用工具
@@ -259,13 +261,13 @@ public class Tools {
 	public static List<Map<String,Object>> splitParValue(String parmStr){
 		List<Map<String,Object>> lpd = new ArrayList<Map<String,Object>>() ;
 		if(!Tools.isEmpty(parmStr)){
-			String[] sts = Tools.str2StrArray(parmStr, ParamConst.PARAM_REGEX) ;
+			String[] sts = Tools.str2StrArray(parmStr, ParamConst.DIVISION_PARAM_REGEX) ;
 			if(sts.length>0){
 				for(int i=0;i<sts.length;i++){
 					if(!Tools.isEmpty(sts[i])){
 						//PageData npd = new PageData() ;
 						Map<String,Object> npd = new HashMap<String,Object>() ;
-						String[] result = sts[i].split(ParamConst.VALUE_REGEX) ;
+						String[] result = sts[i].split(ParamConst.DIVISION_VALUE_REGEX) ;
 						if(result.length == 2){
 							npd.put("sId", result[0]) ;
 							npd.put("sValue", result[1]) ;
@@ -306,7 +308,8 @@ public class Tools {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String greantAccToken(String nowTime) throws Exception {
+	public static String greantAccToken() throws Exception {
+		String nowTime = DateUtil.getTimeStamp();
 		String tokenKey = ParamConst.TOKEN_KEY ;
 		String accToken = new SimpleHash(ParamConst.SHA, nowTime , tokenKey).toString().substring(ParamConst.TOKEN_KEY_LEN).toUpperCase() ;
 		return  accToken ;
@@ -332,7 +335,7 @@ public class Tools {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String greantRefreshToken() throws Exception {
+	public static String greantRefreshToken() {
 		return UUID.randomUUID().toString().toUpperCase().replaceAll("-", "") ;
 	}
 	

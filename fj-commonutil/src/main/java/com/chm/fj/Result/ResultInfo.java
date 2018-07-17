@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.chm.fj.consts.StatusCodeConst;
 import com.chm.fj.consts.StringConst;
 import com.chm.fj.util.FormatUtil;
+import com.chm.fj.util.init.PageData;
 
 public class ResultInfo {
 
@@ -101,7 +102,7 @@ public class ResultInfo {
 	 *            map格式的返回数据
 	 */
 	public ResultInfo(Integer code, Map<String, Object> map) {
-		this(code, FormatUtil.map2Json(map));//有公共方法就要调用公共方法，就不需要改太多
+		this(code, FormatUtil.map2Json(map));// 有公共方法就要调用公共方法，就不需要改太多
 	}
 
 	/**
@@ -159,7 +160,7 @@ public class ResultInfo {
 	 *            返回数据
 	 */
 	public void setData(Map<String, Object> map) {
-		this.data = FormatUtil.map2Json(map);//JSONObject.fromObject(map);
+		this.data = FormatUtil.map2Json(map);// JSONObject.fromObject(map);
 	}
 
 	/**
@@ -170,6 +171,17 @@ public class ResultInfo {
 	 */
 	public void putAll(Map<String, Object> map) {
 		this.data.putAll(map);
+	}
+
+	/**
+	 * 追加返回数据
+	 * 
+	 * @param pd
+	 *            要追加的数据
+	 */
+	@SuppressWarnings("unchecked")
+	public void putAll(PageData pd) {
+		this.data.putAll(pd);
 	}
 
 	/**

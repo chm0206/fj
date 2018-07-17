@@ -99,7 +99,7 @@ public class DateUtil {
 	}
 	
 	public static String getTimeStamp(){
-		return new Date().getTime()+"";
+		return new String().valueOf(new Date().getTime());//不使用+“”,因为会添加入常量池，而时间戳不需要使用多次
 		//date.getTime();
 	}
 
