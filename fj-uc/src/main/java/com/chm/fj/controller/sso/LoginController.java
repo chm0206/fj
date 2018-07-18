@@ -36,6 +36,8 @@ public class LoginController extends BaseController {
 
 	@Resource(name = "userInfoService")
 	private UserInfoService userInfoService;
+	@Autowired
+	private JedisCacheClient jedis;
 
 	@RequestMapping(value = "toLogin")
 	public ModelAndView toLogin() throws Exception {
@@ -77,11 +79,13 @@ public class LoginController extends BaseController {
 			//accToken-key、value
 			String accToken = Tools.greantAccToken();
 			pd.put(StringConst.REDIS_ACC_TOKEN, accToken);
-			RedisUtil.userLogin(pd);
+			pd.put(StringConst.REDIS_USER_INFO, userInfo);
+			RedisUtil.userLogin(jedis,pd);
 			result.put(StringConst.REDIS_ACC_TOKEN,accToken);
 			if(ParamConst.GET_USERINFO.equals(pd.get(ParamConst.GET_INFO))){
-				result.put(StringConst.REDIRECT_URL, UrlConst.PAGE_INDEX);// 登录成功跳转到登录页面
+				result.put(StringConst.REDIS_USER_INFO,userInfo);
 			}
+			result.put(StringConst.REDIRECT_URL, UrlConst.PAGE_INDEX);// 登录成功跳转到登录页面
 		}
 		return result;
 	}

@@ -10,10 +10,6 @@ import com.chm.fj.util.init.PageData;
 
 public class RedisUtil {
 	
-
-	@Autowired
-	private static JedisCacheClient jedis;
-	
 	public static void createLoginInfo(PageData pd){
 		
 		String refreshToken = Tools.greantRefreshToken();
@@ -29,15 +25,16 @@ public class RedisUtil {
 		pd.put(StringConst.REDIS_REFRESH_TOKEN, refreshToken);
 		pd.put(StringConst.REDIS_USER_INFO, pd.get(StringConst.REDIS_USER_INFO));
 	}
+	
 	/**
 	 * redis用户登录操作
 	 * @param pd
 	 * @throws Exception
 	 */
-	public static void userLogin(PageData pd) throws Exception{
+	public static void userLogin(JedisCacheClient jedis,PageData pd) throws Exception{
 		PageData userInfo = (PageData) pd.get(StringConst.REDIS_USER_INFO);
 		String accToken = pd.getString(StringConst.REDIS_ACC_TOKEN);
-		String accTokenValue = userInfo.getString(StringConst.USER_ID)+ParamConst.DIVISION_KOMMA+pd.getString(StringConst.OWNER_ID);
+		String accTokenValue = userInfo.getString(StringConst.USER_ID)+ParamConst.DIVISION_KOMMA+userInfo.getString(StringConst.OWNER_ID);
 		String terminal = userInfo.getString(StringConst.USER_ID)+pd.getString(StringConst.SSO_TERMAINAL);//userID+用户登录终端
 		String terminalValue = accToken+ParamConst.DIVISION_KOMMA+"";//accToken+""推送地址，暂没有想好
 		if(jedis.isExpire(terminal, 0)){//如果有，清除旧的登录信息
