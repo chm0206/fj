@@ -51,18 +51,18 @@ public class Tools {
 	 * @param s
 	 * @return 不为空则返回true，否则返回false
 	 */
-	public static boolean notEmpty(String s){
-		return s!=null && !"".equals(s) && !"null".equals(s);
-	}
+//	public static boolean notEmpty(String s){
+//		return s!=null && !"".equals(s) && !"null".equals(s);
+//	}
 	
 	/**
 	 * 检测字符串是否为空(null,"","null")
 	 * @param s
 	 * @return 为空则返回true，不否则返回false
 	 */
-	public static boolean isEmpty(String s){
-		return s==null || "".equals(s) || "null".equals(s);
-	}
+//	public static boolean isEmpty(String s){
+//		return s==null || "".equals(s) || "null".equals(s);
+//	}
 	
 	public static boolean isNull(Object obj){
 		if(obj == null || "".equals(obj) || "null".equals(obj)){
@@ -78,83 +78,83 @@ public class Tools {
 	 * @param splitRegex 分隔符
 	 * @return
 	 */
-	public static String[] str2StrArray(String str,String splitRegex){
-		if(isEmpty(str)){
-			return null;
-		}
-		return str.split(splitRegex);
-	}
+//	public static String[] str2StrArray(String str,String splitRegex){
+//		if(isEmpty(str)){
+//			return null;
+//		}
+//		return str.split(splitRegex);
+//	}
 	
 	/**
 	 * 用默认的分隔符(,)将字符串转换为字符串数组
 	 * @param str	字符串
 	 * @return
 	 */
-	public static String[] str2StrArray(String str){
-		return str2StrArray(str,",\\s*");
-	}
+//	public static String[] str2StrArray(String str){
+//		return str2StrArray(str,",\\s*");
+//	}
+//	
+//	/**
+//	 * 按照yyyy-MM-dd HH:mm:ss的格式，日期转字符串
+//	 * @param date
+//	 * @return yyyy-MM-dd HH:mm:ss
+//	 */
+//	public static String date2Str(Date date){
+//		return date2Str(date,"yyyy-MM-dd HH:mm:ss");
+//	}
+//	
+//	/**
+//	 * 按照yyyy-MM-dd HH:mm:ss的格式，字符串转日期
+//	 * @param date
+//	 * @return
+//	 */
+//	public static Date str2Date(String date){
+//		if(CheckUtil.notEmpty(date)){
+//			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//			try {
+//				return sdf.parse(date);
+//			} catch (ParseException e) {
+//				e.printStackTrace();
+//			}
+//			return new Date();
+//		}else{
+//			return null;
+//		}
+//	}
 	
-	/**
-	 * 按照yyyy-MM-dd HH:mm:ss的格式，日期转字符串
-	 * @param date
-	 * @return yyyy-MM-dd HH:mm:ss
-	 */
-	public static String date2Str(Date date){
-		return date2Str(date,"yyyy-MM-dd HH:mm:ss");
-	}
+//	/**
+//	 * 按照yyyy-MM-dd HH:mm:ss的格式，字符串转日期
+//	 * @param date
+//	 * @return
+//	 */
+//	public static Date str2Date(String date,String format){
+//		if(CheckUtil.notEmpty(date)){
+//			SimpleDateFormat sdf = new SimpleDateFormat(format);
+//			try {
+//				return sdf.parse(date);
+//			} catch (ParseException e) {
+//				e.printStackTrace();
+//			}
+//			return new Date();
+//		}else{
+//			return null;
+//		}
+//	}
 	
-	/**
-	 * 按照yyyy-MM-dd HH:mm:ss的格式，字符串转日期
-	 * @param date
-	 * @return
-	 */
-	public static Date str2Date(String date){
-		if(notEmpty(date)){
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			try {
-				return sdf.parse(date);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			return new Date();
-		}else{
-			return null;
-		}
-	}
-	
-	/**
-	 * 按照yyyy-MM-dd HH:mm:ss的格式，字符串转日期
-	 * @param date
-	 * @return
-	 */
-	public static Date str2Date(String date,String format){
-		if(notEmpty(date)){
-			SimpleDateFormat sdf = new SimpleDateFormat(format);
-			try {
-				return sdf.parse(date);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			return new Date();
-		}else{
-			return null;
-		}
-	}
-	
-	/**
-	 * 按照参数format的格式，日期转字符串
-	 * @param date
-	 * @param format
-	 * @return
-	 */
-	public static String date2Str(Date date,String format){
-		if(date!=null){
-			SimpleDateFormat sdf = new SimpleDateFormat(format);
-			return sdf.format(date);
-		}else{
-			return "";
-		}
-	}
+//	/**
+//	 * 按照参数format的格式，日期转字符串
+//	 * @param date
+//	 * @param format
+//	 * @return
+//	 */
+//	public static String date2Str(Date date,String format){
+//		if(date!=null){
+//			SimpleDateFormat sdf = new SimpleDateFormat(format);
+//			return sdf.format(date);
+//		}else{
+//			return "";
+//		}
+//	}
 	
 	/**
 	 * 把时间根据时、分、秒转换为时间段
@@ -216,40 +216,7 @@ public class Tools {
 		}
 	}
 	
-	/**
-	  * 验证邮箱
-	  * @param email
-	  * @return
-	  */
-	 public static boolean checkEmail(String email){
-	  boolean flag = false;
-	  try{
-	    String check = "^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
-	    Pattern regex = Pattern.compile(check);
-	    Matcher matcher = regex.matcher(email);
-	    flag = matcher.matches();
-	   }catch(Exception e){
-	    flag = false;
-	   }
-	  return flag;
-	 }
 	
-	 /**
-	  * 验证手机号码
-	  * @param mobiles
-	  * @return
-	  */
-	 public static boolean checkMobileNumber(String mobileNumber){
-	  boolean flag = false;
-	  try{
-	    Pattern regex = Pattern.compile("^(((13[0-9])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8})|(0\\d{2}-\\d{8})|(0\\d{3}-\\d{7})$");
-	    Matcher matcher = regex.matcher(mobileNumber);
-	    flag = matcher.matches();
-	   }catch(Exception e){
-	    flag = false;
-	   }
-	  return flag;
-	 }
 	 
 	/**
 	 * 固定参数值的初始化为List<PageData>对象
@@ -260,11 +227,11 @@ public class Tools {
 	 */
 	public static List<Map<String,Object>> splitParValue(String parmStr){
 		List<Map<String,Object>> lpd = new ArrayList<Map<String,Object>>() ;
-		if(!Tools.isEmpty(parmStr)){
-			String[] sts = Tools.str2StrArray(parmStr, ParamConst.DIVISION_PARAM_REGEX) ;
+		if(!CheckUtil.isEmpty(parmStr)){
+			String[] sts = FormatUtil.str2Array(parmStr, ParamConst.DIVISION_PARAM_REGEX) ;
 			if(sts.length>0){
 				for(int i=0;i<sts.length;i++){
-					if(!Tools.isEmpty(sts[i])){
+					if(!CheckUtil.isEmpty(sts[i])){
 						//PageData npd = new PageData() ;
 						Map<String,Object> npd = new HashMap<String,Object>() ;
 						String[] result = sts[i].split(ParamConst.DIVISION_VALUE_REGEX) ;
@@ -347,7 +314,7 @@ public class Tools {
 	 * @throws Exception
 	 */
 	public static String BaseEnCode(String str) throws Exception {
-		if(Tools.notEmpty(str)){
+		if(CheckUtil.notEmpty(str)){
 			return Base64.encodeToString(str.getBytes()) ;
 		}else{
 			return null ;
@@ -362,7 +329,7 @@ public class Tools {
 	 * @throws Exception
 	 */
 	public static String BaseDecCode(String str) throws Exception {
-		if(Tools.notEmpty(str)){
+		if(CheckUtil.notEmpty(str)){
 			String result = Base64.decodeToString(str) ;
 			return result ;
 		}else{
@@ -408,27 +375,27 @@ public class Tools {
 			e.printStackTrace();
 		}
 	}
-	/**
-	 * Map to Bean
-	 * @param map
-	 * @param class1
-	 * @author chm
-	 * @return
-	 */
-	public static <T> T map2Bean(Map<String, String> map, Class<T> class1) {  
-        T bean = null;  
-        try {  
-            bean = class1.newInstance();  
-            BeanUtils.populate(bean, map);  
-        } catch (InstantiationException e) {  
-            e.printStackTrace();  
-        } catch (IllegalAccessException e) {  
-            e.printStackTrace();  
-        } catch (InvocationTargetException e) {  
-            e.printStackTrace();  
-        }  
-        return bean;  
-    } 
+//	/**
+//	 * Map to Bean
+//	 * @param map
+//	 * @param class1
+//	 * @author chm
+//	 * @return
+//	 */
+//	public static <T> T map2Bean(Map<String, String> map, Class<T> class1) {  
+//        T bean = null;  
+//        try {  
+//            bean = class1.newInstance();  
+//            BeanUtils.populate(bean, map);  
+//        } catch (InstantiationException e) {  
+//            e.printStackTrace();  
+//        } catch (IllegalAccessException e) {  
+//            e.printStackTrace();  
+//        } catch (InvocationTargetException e) {  
+//            e.printStackTrace();  
+//        }  
+//        return bean;  
+//    } 
 	
 	/**根据角色权限获取本权限的菜单列表(递归处理)
 	 * @param menuList：传入的总菜单
@@ -556,7 +523,7 @@ public class Tools {
 		String s = (str.replaceAll("\\[", "")).replaceAll("\\]", "") ;
 		//去"
 		s = s.replaceAll("\"", "") ;
-		if(Tools.notEmpty(s)){
+		if(CheckUtil.notEmpty(s)){
 			return s ;
 		}else{
 			return null ;

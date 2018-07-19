@@ -31,7 +31,7 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 
-import com.chm.fj.util.Tools;
+import com.chm.fj.util.CheckUtil;
 /**
  * 
 * 类名称：分页插件
@@ -156,7 +156,7 @@ public class PagePlugin implements Interceptor {
 	 * @return
 	 */
 	private String generatePageSql(String sql,Page page){
-		if(page!=null && Tools.notEmpty(dialect)){
+		if(page!=null &&CheckUtil.notEmpty(dialect)){
 			StringBuffer pageSql = new StringBuffer();
 			if("mysql".equals(dialect)){
 				pageSql.append(sql);
@@ -175,7 +175,7 @@ public class PagePlugin implements Interceptor {
 
 	public void setProperties(Properties p) {
 		dialect = p.getProperty("dialect");
-		if (Tools.isEmpty(dialect)) {
+		if (CheckUtil.isEmpty(dialect)) {
 			try {
 				throw new PropertyException("dialect property is not found!");
 			} catch (PropertyException e) {
@@ -184,7 +184,7 @@ public class PagePlugin implements Interceptor {
 			}
 		}
 		pageSqlId = p.getProperty("pageSqlId");
-		if (Tools.isEmpty(pageSqlId)) {
+		if (CheckUtil.isEmpty(pageSqlId)) {
 			try {
 				throw new PropertyException("pageSqlId property is not found!");
 			} catch (PropertyException e) {

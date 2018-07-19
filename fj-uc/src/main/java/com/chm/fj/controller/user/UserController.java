@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.chm.fj.controller.base.BaseController;
 import com.chm.fj.entity.UserInfo;
 import com.chm.fj.service.user.UserInfoService;
+import com.chm.fj.util.CheckUtil;
 import com.chm.fj.util.Tools;
 import com.chm.fj.util.init.Page;
 import com.chm.fj.util.init.PageData;
@@ -45,7 +46,7 @@ public class UserController extends BaseController {
 		ModelAndView mv = new ModelAndView();
 		PageData pd = this.getPageData();
 		String userID = pd.getString("userID");
-		if(Tools.isEmpty(userID)){
+		if(CheckUtil.isEmpty(userID)){
 			userID="1";
 		}
 		PageData userInfo = this.userInfoService.findPdById(userID);

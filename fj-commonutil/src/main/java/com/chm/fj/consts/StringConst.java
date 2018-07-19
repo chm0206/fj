@@ -26,7 +26,7 @@ public class StringConst {
 	/**
 	 * 用户登录终端类型
 	 */
-	public static String SSO_TERMAINAL = "temp";
+	public static String SSO_TERMAINAL = "term";
 	/**
 	 * 电脑终端
 	 */

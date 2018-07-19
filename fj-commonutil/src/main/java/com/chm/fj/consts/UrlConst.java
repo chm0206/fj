@@ -26,5 +26,6 @@ public class UrlConst {
 	/**
 	 * 主页面
 	 */
-	public static final String PAGE_INDEX = "login/index" + PAGE_SUFFIX;
+	//public static final String PAGE_INDEX = "login/index" + PAGE_SUFFIX;
+	public static final String PAGE_INDEX = "user/toUserList" + PAGE_SUFFIX;
 }

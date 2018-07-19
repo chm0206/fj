@@ -14,6 +14,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.chm.fj.redis.JedisCacheClient;
+import com.chm.fj.util.FormatUtil;
 import com.chm.fj.util.Tools;
 import com.chm.fj.util.init.Jurisdiction;
 import com.chm.fj.util.init.Page;
@@ -74,7 +75,7 @@ public class BaseController {
 	public String get13UUID() {
 		SimpleDateFormat sdfTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		sdfTime.format(new Date());
-		return Long.toString(Tools.str2Date(sdfTime.format(new Date())).getTime()) ;
+		return Long.toString(FormatUtil.str2Date(sdfTime.format(new Date())).getTime()) ;
 		//return Long.toString(System.currentTimeMillis());
 	}
 
