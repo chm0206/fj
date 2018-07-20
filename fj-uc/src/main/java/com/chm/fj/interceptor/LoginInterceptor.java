@@ -12,7 +12,7 @@ import com.chm.fj.consts.UrlConst;
 import com.chm.fj.controller.base.BaseController;
 import com.chm.fj.redis.JedisCacheClient;
 import com.chm.fj.util.CheckUtil;
-import com.chm.fj.util.CookieUtil;
+import com.chm.fj.util.Tools;
 import com.chm.fj.util.init.PageData;
 
 public class LoginInterceptor extends BaseController implements HandlerInterceptor {
@@ -26,7 +26,7 @@ public class LoginInterceptor extends BaseController implements HandlerIntercept
 		PageData pd = this.getPageData();
 		// 判断是否有accToken
 		String accToken = CheckUtil.isEmpty(pd.getString(StringConst.REDIS_ACC_TOKEN))
-				? CookieUtil.getCkValue(request, StringConst.REDIS_ACC_TOKEN):pd.getString(StringConst.REDIS_ACC_TOKEN);
+				? Tools.getCkValue(request, StringConst.REDIS_ACC_TOKEN):pd.getString(StringConst.REDIS_ACC_TOKEN);
 		if (CheckUtil.isEmpty(accToken)) {
 			System.out.println("尚未登录，调到登录页面");
 			response.sendRedirect(request.getContextPath() + "/" + UrlConst.PAGE_LOGIN);

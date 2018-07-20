@@ -57,7 +57,7 @@ public class FormatUtil {
 	 * @return
 	 */
 	public static String[] str2Array(String str){
-		return str2Array(str,ParamConst.DIVISION_KOMMA);
+		return str2Array(str,ParamConst.DIV_KOMMA);
 	}
 	/**
 	 * 使用指定的字符串"split"对字符串"str"进行分割

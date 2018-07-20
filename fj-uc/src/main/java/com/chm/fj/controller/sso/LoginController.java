@@ -1,7 +1,5 @@
 package com.chm.fj.controller.sso;
 
-import java.util.Map;
-
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.chm.fj.Result.ResultInfo;
 import com.chm.fj.consts.ParamConst;
-import com.chm.fj.consts.RedisConst;
-import com.chm.fj.consts.StatusCodeConst;
+import com.chm.fj.consts.CodeConst;
 import com.chm.fj.consts.StringConst;
 import com.chm.fj.consts.UrlConst;
 import com.chm.fj.controller.base.BaseController;
-import com.chm.fj.other.DateUtil;
 import com.chm.fj.redis.JedisCacheClient;
 /**
  * 登录控制器，后续会改为单点登录
@@ -62,7 +58,7 @@ public class LoginController extends BaseController {
 		PageData pd = this.getPageData();
 		PageData userInfo = this.userInfoService.findUserLoginInfo(pd);
 		if (userInfo == null) {// 找不到此用户或用户密码错误
-			return new ResultInfo(StatusCodeConst.USER_OR_PASS_ERROR, "用户账号或密码错误");
+			return new ResultInfo(CodeConst.USER_OR_PASS_ERROR, "用户账号或密码错误");
 		} else {// 登录成功,保存用户信息、生成accToken
 			if(CheckUtil.isEmpty(pd.getString(StringConst.SSO_TERMAINAL))){//判断终端是否为空
 				pd.put(StringConst.SSO_TERMAINAL, StringConst.SSO_TERMAINAL_COMPUTER);//默认为电脑

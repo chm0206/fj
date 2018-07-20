@@ -4,7 +4,7 @@ package com.chm.fj.consts;
  * @author Administrator
  *
  */
-public class StatusCodeConst {
+public class CodeConst {
 	/**
 	 * 代码出错
 	 */

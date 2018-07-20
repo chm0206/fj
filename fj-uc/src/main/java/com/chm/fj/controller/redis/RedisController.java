@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.chm.fj.Result.ResultInfo;
-import com.chm.fj.consts.RedisConst;
+import com.chm.fj.consts.ParamConst;
 import com.chm.fj.controller.base.BaseController;
 import com.chm.fj.redis.JedisCacheClient;
 
@@ -30,7 +30,7 @@ public class RedisController extends BaseController {
 	@RequestMapping(value="redis")
 	public ResultInfo test() throws Exception{
 		ResultInfo result = new ResultInfo();
-		jedis.setVExpire("chm", "chmVlaue", RedisConst.EXPIRE_30_MINUTE, 0);
+		jedis.setVExpire("chm", "chmVlaue", ParamConst.EXPIRE_30_MINUTE, 0);
 		String v = jedis.getV("chm", 0);
 		System.out.println(v);
 		//获取ShardedJedis对象

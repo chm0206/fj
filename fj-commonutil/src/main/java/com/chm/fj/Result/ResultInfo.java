@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
-import com.chm.fj.consts.StatusCodeConst;
+import com.chm.fj.consts.CodeConst;
 import com.chm.fj.consts.StringConst;
 import com.chm.fj.util.FormatUtil;
 import com.chm.fj.util.init.PageData;
@@ -61,7 +61,7 @@ public class ResultInfo {
 	 * 生成默认状态码
 	 */
 	public ResultInfo() {
-		this(StatusCodeConst.CODE_NORMAL);
+		this(CodeConst.CODE_NORMAL);
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class ResultInfo {
 	 *            map格式的返回数据
 	 */
 	public ResultInfo(Map<String, Object> map) {
-		this(StatusCodeConst.CODE_NORMAL, map);
+		this(CodeConst.CODE_NORMAL, map);
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class ResultInfo {
 	 *            要返回的数据
 	 */
 	public ResultInfo(JSONObject object) {
-		this(StatusCodeConst.CODE_NORMAL, object);
+		this(CodeConst.CODE_NORMAL, object);
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class ResultInfo {
 	 *            状态说明
 	 */
 	public ResultInfo(String msg) {
-		this(StatusCodeConst.CODE_NORMAL, msg);
+		this(CodeConst.CODE_NORMAL, msg);
 	}
 
 	/**
