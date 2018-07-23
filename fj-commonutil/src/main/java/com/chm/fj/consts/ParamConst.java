@@ -48,7 +48,7 @@ public class ParamConst {
 	/**参数内分隔符(尽量别改)*/
 	public static final String DIV_VALUE_REGEX = "\\#";
 	/*** 分割符","*/
-	public static final String DIV_KOMMA = ",";
+	public static final String DIV_KOMMA = "\\,";
 	/*** 左括号*/
 	public static final String DIV_LEFT_PARENTHESIS = "[";
 	/*** 右括号*/

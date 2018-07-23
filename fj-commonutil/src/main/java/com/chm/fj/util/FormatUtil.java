@@ -1,7 +1,6 @@
 package com.chm.fj.util;
 
 import java.lang.reflect.InvocationTargetException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -30,7 +29,7 @@ public class FormatUtil {
 		return new JSONObject(map);//JSONObject.parseObject(map);
 	}
 	/**
-	 * 将字符串转换为map格式
+	 * 将str转换为map格式
 	 * @param str 字符串数据
 	 * @return 字符串为空返回null,否则返回map数据
 	 */
@@ -41,7 +40,7 @@ public class FormatUtil {
 		return json2Map(str2Json(str));
 	}
 	/**
-	 * 将字符串转换为json格式
+	 * 将str转换为json格式
 	 * @param str 字符串数据
 	 * @return 字符串为空返回null,否则返回json数据
 	 */
@@ -137,6 +136,7 @@ public class FormatUtil {
 	 * @author chm
 	 * @return
 	 */
+	@Deprecated
 	public static <T> T map2Bean(Map<String, String> map, Class<T> class1) {  
         T bean = null;  
         try {  
@@ -158,6 +158,7 @@ public class FormatUtil {
 	 * @param format
 	 * @return
 	 */
+	@Deprecated
 	public static String date2Str(Date date,String format){
 		if(date!=null){
 			SimpleDateFormat sdf = new SimpleDateFormat(format);
@@ -167,48 +168,12 @@ public class FormatUtil {
 		}
 	}
 	/**
-	 * 按照yyyy-MM-dd HH:mm:ss的格式，日期转字符串
+	 * 按照yyyy-MM-dd HH:mm:ss的格式，日期转字符串(可以使用dateUtil工具类)
 	 * @param date
 	 * @return yyyy-MM-dd HH:mm:ss
 	 */
+	@Deprecated
 	public static String date2Str(Date date){
 		return date2Str(date,"yyyy-MM-dd HH:mm:ss");
-	}
-	
-	/**
-	 * 按照yyyy-MM-dd HH:mm:ss的格式，字符串转日期
-	 * @param date
-	 * @return
-	 */
-	public static Date str2Date(String date){
-		if(CheckUtil.notEmpty(date)){
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			try {
-				return sdf.parse(date);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			return new Date();
-		}else{
-			return null;
-		}
-	}
-	/**
-	 * 按照yyyy-MM-dd HH:mm:ss的格式，字符串转日期
-	 * @param date
-	 * @return
-	 */
-	public static Date str2Date(String date,String format){
-		if(CheckUtil.notEmpty(date)){
-			SimpleDateFormat sdf = new SimpleDateFormat(format);
-			try {
-				return sdf.parse(date);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			return new Date();
-		}else{
-			return null;
-		}
 	}
 }

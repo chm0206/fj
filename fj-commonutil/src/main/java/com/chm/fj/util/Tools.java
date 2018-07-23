@@ -476,6 +476,30 @@ public class Tools {
 	}
 
 	/**
+	 * 得到32位的uuid
+	 * 
+	 * @return
+	 */
+	public String get32UUID() {
+		return UUID.randomUUID().toString().trim().replaceAll("-", "");
+	}
+	/**
+	 * 获取13位uuid
+	 * @return
+	 */
+	@Deprecated
+	public String get13UUID() {
+		return Long.toString(System.currentTimeMillis());
+	}
+	/**
+	 * 获取13位时间戳加3位随机数
+	 * @return
+	 */
+	public String get16UUID() {
+		return String.valueOf(System.currentTimeMillis() + new Random().nextInt(900) + 100);
+	}
+
+	/**
 	 * 根据json链获取指定数据
 	 * 
 	 * @param json
@@ -483,7 +507,7 @@ public class Tools {
 	 * @return 返回指定的数据，若key格式错误，返回false
 	 */
 	public static Object getJSON(JSONObject json, String key) {
-		if(!key.matches(ParamConst.REG_JSON_LIST)){//校验key格式是否正确,错误返回false
+		if (!key.matches(ParamConst.REG_JSON_LIST)) {// 校验key格式是否正确,错误返回false
 			return false;
 		}
 		return getJSONForObject(json, key.split(ParamConst.DIV_DOT), 0);
@@ -497,7 +521,7 @@ public class Tools {
 	 * @return
 	 */
 	public static Object getJSON(JSONArray json, String key) {
-		if(!key.matches(ParamConst.REG_JSON_LIST)){//校验key格式是否正确,错误返回false
+		if (!key.matches(ParamConst.REG_JSON_LIST)) {// 校验key格式是否正确,错误返回false
 			return false;
 		}
 		JSONObject object = new JSONObject();
@@ -521,26 +545,26 @@ public class Tools {
 
 		String keyAll = keys[index];
 		String key = getKey(keyAll);
-		try{
-		if (isArray(object.get(key).getClass().toString())) {// 判断是否为JSONArray
-			int count = getKeySub(keyAll);//获取数组下标
-			if (keys.length == index + 1) {//到了最后一层，直接获取数据
-				return ((JSONArray) object.get(key)).get(count);
+		try {
+			if (isArray(object.get(key).getClass().toString())) {// 判断是否为JSONArray
+				int count = getKeySub(keyAll);// 获取数组下标
+				if (keys.length == index + 1) {// 到了最后一层，直接获取数据
+					return ((JSONArray) object.get(key)).get(count);
+				} else {
+					return getJSONForObject(((JSONArray) object.get(key)).getJSONObject(count), keys, index + 1);
+				}
 			} else {
-				return getJSONForObject(((JSONArray) object.get(key)).getJSONObject(count), keys, index + 1);
+				if (keys.length == index + 1) {
+					return object.get(key);
+				} else {
+					return getJSONForObject((JSONObject) object.get(key), keys, index + 1);
+				}
 			}
-		} else {
-			if (keys.length == index + 1) {
-				return object.get(key);
-			} else {
-				return getJSONForObject((JSONObject) object.get(key), keys, index + 1);
-			}
-		}
-		}catch (NullPointerException nul){
-			System.out.println("<"+key+">不存在");
+		} catch (NullPointerException nul) {
+			System.out.println("<" + key + ">不存在");
 			return false;
-		}catch (IndexOutOfBoundsException indxout){
-			System.out.println("<"+key+">下标越界");
+		} catch (IndexOutOfBoundsException indxout) {
+			System.out.println("<" + key + ">下标越界");
 			return false;
 		}
 	}
@@ -556,8 +580,8 @@ public class Tools {
 		switch (sub.size()) {
 		case 0:
 			return key;
-		case 2://获取到左右两个括号
-			return key.substring(0, sub.get(0));//从str开发读取到第一个括号<[>的位置
+		case 2:// 获取到左右两个括号
+			return key.substring(0, sub.get(0));// 从str开发读取到第一个括号<[>的位置
 		default:
 			System.out.println("字符串 \"" + key + "\" 格式错误");
 			throw new MyException();
@@ -577,10 +601,11 @@ public class Tools {
 		case 0:
 			return -1;
 		case 2:
-			/*if (sub.get(0) + 1 == sub.get(1)) {//括号间没有数字，已在正则中处理
-				System.out.println("字符串 \"" + key + "\" 格式错误");
-				throw new MyException();
-			}*/
+			/*
+			 * if (sub.get(0) + 1 == sub.get(1)) {//括号间没有数字，已在正则中处理
+			 * System.out.println("字符串 \"" + key + "\" 格式错误"); throw new
+			 * MyException(); }
+			 */
 			return Integer.valueOf(key.substring(sub.get(0) + 1, sub.get(1)));
 		default:
 			System.out.println("字符串 \"" + key + "\" 格式错误");
