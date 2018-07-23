@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
+import com.chm.fj.Result.ResultInfo;
 import com.chm.fj.controller.base.BaseController;
 import com.chm.fj.service.group.GroupInfoService;
 import com.chm.fj.util.CheckUtil;
-import com.chm.fj.util.ResponseUtil;
 import com.chm.fj.util.init.Page;
 import com.chm.fj.util.init.PageData;
 
@@ -33,32 +32,35 @@ public class GroupController extends BaseController {
 	
 	@RequestMapping(value = "/toGroupList", produces = "application/json;charset=UTF-8" )
 	public Object toGroupList(Page page) throws Exception{
-		JSONObject json = new JSONObject();
+		//JSONObject json = new JSONObject();
+		ResultInfo result = new ResultInfo();
 		PageData pd = this.getPageData();
 		List<PageData> groupList = this.groupInfoService.listPagePd(page);
-		json.put("pd", pd);
-		json.put("groupList", groupList);
-		return ResponseUtil.returnJson(json);
+		result.put("pd", pd);
+		result.put("groupList", groupList);
+		return result;//ResponseUtil.returnJson(json);
 	}
 	@RequestMapping(value = "/toGroupInfo", produces = "application/json;charset=UTF-8" )
 	public Object toGroupInfo() throws Exception{
-		JSONObject json = new JSONObject();
+		//JSONObject json = new JSONObject();
+		ResultInfo result = new ResultInfo();
 		PageData pd = this.getPageData();
 		String gID = pd.getString("gID");
 		if(CheckUtil.isEmpty(gID)){
 			gID="1";
 		}
 		PageData groupInfo = this.groupInfoService.findPdById(gID);
-		json.put("pd",pd);
-		json.put("groupInfo", groupInfo);
-		return ResponseUtil.returnJson(json);//不使用toString
+		result.put("pd",pd);
+		result.put("groupInfo", groupInfo);
+		return result;//ResponseUtil.returnJson(json);//不使用toString
 	}
 	@RequestMapping(value = "/saveGroupInfo", produces = "application/json;charset=UTF-8" )
 	@ResponseBody
 	public Object saveGroupInfo()throws Exception{
-		JSONObject json = new JSONObject();
+		//JSONObject json = new JSONObject();
+		ResultInfo result = new ResultInfo();
 		PageData pd = this.getPageData();
-		json.put("group", this.groupInfoService.findPdById(pd.getString("gID")));
-		return ResponseUtil.returnJson(json);
+		result.put("group", this.groupInfoService.findPdById(pd.getString("gID")));
+		return result;//ResponseUtil.returnJson(json);
 	}
 }

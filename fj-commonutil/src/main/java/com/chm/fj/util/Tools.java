@@ -19,12 +19,17 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.crypto.hash.SimpleHash;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.chm.fj.consts.ParamConst;
+import com.chm.fj.exception.MyException;
 import com.chm.fj.other.DateUtil;
 import com.chm.fj.util.init.PageData;
 
@@ -228,13 +233,13 @@ public class Tools {
 	public static List<Map<String,Object>> splitParValue(String parmStr){
 		List<Map<String,Object>> lpd = new ArrayList<Map<String,Object>>() ;
 		if(!CheckUtil.isEmpty(parmStr)){
-			String[] sts = FormatUtil.str2Array(parmStr, ParamConst.DIVISION_PARAM_REGEX) ;
+			String[] sts = FormatUtil.str2Array(parmStr, ParamConst.DIV_PARAM_REGEX) ;
 			if(sts.length>0){
 				for(int i=0;i<sts.length;i++){
 					if(!CheckUtil.isEmpty(sts[i])){
 						//PageData npd = new PageData() ;
 						Map<String,Object> npd = new HashMap<String,Object>() ;
-						String[] result = sts[i].split(ParamConst.DIVISION_VALUE_REGEX) ;
+						String[] result = sts[i].split(ParamConst.DIV_VALUE_REGEX) ;
 						if(result.length == 2){
 							npd.put("sId", result[0]) ;
 							npd.put("sValue", result[1]) ;
@@ -592,19 +597,165 @@ public class Tools {
 			System.out.println("ssss " + s);
 		}
 	}
-	
-	
+	/**
+	 * 获取cookie列表
+	 * @param request
+	 * @return
+	 */
+	public static Cookie[] getCookies(HttpServletRequest request){
+		Cookie[] cookies = (Cookie[]) request.getCookies();
+		return cookies;
+	}
+	/**
+	 * 获取指定cookie的值
+	 * @param request
+	 * @param key
+	 * @return
+	 */
+	public static String getCkValue(HttpServletRequest request,String key){
+		if(CheckUtil.isEmpty(key)){
+			return null;
+		}
+		Cookie[] cookies = (Cookie[]) request.getCookies();
+		if(cookies == null || cookies.length<=0){
+			return null;
+		}
+		for (Cookie cookie : cookies) {
+			if(key.equals(cookie.getName())){
+				return cookie.getValue();
+			}
+		}
+		return null;
+	}
 	
 	/**
-	 * 报文响应状态信息格式化方法
-	 * @param code
-	 * @param reason
+	 * 根据json链获取指定数据
+	 * @param json
+	 * @param key
 	 * @return
-	 *//*
-	public static Map<String,Object> formStatus(String code,String msg) {
-		Map<String,Object> isStatus = new HashMap<String,Object>() ;
-		isStatus.put(ParamConst.UCAPI_STATUS_CODE, code) ; //状态码
-		isStatus.put(ParamConst.UCAPI_STATUS_REASON, msg) ; //状态信息
-		return isStatus ;
-	}*/
+	 */
+	public static Object getJSON(JSONObject json, String key) {
+		return getJSONForObject(json, key.split(ParamConst.DIV_DOT), 0);
+	}
+
+	/**
+	 * 获取到Object类型的json对象
+	 * 
+	 * @param object
+	 * @param keys
+	 * @param index
+	 * @return
+	 */
+	public static Object getJSONForObject(JSONObject object, String[] keys, int index) {
+		if (keys.length < index + 1) {
+			return object;
+		}
+
+		String keyAll = keys[index];
+		String key = getKey(keyAll);
+		if (isArray(object.get(key).getClass().toString())) {// 判断是否为JSONArray
+			int count = getKeySub(keyAll);
+			if (keys.length == index + 1) {
+				return ((JSONArray) object.get(key)).get(count);
+			} else {
+				return getJSONForObject(((JSONArray) object.get(key)).getJSONObject(count), keys, index + 1);
+			}
+		} else {
+			if (keys.length == index + 1) {
+				return object.get(key);
+			} else {
+				return getJSONForObject((JSONObject) object.get(key), keys, index + 1);
+			}
+		}
+	}
+
+	/**
+	 * 获取数组Key值
+	 * <pro>
+	 * name[1]，获取到的数据是name,如果为name,则返回name
+	 * </pro>
+	 * @param key 
+	 * @return
+	 */
+	public static String getKey(String key) {
+		List<Integer> sub = getParenthesisSub(key);
+		switch (sub.size()) {
+		case 0:
+			return key;
+		case 2:
+			return key.substring(0, sub.get(0));
+		default:
+			System.out.println("字符串 \""+key+"\" 格式错误");
+			throw new MyException();
+			//return StatusCodeConst.ERROR;
+		}
+//		int left = key.indexOf(ParamConst.LEFT_PARENTHESIS);
+//		int right = key.indexOf(ParamConst.RIGHT_PARENTHESIS);
+//		boolean isLeft = left<0?false:true;	//是否存在左括号
+//		boolean isRight = right<0?false:true;//是否存在右括号
+//		if (!isLeft && !isRight) {	//不存在左括号并且不存在右括号
+//			return key;
+//		}else if(isLeft && isRight){	//存在左括号并且存在右括号
+//			return key.substring(0, left);
+//		}
+//		return StatusCodeConst.ERROR;
+	}
+
+	/**
+	 * 获取数组下标
+	 * 
+	 * @param key
+	 *            数组名称
+	 * @return 获取到数组下标，返回下载值，否则返回-1
+	 */
+	public static int getKeySub(String key) {
+		List<Integer> sub = getParenthesisSub(key);
+		switch (sub.size()) {
+		case 0:
+			return -1;
+		case 2:
+			if(sub.get(0) + 1 ==sub.get(1)){
+				System.out.println("字符串 \""+key+"\" 格式错误");
+				throw new MyException();
+			}
+			return Integer.valueOf(key.substring(sub.get(0) + 1, sub.get(1)));
+		default:
+			System.out.println("字符串 \""+key+"\" 格式错误");
+			throw new MyException();
+		}
+//		int left = key.indexOf(ParamConst.LEFT_PARENTHESIS);
+//		int right = key.indexOf(ParamConst.RIGHT_PARENTHESIS);
+//		if (left < 0 || right < 0) {
+//			return -1;
+//		}
+//		return Integer.valueOf(key.substring(left + 1, right));
+	}
+
+	/**
+	 * 获取左右括号[]
+	 * @param key
+	 * @return
+	 */
+	public static List<Integer> getParenthesisSub(String key) {
+		List<Integer> sub = new ArrayList<>();
+		int left = key.indexOf(ParamConst.DIV_LEFT_PARENTHESIS);
+		if (left >= 0) {
+			sub.add(left);
+		}
+		int right = key.indexOf(ParamConst.DIV_RIGHT_PARENTHESIS);
+		if (right >= 0) {
+			sub.add(right);
+		}
+		return sub;
+	}
+
+	/**
+	 * 判断是否为JSON数组
+	 * @param clazz class名称完全路径
+	 * @return
+	 */
+	public static boolean isArray(String clazz) {
+		String[] list = clazz.split(ParamConst.DIV_DOT);
+		return "JSONArray".equals(list[list.length - 1]);
+	}
 }

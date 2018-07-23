@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
+import com.chm.fj.Result.ResultInfo;
 import com.chm.fj.controller.base.BaseController;
 import com.chm.fj.service.menu.MenuInfoService;
 import com.chm.fj.util.CheckUtil;
-import com.chm.fj.util.ResponseUtil;
 import com.chm.fj.util.init.Page;
 import com.chm.fj.util.init.PageData;
 
@@ -32,32 +31,35 @@ public class MenuController extends BaseController {
 	
 	@RequestMapping(value = "/toMenuList", produces = "application/json;charset=UTF-8")
 	public Object toUserList(Page page) throws Exception{
-		JSONObject json = new JSONObject();
+		//JSONObject json = new JSONObject();
+		ResultInfo result = new ResultInfo();
 		PageData pd = this.getPageData();
 		List<PageData> menuList = this.menuInfoService.listPagePd(page);
-		json.put("pd",pd);
-		json.put("menuList", menuList);
-		return ResponseUtil.returnJson(json);
+		result.put("pd",pd);
+		result.put("menuList", menuList);
+		return result;//ResponseUtil.returnJson(json);
 	}
 	@RequestMapping(value = "/toMenuInfo", produces = "application/json;charset=UTF-8")
 	public Object toMenuInfo() throws Exception{
-		JSONObject json = new JSONObject();
+		//JSONObject json = new JSONObject();
+		ResultInfo result = new ResultInfo();
 		PageData pd = this.getPageData();
 		String menuID = pd.getString("menuID");
 		if(CheckUtil.isEmpty(menuID)){
 			menuID="1";
 		}
 		PageData menuInfo = this.menuInfoService.findPdById(menuID);
-		json.put("pd",pd);
-		json.put("menuInfo", menuInfo);
-		return ResponseUtil.returnJson(json);
+		result.put("pd",pd);
+		result.put("menuInfo", menuInfo);
+		return result;//ResponseUtil.returnJson(json);
 	}
 	@RequestMapping(value = "/saveMenuInfo", produces = "application/json;charset=UTF-8" )
 	@ResponseBody
 	public Object saveUserInfo()throws Exception{
-		JSONObject json = new JSONObject();
+		//JSONObject json = new JSONObject();
+		ResultInfo result = new ResultInfo();
 		PageData pd = this.getPageData();
-		json.put("menu", this.menuInfoService.findPdById(pd.getString("menuID")));
-		return ResponseUtil.returnJson(json);
+		result.put("menu", this.menuInfoService.findPdById(pd.getString("menuID")));
+		return result;//ResponseUtil.returnJson(json);
 	}
 }
