@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.chm.fj.Result.ResultInfo;
 import com.chm.fj.controller.base.BaseController;
 
-import redis.clients.jedis.ShardedJedis;
-
 //@Controller
 @RestController//rest接口必备
 @RequestMapping(value="test")

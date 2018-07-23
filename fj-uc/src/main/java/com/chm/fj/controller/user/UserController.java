@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSONObject;
+import com.chm.fj.Result.ResultInfo;
 import com.chm.fj.controller.base.BaseController;
 import com.chm.fj.entity.UserInfo;
 import com.chm.fj.service.user.UserInfoService;
 import com.chm.fj.util.CheckUtil;
-import com.chm.fj.util.Tools;
 import com.chm.fj.util.init.Page;
 import com.chm.fj.util.init.PageData;
 
@@ -37,6 +36,7 @@ public class UserController extends BaseController {
 		ModelAndView mv = new ModelAndView();
 		PageData pd = this.getPageData();
 		List<PageData> userList = this.userInfoService.listPagePd(page);
+		mv.addObject("userList",userList);
 		mv.addObject("pd",pd);
 		mv.setViewName("user/userList");
 		return mv;
@@ -50,16 +50,19 @@ public class UserController extends BaseController {
 			userID="1";
 		}
 		PageData userInfo = this.userInfoService.findPdById(userID);
+		mv.addObject("userInfo",userInfo);
 		mv.addObject("pd",pd);
 		mv.setViewName("user/userList");
 		return mv;
 	}
 	@RequestMapping(value = "/saveUserInfo", produces = "application/json;charset=UTF-8" )
 	@ResponseBody
-	public Object saveUserInfo()throws Exception{
-		JSONObject object = new JSONObject();
+	public ResultInfo saveUserInfo()throws Exception{
+		ResultInfo result  = new ResultInfo();
+		//JSONObject object = new JSONObject();
 		PageData pd = this.getPageData();
-		object.put("user", new UserInfo());
-		return object.toString();
+		result.put("user", new UserInfo());
+		result.put("pd",pd);
+		return result;
 	}
 }

@@ -7,7 +7,6 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>fj-commonutil</artifactId>
-	<groupId>com.chm.fj</groupId>
 	<properties>
 		<shiro.version>1.2.3</shiro.version>
 		<mybatis.version>3.2.1</mybatis.version>

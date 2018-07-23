@@ -109,7 +109,11 @@ public class ParamConst {
     /*** 正则表达式：验证IP地址*/
     public static final String REG_IP_ADDR = "(25[0-5]|2[0-4]\\d|[0-1]\\d{2}|[1-9]?\\d)";
     /*** 正则表达式：验证密码(匹配数字字母_.) */
-    public static final String REGEX_PASSWORD = "^[\\w\\.]{6,16}$";
+    public static final String REG_PASSWORD = "^[\\w\\.]{6,16}$";
+    /**
+     * 获取获取json数据的链式结构是否正确
+     */
+    public static final String REG_JSON_LIST = "^([a-zA-Z]\\w*(\\[\\d+\\])?\\.)+([a-zA-Z]\\w*(\\[\\d+\\])?)$";
 	
     //redis-过期时间(比包装类Integer好)
     /*** 设置过期时间为1个小时*/
@@ -123,10 +127,10 @@ public class ParamConst {
 	public static void main(String[] args){
 		//String phone = "1";
 		//System.out.println(phone.matches(DIV_DOT));
-		String s = "1234|abc#1234|abc";
-		String[] s1 = s.split(DIV_PARAM_REGEX);
-		String[] s2 = s.split(DIV_VALUE_REGEX);
-		System.out.println(s1);
+//		String s = "1234|abc#1234|abc";
+//		String[] s1 = s.split(DIV_PARAM_REGEX);
+//		String[] s2 = s.split(DIV_VALUE_REGEX);
+//		System.out.println(s1);
 	}
 	
 }

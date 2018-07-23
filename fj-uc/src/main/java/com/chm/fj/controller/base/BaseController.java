@@ -8,14 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.chm.fj.redis.JedisCacheClient;
 import com.chm.fj.util.FormatUtil;
-import com.chm.fj.util.Tools;
 import com.chm.fj.util.init.Jurisdiction;
 import com.chm.fj.util.init.Page;
 import com.chm.fj.util.init.PageData;

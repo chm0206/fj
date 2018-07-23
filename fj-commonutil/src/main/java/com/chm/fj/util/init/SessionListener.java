@@ -14,7 +14,8 @@ import javax.servlet.http.HttpSessionListener;
  *
  */
 public class SessionListener implements HttpSessionListener {  
-    public static Map userMap = new HashMap();  
+    @SuppressWarnings("rawtypes")
+	public static Map userMap = new HashMap();  
     private   MySessionContext myc=MySessionContext.getInstance();  
   
         public void sessionCreated(HttpSessionEvent httpSessionEvent) {  

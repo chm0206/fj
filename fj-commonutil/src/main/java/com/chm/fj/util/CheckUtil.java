@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.chm.fj.consts.ParamConst;
+
 public class CheckUtil {
 	/**
 	 * 判断对象是否为空
@@ -154,5 +156,16 @@ public class CheckUtil {
 			flag = false;
 		}
 		return flag;
+	}
+	/**
+	 * 校验json格式是否正确
+	 * @param str
+	 * @return
+	 */
+	public static boolean checkJSONFormat(String str){
+		if(isEmpty(str)){
+			return false;
+		}
+		return str.matches(ParamConst.REG_JSON_LIST);
 	}
 }
