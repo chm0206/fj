@@ -6,7 +6,7 @@
 		<artifactId>fj-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.chm.fj</groupId>
+	<!-- <groupId>com.chm.fj</groupId> -->
 	<artifactId>fj-service</artifactId>
 
 	<properties>
