@@ -1,4 +1,4 @@
-package com.chm.fj.dao.base;
+package ac.cn.chm.fj.uc.dao.base;
 
 import java.util.List;
 

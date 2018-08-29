@@ -1,4 +1,4 @@
-package com.chm.fj.controller.main;
+package ac.cn.chm.fj.uc.controller.main;
 
 import java.util.List;
 
@@ -7,12 +7,12 @@ import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.chm.fj.Result.ResultInfo;
-import com.chm.fj.controller.base.BaseController;
-import com.chm.fj.entity.MenuInfo;
-import com.chm.fj.other.DateUtil;
-import com.chm.fj.service.menu.MenuInfoService;
-import com.chm.fj.util.init.PageData;
+import ac.cn.chm.fj.other.DateUtil;
+import ac.cn.chm.fj.result.ResultInfo;
+import ac.cn.chm.fj.uc.controller.base.BaseController;
+import ac.cn.chm.fj.uc.entity.MenuInfo;
+import ac.cn.chm.fj.uc.service.menu.MenuInfoService;
+import ac.cn.chm.fj.util.init.PageData;
 /**
  * 主入口，首页，登录，找回密码等不需要拦截的页面都在这
  * @author Administrator

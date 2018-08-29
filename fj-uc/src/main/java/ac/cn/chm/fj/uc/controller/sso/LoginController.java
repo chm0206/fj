@@ -1,4 +1,4 @@
-package com.chm.fj.controller.sso;
+package ac.cn.chm.fj.uc.controller.sso;
 
 import javax.annotation.Resource;
 
@@ -8,23 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.chm.fj.Result.ResultInfo;
-import com.chm.fj.consts.ParamConst;
-import com.chm.fj.consts.CodeConst;
-import com.chm.fj.consts.StringConst;
-import com.chm.fj.consts.UrlConst;
-import com.chm.fj.controller.base.BaseController;
-import com.chm.fj.redis.JedisCacheClient;
-/**
- * 登录控制器，后续会改为单点登录
- * @author chm
- * @data 2018/04/46 23:34
- */
-import com.chm.fj.service.user.UserInfoService;
-import com.chm.fj.util.CheckUtil;
-import com.chm.fj.util.RedisUtil;
-import com.chm.fj.util.Tools;
-import com.chm.fj.util.init.PageData;
+import ac.cn.chm.fj.consts.CodeConst;
+import ac.cn.chm.fj.consts.ParamConst;
+import ac.cn.chm.fj.consts.StringConst;
+import ac.cn.chm.fj.consts.UrlConst;
+import ac.cn.chm.fj.result.ResultInfo;
+import ac.cn.chm.fj.uc.controller.base.BaseController;
+import ac.cn.chm.fj.uc.redis.JedisCacheClient;
+import ac.cn.chm.fj.uc.service.user.UserInfoService;
+import ac.cn.chm.fj.uc.util.RedisUtil;
+import ac.cn.chm.fj.util.CheckUtil;
+import ac.cn.chm.fj.util.Tools;
+import ac.cn.chm.fj.util.init.PageData;
 
 @Controller
 @RequestMapping(value = "login")

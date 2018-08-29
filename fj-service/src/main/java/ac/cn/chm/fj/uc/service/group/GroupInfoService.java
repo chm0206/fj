@@ -1,7 +1,7 @@
-package com.chm.fj.service.group;
+package ac.cn.chm.fj.uc.service.group;
 
-import com.chm.fj.entity.GroupInfo;
-import com.chm.fj.service.base.IService;
+import ac.cn.chm.fj.uc.entity.GroupInfo;
+import ac.cn.chm.fj.uc.service.base.IService;
 
 public interface GroupInfoService extends IService<GroupInfo, String> {
 

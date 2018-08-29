@@ -1,4 +1,4 @@
-package com.chm.fj.entity;
+package ac.cn.chm.fj.uc.entity;
 /**
  * 用户信息
  * @author 陈焕明

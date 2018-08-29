@@ -1,4 +1,4 @@
-package com.chm.fj.util.init;
+package ac.cn.chm.fj.util.init;
 
 import java.util.Collection;
 import java.util.HashMap;

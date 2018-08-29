@@ -1,6 +1,6 @@
-package com.chm.fj.util.init;
+package ac.cn.chm.fj.util.init;
 
-import com.chm.fj.consts.ParamConst;
+import ac.cn.chm.fj.consts.ParamConst;
 
 /**
  * 分页类

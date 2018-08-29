@@ -1,4 +1,4 @@
-package com.chm.fj.dao.base;
+package ac.cn.chm.fj.uc.dao.base;
 /**
  * @author riseinfo.cn
  * 修改时间：2015、12、11

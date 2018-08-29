@@ -1,9 +1,9 @@
-package com.chm.fj.service.menu;
+package ac.cn.chm.fj.uc.service.menu;
 
 import java.util.List;
 
-import com.chm.fj.entity.MenuInfo;
-import com.chm.fj.service.base.IService;
+import ac.cn.chm.fj.uc.entity.MenuInfo;
+import ac.cn.chm.fj.uc.service.base.IService;
 
 public interface MenuInfoService extends IService<MenuInfo, String> {
 	/**

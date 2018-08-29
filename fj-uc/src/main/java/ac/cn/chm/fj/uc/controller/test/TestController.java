@@ -1,10 +1,10 @@
-package com.chm.fj.controller.test;
+package ac.cn.chm.fj.uc.controller.test;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.chm.fj.Result.ResultInfo;
-import com.chm.fj.controller.base.BaseController;
+import ac.cn.chm.fj.result.ResultInfo;
+import ac.cn.chm.fj.uc.controller.base.BaseController;
 
 //@Controller
 @RestController//rest接口必备

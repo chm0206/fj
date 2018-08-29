@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="fj-uc">
+    <wb-module deploy-name="fj-uc-web">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
@@ -7,13 +7,13 @@
         <dependent-module archiveName="fj-commonutil-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fj-commonutil/fj-commonutil">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="fj-entity-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fj-entity/fj-entity">
+        <dependent-module archiveName="fj-uc-entity-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fj-uc-entity/fj-uc-entity">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="fj-service-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fj-service/fj-service">
+        <dependent-module archiveName="fj-uc-service-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fj-uc-service/fj-uc-service">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <property name="java-output-path" value="/fj-uc-web/target/classes"/>
         <property name="context-root" value="fj-uc"/>
-        <property name="java-output-path" value="/fj-uc/target/classes"/>
     </wb-module>
 </project-modules>

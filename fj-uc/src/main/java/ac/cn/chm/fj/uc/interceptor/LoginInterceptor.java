@@ -1,4 +1,4 @@
-package com.chm.fj.interceptor;
+package ac.cn.chm.fj.uc.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.chm.fj.consts.StringConst;
-import com.chm.fj.consts.UrlConst;
-import com.chm.fj.controller.base.BaseController;
-import com.chm.fj.redis.JedisCacheClient;
-import com.chm.fj.util.CheckUtil;
-import com.chm.fj.util.Tools;
-import com.chm.fj.util.init.PageData;
+import ac.cn.chm.fj.consts.StringConst;
+import ac.cn.chm.fj.consts.UrlConst;
+import ac.cn.chm.fj.uc.controller.base.BaseController;
+import ac.cn.chm.fj.uc.redis.JedisCacheClient;
+import ac.cn.chm.fj.util.CheckUtil;
+import ac.cn.chm.fj.util.Tools;
+import ac.cn.chm.fj.util.init.PageData;
 
 public class LoginInterceptor extends BaseController implements HandlerInterceptor {
 

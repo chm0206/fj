@@ -1,4 +1,4 @@
-package com.chm.fj.exception;
+package ac.cn.chm.fj.exception;
 
 public class MyException extends ArrayIndexOutOfBoundsException {
 

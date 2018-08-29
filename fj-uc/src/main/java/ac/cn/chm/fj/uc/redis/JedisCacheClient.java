@@ -1,4 +1,4 @@
-package com.chm.fj.redis;
+package ac.cn.chm.fj.uc.redis;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.chm.fj.util.CheckUtil;
-import com.chm.fj.util.FormatUtil;
 
+import ac.cn.chm.fj.util.CheckUtil;
+import ac.cn.chm.fj.util.FormatUtil;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 

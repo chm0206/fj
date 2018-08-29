@@ -1,4 +1,4 @@
-package com.chm.fj.service.user.impl;
+package ac.cn.chm.fj.uc.service.user.impl;
 
 import java.util.List;
 
@@ -6,12 +6,12 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.chm.fj.consts.StringConst;
-import com.chm.fj.dao.base.DaoSupport;
-import com.chm.fj.service.user.UserInfoService;
-import com.chm.fj.util.CheckUtil;
-import com.chm.fj.util.init.Page;
-import com.chm.fj.util.init.PageData;
+import ac.cn.chm.fj.consts.StringConst;
+import ac.cn.chm.fj.uc.dao.base.DaoSupport;
+import ac.cn.chm.fj.uc.service.user.UserInfoService;
+import ac.cn.chm.fj.util.CheckUtil;
+import ac.cn.chm.fj.util.init.Page;
+import ac.cn.chm.fj.util.init.PageData;
 
 /**
  * 用户信息表

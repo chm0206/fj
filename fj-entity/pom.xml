@@ -6,7 +6,7 @@
 		<artifactId>fj-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>fj-entity</artifactId>
+	<artifactId>fj-uc-entity</artifactId>
 
 	<dependencies>
 		<dependency>

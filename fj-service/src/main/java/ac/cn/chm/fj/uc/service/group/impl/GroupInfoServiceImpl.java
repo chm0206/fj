@@ -1,4 +1,4 @@
-package com.chm.fj.service.group.impl;
+package ac.cn.chm.fj.uc.service.group.impl;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.chm.fj.dao.base.DaoSupport;
-import com.chm.fj.service.group.GroupInfoService;
-import com.chm.fj.util.init.Page;
-import com.chm.fj.util.init.PageData;
+import ac.cn.chm.fj.uc.dao.base.DaoSupport;
+import ac.cn.chm.fj.uc.service.group.GroupInfoService;
+import ac.cn.chm.fj.util.init.Page;
+import ac.cn.chm.fj.util.init.PageData;
 
 /**
  * 用户信息表

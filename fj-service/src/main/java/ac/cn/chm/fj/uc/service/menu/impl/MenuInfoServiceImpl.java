@@ -1,4 +1,4 @@
-package com.chm.fj.service.menu.impl;
+package ac.cn.chm.fj.uc.service.menu.impl;
 
 import java.util.List;
 
@@ -6,13 +6,13 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.chm.fj.consts.ParamConst;
-import com.chm.fj.dao.base.DaoSupport;
-import com.chm.fj.entity.MenuInfo;
-import com.chm.fj.service.menu.MenuInfoService;
-import com.chm.fj.util.CheckUtil;
-import com.chm.fj.util.init.Page;
-import com.chm.fj.util.init.PageData;
+import ac.cn.chm.fj.consts.ParamConst;
+import ac.cn.chm.fj.uc.dao.base.DaoSupport;
+import ac.cn.chm.fj.uc.entity.MenuInfo;
+import ac.cn.chm.fj.uc.service.menu.MenuInfoService;
+import ac.cn.chm.fj.util.CheckUtil;
+import ac.cn.chm.fj.util.init.Page;
+import ac.cn.chm.fj.util.init.PageData;
 
 /**
  * 用户信息表

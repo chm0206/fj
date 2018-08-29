@@ -1,4 +1,4 @@
-package com.chm.fj.util;
+package ac.cn.chm.fj.util;
 
 import java.util.Random;
 

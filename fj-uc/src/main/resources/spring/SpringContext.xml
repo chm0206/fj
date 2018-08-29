@@ -16,7 +16,7 @@
 	<context:annotation-config />
 
 	<!-- 启动组件扫描，排除@Controller组件，该组件由SpringMVC配置文件扫描 -->
-	<context:component-scan base-package="com.chm.fj">
+	<context:component-scan base-package="ac.cn.chm.fj.uc">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
@@ -138,7 +138,7 @@
 
 	<!-- 事物处理 -->
 	<aop:config>
-		<aop:pointcut id="pc" expression="execution(* com.chm.fj.dao..*(..))" />
+		<aop:pointcut id="pc" expression="execution(* ac.cn.chm.fj.uc.dao..*(..))" />
 		<aop:advisor pointcut-ref="pc" advice-ref="txAdvice" />
 	</aop:config>
 

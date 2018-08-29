@@ -1,13 +1,14 @@
-package com.chm.fj.Result;
+package ac.cn.chm.fj.result;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
-import com.chm.fj.consts.CodeConst;
-import com.chm.fj.consts.StringConst;
-import com.chm.fj.util.FormatUtil;
-import com.chm.fj.util.init.PageData;
+
+import ac.cn.chm.fj.consts.CodeConst;
+import ac.cn.chm.fj.consts.StringConst;
+import ac.cn.chm.fj.util.FormatUtil;
+import ac.cn.chm.fj.util.init.PageData;
 
 public class ResultInfo {
 

@@ -1,4 +1,4 @@
-package com.chm.fj.util.init;
+package ac.cn.chm.fj.util.init;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -31,7 +31,7 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 
-import com.chm.fj.util.CheckUtil;
+import ac.cn.chm.fj.util.CheckUtil;
 /**
  * 
 * 类名称：分页插件

@@ -6,7 +6,7 @@
 		<artifactId>fj-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>fj-uc</artifactId>
+	<artifactId>fj-uc-web</artifactId>
 	<packaging>war</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,7 +25,7 @@
 		</dependency>
 		<dependency>
 			<groupId>ac.cn.chm</groupId>
-			<artifactId>fj-entity</artifactId>
+			<artifactId>fj-uc-entity</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<!-- <dependency>
@@ -35,7 +35,7 @@
 		</dependency> -->
 		<dependency>
 			<groupId>ac.cn.chm</groupId>
-			<artifactId>fj-service</artifactId>
+			<artifactId>fj-uc-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

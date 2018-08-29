@@ -1,14 +1,14 @@
-package com.chm.fj.controller.redis;
+package ac.cn.chm.fj.uc.controller.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.chm.fj.Result.ResultInfo;
-import com.chm.fj.consts.ParamConst;
-import com.chm.fj.controller.base.BaseController;
-import com.chm.fj.redis.JedisCacheClient;
+import ac.cn.chm.fj.consts.ParamConst;
+import ac.cn.chm.fj.result.ResultInfo;
+import ac.cn.chm.fj.uc.controller.base.BaseController;
+import ac.cn.chm.fj.uc.redis.JedisCacheClient;
 
 //@Controller
 @RestController//rest接口必备

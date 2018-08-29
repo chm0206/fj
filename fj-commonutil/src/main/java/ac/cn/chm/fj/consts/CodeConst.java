@@ -1,4 +1,4 @@
-package com.chm.fj.consts;
+package ac.cn.chm.fj.consts;
 /**
  * 状态码常量类
  * @author Administrator

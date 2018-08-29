@@ -1,4 +1,4 @@
-package com.chm.fj.util.init;
+package ac.cn.chm.fj.util.init;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;

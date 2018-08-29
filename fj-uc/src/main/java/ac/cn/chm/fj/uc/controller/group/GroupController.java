@@ -1,4 +1,4 @@
-package com.chm.fj.controller.group;
+package ac.cn.chm.fj.uc.controller.group;
 
 import java.util.List;
 
@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.chm.fj.Result.ResultInfo;
-import com.chm.fj.controller.base.BaseController;
-import com.chm.fj.service.group.GroupInfoService;
-import com.chm.fj.util.CheckUtil;
-import com.chm.fj.util.init.Page;
-import com.chm.fj.util.init.PageData;
+import ac.cn.chm.fj.result.ResultInfo;
+import ac.cn.chm.fj.uc.controller.base.BaseController;
+import ac.cn.chm.fj.uc.service.group.GroupInfoService;
+import ac.cn.chm.fj.util.CheckUtil;
+import ac.cn.chm.fj.util.init.Page;
+import ac.cn.chm.fj.util.init.PageData;
 
 /**
  * 用户组信息

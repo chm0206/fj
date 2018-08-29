@@ -1,4 +1,4 @@
-package com.chm.fj.util;
+package ac.cn.chm.fj.util;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -26,10 +26,11 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.chm.fj.consts.ParamConst;
-import com.chm.fj.exception.MyException;
-import com.chm.fj.other.DateUtil;
-import com.chm.fj.util.init.PageData;
+
+import ac.cn.chm.fj.consts.ParamConst;
+import ac.cn.chm.fj.exception.MyException;
+import ac.cn.chm.fj.other.DateUtil;
+import ac.cn.chm.fj.util.init.PageData;
 
 /**
  * 说明：常用工具 创建人：riseinfo.cn 修改时间：2014年11月24日

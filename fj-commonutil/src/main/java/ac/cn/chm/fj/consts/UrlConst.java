@@ -1,4 +1,4 @@
-package com.chm.fj.consts;
+package ac.cn.chm.fj.consts;
 
 /**
  * 跳转地址常量类

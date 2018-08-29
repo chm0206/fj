@@ -1,4 +1,4 @@
-package com.chm.fj.consts;
+package ac.cn.chm.fj.consts;
 
 public class ParamConst {
 	/*** 每页默认记录数 20 */

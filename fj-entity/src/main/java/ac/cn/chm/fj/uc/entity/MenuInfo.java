@@ -1,9 +1,9 @@
-package com.chm.fj.entity;
+package ac.cn.chm.fj.uc.entity;
 
 import java.util.List;
 
-import com.chm.fj.consts.ParamConst;
-import com.chm.fj.util.CheckUtil;
+import ac.cn.chm.fj.consts.ParamConst;
+import ac.cn.chm.fj.util.CheckUtil;
 
 /**
  * 权限菜单信息

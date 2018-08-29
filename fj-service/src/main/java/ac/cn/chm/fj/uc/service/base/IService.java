@@ -1,9 +1,9 @@
-package com.chm.fj.service.base;
+package ac.cn.chm.fj.uc.service.base;
 
 import java.util.List;
 
-import com.chm.fj.util.init.Page;
-import com.chm.fj.util.init.PageData;
+import ac.cn.chm.fj.util.init.Page;
+import ac.cn.chm.fj.util.init.PageData;
 /**
  * IDAO接口		
  * @author Administrator

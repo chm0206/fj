@@ -1,4 +1,4 @@
-package com.chm.fj.other;
+package ac.cn.chm.fj.other;
 
 import java.security.MessageDigest;
 /** 

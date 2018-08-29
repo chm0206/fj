@@ -1,8 +1,8 @@
-package com.chm.fj.service.user;
+package ac.cn.chm.fj.uc.service.user;
 
-import com.chm.fj.entity.UserInfo;
-import com.chm.fj.service.base.IService;
-import com.chm.fj.util.init.PageData;
+import ac.cn.chm.fj.uc.entity.UserInfo;
+import ac.cn.chm.fj.uc.service.base.IService;
+import ac.cn.chm.fj.util.init.PageData;
 
 public interface UserInfoService extends IService<UserInfo, String> {
 	/**

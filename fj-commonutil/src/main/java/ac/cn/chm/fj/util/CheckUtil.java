@@ -1,10 +1,10 @@
-package com.chm.fj.util;
+package ac.cn.chm.fj.util;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.chm.fj.consts.ParamConst;
+import ac.cn.chm.fj.consts.ParamConst;
 
 public class CheckUtil {
 	/**

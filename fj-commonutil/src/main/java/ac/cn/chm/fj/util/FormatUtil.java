@@ -1,4 +1,4 @@
-package com.chm.fj.util;
+package ac.cn.chm.fj.util;
 
 import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
@@ -8,7 +8,8 @@ import java.util.Map;
 import org.apache.commons.beanutils.BeanUtils;
 
 import com.alibaba.fastjson.JSONObject;
-import com.chm.fj.consts.ParamConst;
+
+import ac.cn.chm.fj.consts.ParamConst;
 
 /**
  * 格式转换类

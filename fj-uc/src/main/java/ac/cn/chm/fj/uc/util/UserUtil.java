@@ -1,7 +1,8 @@
-package com.chm.fj.util;
+package ac.cn.chm.fj.uc.util;
 
-import com.chm.fj.consts.StringConst;
-import com.chm.fj.util.init.PageData;
+import ac.cn.chm.fj.consts.StringConst;
+import ac.cn.chm.fj.util.CheckUtil;
+import ac.cn.chm.fj.util.init.PageData;
 
 public class UserUtil {
 	/**

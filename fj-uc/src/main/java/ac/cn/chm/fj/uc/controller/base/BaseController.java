@@ -1,4 +1,4 @@
-package com.chm.fj.controller.base;
+package ac.cn.chm.fj.uc.controller.base;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -7,8 +7,8 @@ import org.apache.log4j.Logger;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.chm.fj.util.init.Jurisdiction;
-import com.chm.fj.util.init.PageData;
+import ac.cn.chm.fj.util.init.Jurisdiction;
+import ac.cn.chm.fj.util.init.PageData;
 
 /**
  * @author riseinfo.cn 修改时间：2015、12、11
