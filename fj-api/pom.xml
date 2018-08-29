@@ -4,11 +4,11 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.chm.fj</groupId>
+		<groupId>ac.cn.chm</groupId>
 		<artifactId>fj-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.chm.fj</groupId>
+	<groupId>ac.cn.chm</groupId>
 	<artifactId>fj-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>fj-api</name>
@@ -20,7 +20,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.chm.fj</groupId>
+			<groupId>ac.cn.chm</groupId>
 			<artifactId>fj-commonutil</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.chm.fj</groupId>
+		<groupId>ac.cn.chm</groupId>
 		<artifactId>fj-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
@@ -19,12 +19,12 @@
 		<!-- 引入子项目 -->
 
 		<dependency>
-			<groupId>com.chm.fj</groupId>
+			<groupId>ac.cn.chm</groupId>
 			<artifactId>fj-commonutil</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>com.chm.fj</groupId>
+			<groupId>ac.cn.chm</groupId>
 			<artifactId>fj-entity</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
@@ -34,7 +34,7 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency> -->
 		<dependency>
-			<groupId>com.chm.fj</groupId>
+			<groupId>ac.cn.chm</groupId>
 			<artifactId>fj-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

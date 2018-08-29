@@ -1,4 +1,4 @@
-package ac.cn.chm.api.util;
+package ac.cn.chm.fj.api.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

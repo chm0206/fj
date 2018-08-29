@@ -1,4 +1,4 @@
-package ac.cn.chm.api;
+package ac.cn.chm.fj.api.user;
 /**
  * 操作用户信息的的api
  * @author chm
