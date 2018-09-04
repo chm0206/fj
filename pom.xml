@@ -13,5 +13,8 @@
   	<module>fj-service</module>
   	<module>fj-uc</module>
     <module>fj-api</module>
+    <module>fj-mall-entity</module>
+    <module>fj-mall-service</module>
+    <module>fj-mall-web</module>
   </modules>
 </project>

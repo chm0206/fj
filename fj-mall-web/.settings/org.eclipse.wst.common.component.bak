@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="fj-uc-web">
+    <wb-module deploy-name="fj-mall-web">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <dependent-module archiveName="fj-commonutil-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fj-commonutil/fj-commonutil">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="fj-uc-entity-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fj-uc-entity/fj-uc-entity">
+        <dependent-module archiveName="fj-mall-entity-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fj-mall-entity/fj-mall-entity">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="fj-uc-service-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fj-uc-service/fj-uc-service">
+        <dependent-module archiveName="fj-mall-service-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fj-mall-service/fj-mall-service">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <property name="java-output-path" value="/fj-uc-web/target/classes"/>
-        <property name="context-root" value="fj-uc-web"/>
+        <property name="context-root" value="fj-mall-web"/>
+        <property name="java-output-path" value="/fj-mall-web/target/classes"/>
     </wb-module>
 </project-modules>

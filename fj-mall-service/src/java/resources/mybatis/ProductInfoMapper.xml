@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ProductInfoMapper">
+	<resultMap id="ProductInfo" type="ac.cn.chm.fj.mall.entity.ProductInfo">
+		<result column="product_id" property="productId" jdbcType="INTEGER" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+		<result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+		<result column="market_price" property="marketPrice" jdbcType="DECIMAL" />
+		<result column="product_status" property="productStatus"
+			jdbcType="CHAR" />
+		<result column="sale_price" property="salePrice" jdbcType="DECIMAL" />
+		<result column="product_explain" property="productExplain"
+			jdbcType="VARCHAR" />
+		<result column="row1" property="row1" jdbcType="CHAR" />
+		<result column="product_detail" property="productDetail"
+			jdbcType="LONGVARCHAR" />
+	</resultMap>
+	<!-- <sql id="Blob_Column_List">
+		product_detail
+	</sql> -->
+	<!-- 表名称 -->
+	<sql id="tableName">mall_product_info</sql>
+	<!-- 所有字段 -->
+	<sql id="baseColumnList">
+		mp.product_id,mp.product_name,mp.add_time,mp.edit_time,
+		mp.market_price,mp.product_status,mp.product_explain,
+		mp.row1,mp.product_detail
+	</sql>
+	<!-- 关键字段 -->
+	<sql id="breviaryColumn">
+		mp.product_id,mp.product_name,mp.add_time,mp.market_price,mp.product_explain
+	</sql>
+	<!-- 这会有一个问题的，就是字段没有与实体类对应，要改，先写好先 -->
+	<!-- <insert id="insert" parameterType="ac.cn.chm.fj.mall.entity.ProductInfo" 
+		> insert into mall_product_info (product_id, product_name, add_time, edit_time, 
+		market_price, product_status, sale_price, product_explain, row1, product_detail) 
+		values (#{productId,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+		#{editTime,jdbcType=TIMESTAMP}, #{marketPrice,jdbcType=DECIMAL}, #{productStatus,jdbcType=CHAR}, 
+		#{salePrice,jdbcType=DECIMAL}, #{productExplain,jdbcType=VARCHAR}, #{row1,jdbcType=CHAR}, 
+		#{productDetail,jdbcType=LONGVARCHAR}) </insert> -->
+	<insert id="doCreate" parameterType="pd">
+		insert into mall_product_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="productId != null">
+				product_id,
+			</if>
+			<if test="productName != null">
+				product_name,
+			</if>
+			<if test="addTime != null">
+				add_time,
+			</if>
+			<if test="editTime != null">
+				edit_time,
+			</if>
+			<if test="marketPrice != null">
+				market_price,
+			</if>
+			<if test="productStatus != null">
+				product_status,
+			</if>
+			<if test="salePrice != null">
+				sale_price,
+			</if>
+			<if test="productExplain != null">
+				product_explain,
+			</if>
+			<if test="row1 != null">
+				row1,
+			</if>
+			<if test="productDetail != null">
+				product_detail,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="productId != null">
+				#{productId,jdbcType=INTEGER},
+			</if>
+			<if test="productName != null">
+				#{productName,jdbcType=VARCHAR},
+			</if>
+			<if test="addTime != null">
+				#{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="editTime != null">
+				#{editTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="marketPrice != null">
+				#{marketPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="productStatus != null">
+				#{productStatus,jdbcType=CHAR},
+			</if>
+			<if test="salePrice != null">
+				#{salePrice,jdbcType=DECIMAL},
+			</if>
+			<if test="productExplain != null">
+				#{productExplain,jdbcType=VARCHAR},
+			</if>
+			<if test="row1 != null">
+				#{row1,jdbcType=CHAR},
+			</if>
+			<if test="productDetail != null">
+				#{productDetail,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 不使用直接添加是因为如果有唯一值判断且又可以为空时，会出现空重复的BUG -->
+	<!-- 简写：update t_a a set a.name = '张三' where a.id = 1，执行结果：不报错，但是数据没有更新 
+		规范写法：update a set a.name = '张三' from t_a a where a.id = 1，执行结果：数据更新 -->
+	<update id="doUpdate" parameterType="pd">
+		update mp
+		<set>
+			<if test="productId != null and productId !=''">
+				mp.product_id = #{productId,jdbcType=INTEGER},
+			</if>
+			<if test="productName != null and productName !=''">
+				mp.product_name = #{productName,jdbcType=VARCHAR},
+			</if>
+			<if test="addTime != null and addTime !=''">
+				mp.add_time = #{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="editTime != null and editTime !=''">
+				mp.edit_time = #{editTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="marketPrice != null and marketPrice !=''">
+				mp.marketPrice = #{marketPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="productStatus != null and productStatus !=''">
+				mp.product_status = #{productStatus,jdbcType=CHAR},
+			</if>
+			<if test="salePrice != null and salePrice !=''">
+				mp.sale_price = #{salePrice,jdbcType=DECIMAL},
+			</if>
+			<if test="productExplain != null and productExplain !=''">
+				mp.product_explain = #{productExplain,jdbcType=VARCHAR},
+			</if>
+			<if test="row1 != null and row1 !=''">
+				mp.row1 = #{row1,jdbcType=CHAR},
+			</if>
+			<if test="productDetail != null and productDetail !=''">
+				mp.product_dtail = #{productDetail,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		FROM
+		<include refid="tableName" />
+		mp
+		where mp.product_id = #{productId,jdbcType=VARCHAR}
+	</update>
+	<!-- 查询商品列表 listPage -->
+	<select id="listPagePd" parameterType="page" resultType="pd">
+		SELECT
+		<include refid="breviaryColumn" />
+		FROM
+		<include refid="tableName" /> 
+		mp
+		WHERE 1=1
+		<if test="pd.searKey != null and pd.searKey != ''"><!-- 模糊查询 -->
+			and (
+			mp.product_name LIKE CONCAT(CONCAT('%', #{pd.searKey}),'%')
+			or
+			mp.product_id
+			LIKE CONCAT(CONCAT('%', #{pd.searKey}),'%')
+			)
+		</if>
+		<if test="pd.productName != null and pd.productName != ''">
+			and mp.product_name = #{pd.productName,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.productId != null and pd.productId != ''">
+			and mp.product_id = #{pd.productId,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.addTime != null and pd.addTime != ''">
+			and ug.add_time = #{pd.addTime,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.editTime != null and pd.editTime != ''">
+			and ug.edit_time = #{pd.editTime,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.marketPrice != null and pd.marketPrice != ''">
+			and mp.market_price = #{pd.marketPrice,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.productStatus != null and pd.productStatus != ''">
+			and mp.product_status = #{pd.productStatus,jdbcType=CHAR}
+		</if>
+		<if test="pd.row1 != null and pd.row1 = !''">
+			and mp.row1 = #{pd.row1,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.productExplain != null and pd.productExplain = !''">
+			and mp.product_explain = #{pd.productExplain,jdbcType=VARCHAR}
+		</if>
+		<if test="pd.productDetail != null and pd.productDetail = !''">
+			and ug.product_detail = #{pd.productDetail,jdbcType=VARCHAR}
+		</if>
+		order by mp.add_time desc
+	</select>
+	<select id="findPdById" parameterType="string" resultType="pd">
+		select
+		<include refid="baseColumnList" />
+		FROM
+		<include refid="tableName" />
+		mp
+		where mp.product_id = #{id,jdbcType=VARCHAR}
+	</select>
+</mapper>

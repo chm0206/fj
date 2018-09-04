@@ -29,6 +29,7 @@ public class LoginInterceptor extends BaseController implements HandlerIntercept
 				? Tools.getCkValue(request, StringConst.REDIS_ACC_TOKEN):pd.getString(StringConst.REDIS_ACC_TOKEN);
 		if (CheckUtil.isEmpty(accToken)) {
 			System.out.println("尚未登录，调到登录页面");
+			System.out.println(request.getContextPath() + "/" + UrlConst.PAGE_LOGIN);
 			response.sendRedirect(request.getContextPath() + "/" + UrlConst.PAGE_LOGIN);
 			return false;
 		}
