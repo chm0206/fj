@@ -7,6 +7,9 @@
         <dependent-module archiveName="fj-commonutil-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fj-commonutil/fj-commonutil">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="fj-api-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fj-api/fj-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="fj-uc-entity-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fj-uc-entity/fj-uc-entity">
             <dependency-type>uses</dependency-type>
         </dependent-module>

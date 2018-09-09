@@ -16,6 +16,7 @@ import ac.cn.chm.fj.result.ResultInfo;
 import ac.cn.chm.fj.uc.controller.base.BaseController;
 import ac.cn.chm.fj.uc.redis.JedisCacheClient;
 import ac.cn.chm.fj.uc.service.user.UserInfoService;
+import ac.cn.chm.fj.uc.util.LoginUtil;
 import ac.cn.chm.fj.uc.util.RedisUtil;
 import ac.cn.chm.fj.util.CheckUtil;
 import ac.cn.chm.fj.util.Tools;
@@ -77,6 +78,29 @@ public class LoginController extends BaseController {
 				result.put(StringConst.REDIS_USER_INFO,userInfo);
 			}
 			result.put(StringConst.REDIRECT_URL, UrlConst.PAGE_INDEX);// 登录成功跳转到登录页面
+		}
+		return result;
+	}
+	/**
+	 * 校验指定的用户是否已登录
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/isLogin")
+	@ResponseBody
+	public ResultInfo isLogin() throws Exception {
+		ResultInfo result = new ResultInfo();
+		PageData pd = this.getPageData();
+		//获取accToken（从pd或是从cookies里获取）
+		String accToken = CheckUtil.isEmpty(pd.getString(StringConst.REDIS_ACC_TOKEN))
+				? Tools.getCkValue(pd.getRequest(), StringConst.REDIS_ACC_TOKEN):pd.getString(StringConst.REDIS_ACC_TOKEN);
+		if(CheckUtil.isEmpty(accToken)){
+			result.setCode(CodeConst.CODE_NOT_LOGIN);
+		}else{
+			pd.put("accToken", accToken);
+			if(!LoginUtil.isLogin(pd, jedis)){
+				result.setCode(CodeConst.CODE_NOT_LOGIN);
+			}
 		}
 		return result;
 	}

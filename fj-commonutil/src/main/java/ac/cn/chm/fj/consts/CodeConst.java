@@ -21,4 +21,8 @@ public class CodeConst {
 	 * 操作成功
 	 */
 	public static Integer CODE_NORMAL = 200;
+	/**
+	 * 未登录
+	 */
+	public static Integer CODE_NOT_LOGIN = 501;
 }
