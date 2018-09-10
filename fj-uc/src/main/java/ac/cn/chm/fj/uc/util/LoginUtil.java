@@ -26,4 +26,8 @@ public class LoginUtil {
 		//System.out.println("已登录");
 		return true;
 	}
+	
+	public static void addLogin(){
+		
+	}
 }

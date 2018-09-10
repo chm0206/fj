@@ -43,6 +43,7 @@
 					onclick="toLogin()" type="button"> <a href="#">忘记密码?</a> <a
 					onclick="register()">Register</a>
 			</div>
+			<input type="hidden" value="${pd.p }" name="p">
 		</form>
 		</section>
 		<!-- content -->

@@ -16,5 +16,5 @@ public class ApiConst {
 	/**
 	 * 单点登录页面
 	 */
-	public static final String UC_SSO_LOGIN = UC_URL+"login/ssoLogin";
+	public static final String UC_SSO_LOGIN = UC_URL+"sso/toLogin";
 }

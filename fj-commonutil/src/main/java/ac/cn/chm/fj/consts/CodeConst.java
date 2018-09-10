@@ -22,6 +22,10 @@ public class CodeConst {
 	 */
 	public static Integer CODE_NORMAL = 200;
 	/**
+	 * 操作失败
+	 */
+	public static Integer CODE_FAIL = 402;
+	/**
 	 * 未登录
 	 */
 	public static Integer CODE_NOT_LOGIN = 501;

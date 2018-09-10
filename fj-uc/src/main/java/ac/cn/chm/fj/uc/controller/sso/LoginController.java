@@ -23,7 +23,7 @@ import ac.cn.chm.fj.util.Tools;
 import ac.cn.chm.fj.util.init.PageData;
 
 @Controller
-@RequestMapping(value = "login")
+@RequestMapping(value = "sso")
 public class LoginController extends BaseController {
 
 	@Resource(name = "userInfoService")
@@ -34,8 +34,10 @@ public class LoginController extends BaseController {
 	@RequestMapping(value = "toLogin")
 	public ModelAndView toLogin() throws Exception {
 		ModelAndView mv = new ModelAndView();
+		PageData pd = this.getPageData();
 		mv.setViewName("login/login");
-		mv.addObject("loginUrl", UrlConst.ACTION_LOGIN);
+		mv.addObject("pd",pd);
+		mv.addObject("loginUrl",UrlConst.ACTION_LOGIN);
 		mv.addObject("toRegister", UrlConst.PAGE_REGISTER);
 		return mv;
 	}
@@ -59,9 +61,6 @@ public class LoginController extends BaseController {
 			if(CheckUtil.isEmpty(pd.getString(StringConst.SSO_TERMAINAL))){//判断终端是否为空
 				pd.put(StringConst.SSO_TERMAINAL, StringConst.SSO_TERMAINAL_COMPUTER);//默认为电脑
 			}
-			//String accTokenValue = userInfo.getString(StringConst.USER_ID) + "," + DateUtil.getTimeStamp();// 保存usrID和时间戳
-			//String accTokenKey = userInfo.getString(StringConst.USER_ID);
-			//
 			/**
 			 * 序号	说明			key				value
 			 * 1	accToken	时间戳转换码		userID,ownerID
@@ -77,7 +76,7 @@ public class LoginController extends BaseController {
 			if(ParamConst.GET_USERINFO.equals(pd.get(ParamConst.GET_INFO))){
 				result.put(StringConst.REDIS_USER_INFO,userInfo);
 			}
-			result.put(StringConst.REDIRECT_URL, UrlConst.PAGE_INDEX);// 登录成功跳转到登录页面
+			result.put(StringConst.REDIRECT_URL,  CheckUtil.notEmpty("p")?pd.getString("p"):UrlConst.PAGE_INDEX);// 登录成功跳转到登录页面
 		}
 		return result;
 	}
@@ -101,6 +100,24 @@ public class LoginController extends BaseController {
 			if(!LoginUtil.isLogin(pd, jedis)){
 				result.setCode(CodeConst.CODE_NOT_LOGIN);
 			}
+		}
+		return result;
+	}
+	/**
+	 * sso单点登出
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/logout")
+	@ResponseBody
+	public ResultInfo logout() throws Exception {
+		ResultInfo result = new ResultInfo();
+		PageData pd = this.getPageData();
+		if(RedisUtil.userLogout(jedis, pd)){//登出失败
+			result.put("pd",pd);
+			//通知其它的系统要作退出操作
+		}else{
+			result.setCode(CodeConst.CODE_FAIL);
 		}
 		return result;
 	}

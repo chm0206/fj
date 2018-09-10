@@ -24,6 +24,7 @@
 	  	 <mvc:interceptors>
 			<mvc:interceptor>
 				<mvc:mapping path="/mall/**"/>
+				<mvc:mapping path="/pro/**"/>
 				<bean class="ac.cn.chm.fj.mall.interceptor.LoginInterceptor"/>
 			</mvc:interceptor>
 		</mvc:interceptors>

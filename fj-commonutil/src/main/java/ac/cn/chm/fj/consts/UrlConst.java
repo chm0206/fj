@@ -14,15 +14,15 @@ public class UrlConst {
 	/**
 	 * 登录页面
 	 */
-	public static final String PAGE_LOGIN = "login/toLogin" + PAGE_SUFFIX;
+	public static final String PAGE_LOGIN = "sso/toLogin" + PAGE_SUFFIX;
 	/**
 	 * 登录账号方法
 	 */
-	public static final String ACTION_LOGIN = "login/login" + PAGE_SUFFIX;
+	public static final String ACTION_LOGIN = "sso/login" + PAGE_SUFFIX;
 	/**
 	 * 注册页面
 	 */
-	public static final String PAGE_REGISTER = "login/toRegister" + PAGE_SUFFIX;// register
+	public static final String PAGE_REGISTER = "sso/toRegister" + PAGE_SUFFIX;// register
 	/**
 	 * 主页面
 	 */

@@ -1,5 +1,7 @@
 package ac.cn.chm.fj.mall.interceptor;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,6 +30,7 @@ public class LoginInterceptor extends BaseController implements HandlerIntercept
 		String accToken = CheckUtil.isEmpty(pd.getString(StringConst.REDIS_ACC_TOKEN))
 				? Tools.getCkValue(request, StringConst.REDIS_ACC_TOKEN) : pd.getString(StringConst.REDIS_ACC_TOKEN);
 		if (CheckUtil.isEmpty(accToken)) {
+			toLogin(request,response);
 			return false;
 		} else {
 			pd.put("accToken", accToken);
@@ -35,8 +38,7 @@ public class LoginInterceptor extends BaseController implements HandlerIntercept
 		// accToken是否已过期
 		boolean unlisted = new LoginApi("accessKey", "accessPass").isLogin(pd);
 		if (unlisted) {
-			System.out.println("登录过期，跳转到单点登录页面");
-			response.sendRedirect(request.getContextPath() + "/" + ApiConst.UC_SSO_LOGIN+"?p="+"url");//加上当前目录
+			toLogin(request,response);
 			return false;
 		}
 		/*
@@ -47,6 +49,18 @@ public class LoginInterceptor extends BaseController implements HandlerIntercept
 		 */
 		System.out.println("已登录");
 		return true;
+	}
+	/**
+	 * 跳转到SSO登录页面
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
+	private void toLogin(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		System.out.println("登录过期，跳转到单点登录页面");
+		//System.out.println(request.getRequestURI());//只获取相对路径
+		String value = request.getQueryString();	//获取参数
+		response.sendRedirect(ApiConst.UC_SSO_LOGIN+"?p="+request.getRequestURL()+(CheckUtil.isEmpty(value)?"":"?"+value));//加上当前目录//request.getContextPath() + "/" + 
 	}
 
 	@Override
