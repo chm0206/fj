@@ -4,14 +4,16 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONObject;
+
 import ac.cn.chm.fj.api.user.LoginApi;
 import ac.cn.chm.fj.api.util.ApiConst;
 import ac.cn.chm.fj.consts.StringConst;
-import ac.cn.chm.fj.consts.UrlConst;
 import ac.cn.chm.fj.mall.controller.base.BaseController;
 import ac.cn.chm.fj.util.CheckUtil;
 import ac.cn.chm.fj.util.Tools;
@@ -21,7 +23,11 @@ public class LoginInterceptor extends BaseController implements HandlerIntercept
 
 	// @Autowired
 	// private JedisCacheClient jedis;
-
+	public static final String accessKey = "accessKey";
+	public static final String accessPass = "accessPass";
+	/**
+	 * 校验用户是否已登录
+	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -36,18 +42,21 @@ public class LoginInterceptor extends BaseController implements HandlerIntercept
 			pd.put("accToken", accToken);
 		}
 		// accToken是否已过期
-		boolean unlisted = new LoginApi("accessKey", "accessPass").isLogin(pd);
+		boolean unlisted = new LoginApi(accessKey, accessPass).isLogin(pd);//调用该方法，若用户仍在线，会更新redis的在线时间
 		if (unlisted) {
 			toLogin(request,response);
 			return false;
+		}else{
+			HttpSession session = request.getSession();
+			JSONObject userInfo = (JSONObject) session.getAttribute("userInfo");
+			if(userInfo==null){
+				//已登录，但未保存基础用户信息
+				//获取用户基础信息
+				userInfo = new LoginApi(accessKey, accessPass).getLoginInfo(accToken);
+				session.setAttribute("userInfo",userInfo);
+			}
 		}
-		/*
-		 * String userID = jedis.getVStr(accToken, 0); if
-		 * (CheckUtil.isEmpty(userID)) { System.out.println("登录过期，调到登录页面");
-		 * response.sendRedirect(request.getContextPath() + "/" +
-		 * UrlConst.PAGE_LOGIN); return false; }
-		 */
-		System.out.println("已登录");
+		//System.out.println("已登录");
 		return true;
 	}
 	/**
@@ -57,7 +66,7 @@ public class LoginInterceptor extends BaseController implements HandlerIntercept
 	 * @throws IOException
 	 */
 	private void toLogin(HttpServletRequest request,HttpServletResponse response) throws IOException{
-		System.out.println("登录过期，跳转到单点登录页面");
+		//System.out.println("登录过期，跳转到单点登录页面");
 		//System.out.println(request.getRequestURI());//只获取相对路径
 		String value = request.getQueryString();	//获取参数
 		response.sendRedirect(ApiConst.UC_SSO_LOGIN+"?p="+request.getRequestURL()+(CheckUtil.isEmpty(value)?"":"?"+value));//加上当前目录//request.getContextPath() + "/" + 

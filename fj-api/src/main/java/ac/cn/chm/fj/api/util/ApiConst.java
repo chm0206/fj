@@ -12,7 +12,11 @@ public class ApiConst {
 	/**
 	 * 单点登录校验地址
 	 */
-	public static final String UC_CHECK_LOGIN = UC_URL + "login/isLogin";
+	public static final String UC_CHECK_LOGIN = UC_URL + "sso/isLogin";
+	/**
+	 * 获取用户登录基准信息
+	 */
+	public static final String UC_LOGIN_INFO = UC_URL+"sso/getLoginInfo";
 	/**
 	 * 单点登录页面
 	 */

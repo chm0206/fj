@@ -1,6 +1,7 @@
 package ac.cn.chm.fj.uc.controller.sso;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONObject;
+
+import ac.cn.chm.fj.api.util.HttpUtil;
 import ac.cn.chm.fj.consts.CodeConst;
 import ac.cn.chm.fj.consts.ParamConst;
 import ac.cn.chm.fj.consts.StringConst;
@@ -104,6 +108,39 @@ public class LoginController extends BaseController {
 		return result;
 	}
 	/**
+	 * 获取用户登录基础信息
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/getLoginInfo")
+	@ResponseBody
+	public ResultInfo getLoginInfo() throws Exception {
+		ResultInfo result = new ResultInfo();
+		PageData pd = this.getPageData();
+		//获取accToken（从pd或是从cookies里获取）
+		String accToken = CheckUtil.isEmpty(pd.getString(StringConst.REDIS_ACC_TOKEN))
+				? Tools.getCkValue(pd.getRequest(), StringConst.REDIS_ACC_TOKEN):pd.getString(StringConst.REDIS_ACC_TOKEN);
+		if(CheckUtil.isEmpty(accToken)){//accToken为空，则表示没有登录
+			result.setCode(CodeConst.CODE_NOT_LOGIN);
+		}else{//获取用户登录信息
+			//pd.put("accToken", accToken);
+			try{
+				String accTokenValue = jedis.getV(accToken, 0);//获取accToken的值
+				if(CheckUtil.isEmpty(accTokenValue)){
+					result.setCode(CodeConst.CODE_NOT_LOGIN);
+				}else{
+					String[] user = accTokenValue.split(ParamConst.DIV_KOMMA);
+					JSONObject userInfo = jedis.getV(user[0], 0);
+					result.put("userInfo",userInfo);
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+				result.setCode(CodeConst.CODE_NOT_LOGIN);
+			}
+		}
+		return result;
+	}
+	/**
 	 * sso单点登出
 	 * @return
 	 * @throws Exception
@@ -116,9 +153,19 @@ public class LoginController extends BaseController {
 		if(RedisUtil.userLogout(jedis, pd)){//登出失败
 			result.put("pd",pd);
 			//通知其它的系统要作退出操作
+			ssoLogout(pd);
 		}else{
 			result.setCode(CodeConst.CODE_FAIL);
 		}
 		return result;
+	}
+	/**
+	 * 子系统单点登出操作方法
+	 * @param pd
+	 */
+	private void ssoLogout(PageData pd){
+		//HttpServletRequest request = pd.getRequest();
+		HttpUtil.doPost("http://chm.cn:8081/mall/logout",pd);
+		
 	}
 }

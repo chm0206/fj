@@ -40,6 +40,7 @@ public class RedisUtil {
 		String terminal = userInfo.getString(StringConst.USER_ID)+pd.getString(StringConst.SSO_TERMAINAL);//userID+用户登录终端
 		//终端_value
 		String terminalValue = accToken+ParamConst.DIV_KOMMA+"";//accToken+""推送地址，暂没有想好
+		
 		if(jedis.isExpire(terminal, 0)){//如果有，清除旧的登录信息
 			String str = jedis.getV(terminal, 0);//str:accToken_key+推送地址等
 			String[] redisList = str.split(ParamConst.DIV_KOMMA);
@@ -52,8 +53,9 @@ public class RedisUtil {
 		jedis.setVExpire(terminal, terminalValue, ParamConst.EXPIRE_30_MINUTE, 0);
 		//添加accToken
 		jedis.setVExpire(accToken, accTokenValue, ParamConst.EXPIRE_30_MINUTE, 0);
+		//保存用户基础信息
 		if(jedis.notExpire(userInfo.getString(StringConst.USER_ID), 0)){
-			jedis.setVExpire(userInfo.getString(StringConst.USER_ID)+StringConst.REDIS_USER_INFO, userInfo, ParamConst.EXPIRE_30_MINUTE, 0);
+			jedis.setVExpire(userInfo.getString(StringConst.USER_ID), userInfo, ParamConst.EXPIRE_30_MINUTE, 0);
 		}
 	}
 	/**
@@ -74,8 +76,9 @@ public class RedisUtil {
 			String[] redisList = str.split(ParamConst.DIV_KOMMA);
 			if(redisList.length >0){
 				try{
-				jedis.delKey(redisList[0], 0);
-				jedis.delKey(redisList[0], 0);
+				jedis.delKey(accToken, 0);//删除accToken
+				jedis.delKey(redisList[0]+redisList[2], 0);//删除登录终端:userID+登录终端
+				//通知其它系统
 				}catch(Exception e){
 					//异常表示登出操作失败
 					e.printStackTrace();

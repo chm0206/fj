@@ -206,11 +206,11 @@
 		ui
 		where ui.userID = #{id,jdbcType=VARCHAR}
 	</select>
-	
+	<!-- 保存登录信息只需要几个关键字段 -->
 	<select id="findUserLoginInfo" parameterType="pd"
 		resultType="pd">
 		select
-		<include refid="baseColumnList" />
+		<include refid="breviaryColumn" />
 		FROM
 		<include refid="tableName" />
 		ui

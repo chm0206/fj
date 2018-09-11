@@ -1,5 +1,6 @@
 package ac.cn.chm.fj.uc.util;
 
+import ac.cn.chm.fj.api.util.HttpUtil;
 import ac.cn.chm.fj.uc.redis.JedisCacheClient;
 import ac.cn.chm.fj.util.CheckUtil;
 import ac.cn.chm.fj.util.init.PageData;
@@ -29,5 +30,13 @@ public class LoginUtil {
 	
 	public static void addLogin(){
 		
+	}
+	/**
+	 * 单点登出-通知其它系统退出(可能也要用消息，早点引进来吧)
+	 * @throws Exception 
+	 */
+	public static void otherLogout() throws Exception{
+		String sysUrl = "http://chm.cn:8081/mall/logout";
+		HttpUtil.doPost(sysUrl);//通知操作登出
 	}
 }
