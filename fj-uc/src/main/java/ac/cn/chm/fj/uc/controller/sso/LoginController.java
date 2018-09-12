@@ -80,7 +80,7 @@ public class LoginController extends BaseController {
 			if(ParamConst.GET_USERINFO.equals(pd.get(ParamConst.GET_INFO))){
 				result.put(StringConst.REDIS_USER_INFO,userInfo);
 			}
-			result.put(StringConst.REDIRECT_URL,  CheckUtil.notEmpty("p")?pd.getString("p"):UrlConst.PAGE_INDEX);// 登录成功跳转到登录页面
+			result.put(StringConst.REDIRECT_URL,  CheckUtil.notEmpty(pd.getString("p"))?pd.getString("p"):UrlConst.PAGE_INDEX);// 登录成功跳转到登录页面
 		}
 		return result;
 	}
@@ -165,7 +165,7 @@ public class LoginController extends BaseController {
 	 */
 	private void ssoLogout(PageData pd){
 		//HttpServletRequest request = pd.getRequest();
-		HttpUtil.doPost("http://chm.cn:8081/mall/logout",pd);
-		
+		HttpUtil.doPost("http://chm.cn:8081/mall/sso/logout",pd);
+		System.out.println(1234);
 	}
 }

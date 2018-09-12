@@ -16,44 +16,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="static/layui/layui.css">
-<script type="text/javascript" src="<%=basePath%>static/layui/layui.js"></script>
-<script type="text/javascript"
-	src="<%=basePath%>static/js/jquery-3.3.1.min.js"></script>
+<!-- <link rel="stylesheet" href="static/layui/layui.css"> -->
+<script type="text/javascript" src="static/layui/layui.js"></script>
+<script type="text/javascript" src="static/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="static/js/cookie.js"></script>
+
 </head>
 <body>
 	<form class=" layui-form" action="stores/storeList.do" method="post"
 		id="stlForm" name="stlForm">
-		<!-- <div class=" layui-form-item floatL">
-				<div class=" layui-input-block">
-					<select name="stStatus" id="stStatus" class="" lay-search>
-						<option value="#">全部平台</option>
-						<option value="1">正常</option>
-						<option value="0">删除</option>
-					</select>
-				</div>
-			</div>
-			<div class=" layui-form-item floatL">	
-				<div class=" layui-input-block">
-					<select name="stType" id="stType" class="" lay-search>
-						<option value="#">全部类别</option>
-						<option value="1">租用仓库</option>
-						<option value="2">自有仓库</option>
-						<option value="3">临时仓库</option>
-						<option value="4">虚拟仓库</option>
-						<option value="5">其他仓库</option>
-					</select>
-				</div>
-			</div>
-			<div class="layui-form-item floatL">
-				<div class="layui-input-block">
-					<input type="text" name="keywords" id="keywords" maxlength="100"  type="text" placeholder="仓库编号/仓库名称/仓库地址" class="layui-input nBorderL"
-						style="width: 344px !important;">
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<button class="layui-btn searchBtn" onClick="searchs();">查询</button>
-			</div> -->
+		<button type="button" onclick="logout()">退出</button>
 		<hr style="height: 6px; background: #f5f4f3">
 		<div class="layui-form-item mylayui-form-item">
 			<div class=" layui-form-item shopsOperate">
@@ -105,4 +77,27 @@
 		<div id="pagenation">${page.pageStr}</div>
 	</form>
 </body>
+<script type="text/javascript">
+	function logout() {
+		console.log(getAccToken());
+		$.ajax({
+			//cache : "False",
+			type : "post",
+			//async: false, 【(A)】
+			url : "sso/logout",
+			data : {accToken:getAccToken()},
+			//data : {userAccount : $("#userAccount").val(),userPass : $("#userPass").val()},
+			success : function(result) {
+				console.log(result);
+				if (200 == result.code) {
+					setAllCookie(result.data.accToken);
+					console.log(result.data.accToken);
+					window.open('<%=basePath%>sso/toLogin', '_self');
+				}
+			},
+			error : function(xhr, ajaxOptions, thrownError) {
+			}
+		});
+	}
+</script>
 </html>

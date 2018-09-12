@@ -41,9 +41,9 @@ public class LoginInterceptor extends BaseController implements HandlerIntercept
 		} else {
 			pd.put("accToken", accToken);
 		}
-		// accToken是否已过期
-		boolean unlisted = new LoginApi(accessKey, accessPass).isLogin(pd);//调用该方法，若用户仍在线，会更新redis的在线时间
-		if (unlisted) {
+		boolean isLogin = new LoginApi(accessKey, accessPass).isLogin(pd);//调用该方法，若用户仍在线，会更新redis的在线时间
+		getSeesion(request);
+		if (!isLogin) {
 			toLogin(request,response);
 			return false;
 		}else{
@@ -58,6 +58,16 @@ public class LoginInterceptor extends BaseController implements HandlerIntercept
 		}
 		//System.out.println("已登录");
 		return true;
+	}
+	/**
+	 * test
+	 * @param request
+	 */
+	private void getSeesion(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		JSONObject userInfo = (JSONObject) session.getAttribute("userInfo");
+		System.out.println(userInfo);
 	}
 	/**
 	 * 跳转到SSO登录页面
@@ -75,13 +85,13 @@ public class LoginInterceptor extends BaseController implements HandlerIntercept
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		System.out.println("postHandle");
+		//System.out.println("postHandle");
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		System.out.println("afterCompletion");
+		//System.out.println("afterCompletion");
 	}
 
 }

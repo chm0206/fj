@@ -79,8 +79,7 @@ public class RedisUtil {
 				jedis.delKey(accToken, 0);//删除accToken
 				jedis.delKey(redisList[0]+redisList[2], 0);//删除登录终端:userID+登录终端
 				//通知其它系统
-				}catch(Exception e){
-					//异常表示登出操作失败
+				}catch(Exception e){//异常表示登出操作失败
 					e.printStackTrace();
 					return false;
 				}
